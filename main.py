@@ -2,13 +2,15 @@ import histogram as w
 import GUI as g
 # w.webcamCV()
 
-cam = g.Camera(0)
+cam = g.Camera('rtsp://admin:@10.224.3.244/1')
 cam.initialize()
 
 G = g.GUI(cam)
 
 G.run()
 
+# while(input() != "q"):
+#     print("running")
 # G.run()
 # app = g.QApplication([])
 # window = g.GUI()
