@@ -1,13 +1,13 @@
 import histogram as w
-import GUI as g
+import Feed as g
 # w.webcamCV()
 
-cam = g.Camera('rtsp://admin:@10.224.3.244/1')
-cam.initialize()
+# cam = g.Camera('rtsp://admin:@10.224.3.244/1')
+# cam.initialize()
 
-G = g.GUI(cam)
+# G = g.GUI(cam)
 
-G.run()
+# G.run()
 
 # while(input() != "q"):
 #     print("running")
@@ -17,8 +17,8 @@ G.run()
 # window.show()
 # app.exit(app.exec())
 
-# cam = g.Camera(0)
-# cam.initialize()
-# print(cam)
-# cam.show()
-# cam.close()
+cam = g.Camera(0, -1, "admin", "admin")
+cam.initialize()
+print(cam)
+cam.show()
+cam.close()
