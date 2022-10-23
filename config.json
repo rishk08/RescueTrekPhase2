@@ -1,0 +1,56 @@
+{
+    "ListOfSites": [
+        {
+            "SiteID": "Site1",
+            "ListOfSensors": [
+                {
+                    "SensorType": "Camera",
+                    "IP": "xxx.xxx.xxx.xxx",
+                    "MAC": "mac",
+                    "Username": "user",
+                    "Password": "pswd"
+                }
+
+            ]
+        },
+        {
+            "SiteID": "Site2",
+            "ListOfSensors": [
+                {
+                    "SensorType": "Camera",
+                    "IP": "xxx.xxx.xxx.xxx",
+                    "MAC": "mac",
+                    "Username": "user",
+                    "Password": "pswd"
+                }
+
+            ]
+        },
+        {
+            "SiteID": "Site3",
+            "ListOfSensors": [
+                {
+                    "SensorType": "Camera",
+                    "IP": "xxx.xxx.xxx.xxx",
+                    "MAC": "mac",
+                    "Username": "user",
+                    "Password": "pswd"
+                }
+
+            ]
+        }
+    ],
+    "SensorData": {
+        "Camera": {
+            "Models": [
+                {
+                    "Name": "GunDetection",
+                    "Data": {
+                        "Path": "Some Directory",
+                        "Threshold": 0.7
+                    }
+                }
+            ]
+        }
+    }
+}

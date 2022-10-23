@@ -1,3 +1,7 @@
-import histogram as w
+#!/usr/bin/env python3
+#import histogram as w
+from system import System
 
-w.webcamCV()
+obj = System('config.json')
+
+#w.webcamCV()
