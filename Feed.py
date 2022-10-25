@@ -8,9 +8,10 @@ from collections import deque
 
     
 class Feed(ABC):
-    def __init__(self, model = None) -> None:
+    def __init__(self, models = None) -> None:
         super().__init__()
-        self.model = model
+        #array of models
+        self.models = models
 
     @abstractmethod
     def __init__(self, model = None):
@@ -40,15 +41,19 @@ class Feed(ABC):
     def get_sensor_type(self):
         pass
     
-    # Run model associated with sensor (i.e. camera can run GunDetection Model)
+    # Run individual model associated with sensor (i.e. camera can run GunDetection Model)
     @abstractmethod
-    def run_model(self):
+    def run_model(self, source):
+        pass
+    
+    # Run all models
+    def run_models(self):
         pass
 
 
 class IPCamera(Feed):
-    def __init__(self, ip, username = "", password = "", model = None):
-        super().__init__(model)
+    def __init__(self, ip, username = "", password = "", models = None):
+        super().__init__(models)
         self.cap = None
         self.frame = None
         self.ip = ip
@@ -69,22 +74,6 @@ class IPCamera(Feed):
             self.cap = cv2.VideoCapture(0)
         except Exception as Argument:
             print("error with camera with ip", self.ip, "\n", "Error:", Argument)
-
-        
-
-    #this will not be in final implimentation. It is just to test the camera is working
-    def show(self):
-        while(True):
-            # Capture frame-by-frame
-            frame = self.get_data()
-            # print("continued")
-            # cv2.startWindowThread()
-            # resizing for faster detection
-            # frame = cv2.resize(frame, (400, 400))
-            # gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
-            cv2.imshow('frame',frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
     
     # attempts to connect to camera feed. Returns True if succesful
     def verify_feed(self, source):
@@ -121,9 +110,14 @@ class IPCamera(Feed):
 
     # Runs model to detect threat
     # Might need to be in the model class
-    def run_model(self):
+    def run_model(self, source):
         self.model.assess(self.frame)
         # self.model.assess(get_data())
+
+    #primative solution to run all models
+    def run_models(self):
+        for model in self.models:
+            self.run_model(model)
         
     #Returns sensor type
     def get_sensor_type(self):
