@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 from siteclass import Site
 import json
+import threading
 
 class System:
     listOfSites = []
     listOfSiteThreads = []
     listOfActiveModels = []
     listOfModelReferences = []
+    displayObj = ""
+    
     def __init__(self, configFile):
         #Read in config file
         f = open(configFile)
@@ -40,8 +43,7 @@ class System:
             
             obj = Site(siteId, listOfSensors, listOfModelsForSite, configData)
             self.listOfSites.append(obj)
-            
-        
+              
     def InitializeModels(self):
         #Determine how to load in the models and cache them perhaps
         #Save them as a key value pair {SensorType: ModelReference}
@@ -68,8 +70,21 @@ class System:
                 if model not in self.listOfActiveModels:
                     self.listOfActiveModels.append(model)
         
-                    
-        
+    def StartUp(self):
+        for i in self.listOfSites:
+            thread = threading.Thread(target=i.Run, args=())
+            
+            thread.start()
+            
+            self.listOfSiteThreads.append(thread)
+            
+        #Startup GUI/Display class here, gets it's own thread
+        #displayObj = ...
+            
+    def Shutdown(self):
+        #displayObj.Shutdown()
+        for i in self.listOfSiteThreads:
+            i.join()
                 
                 
 
