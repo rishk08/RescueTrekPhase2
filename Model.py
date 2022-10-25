@@ -8,6 +8,10 @@ class Model(ABC):
     @property
     def get_file_path(self):
         return f"{self.filepath}"
+    
+    @abstractmethod
+    def assess(self, frame):
+        pass
 
 
 class GunDetection(Model):
