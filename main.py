@@ -1,32 +1,17 @@
-import histogram as w
-import Feed as g
-import Site as s
-# w.webcamCV()
+#import histogram as w
+from system import System
+    
+obj = System('config.json')
 
-# cam = g.Camera('rtsp://admin:@10.224.3.244/1')
-# cam.initialize()
+obj.StartUp()
 
-# G = g.GUI(cam)
+#Determine way to halt main thread and listen for event to shutdown system
+while(True):
+    #Running system
+    i = 0
+    if(i == 1):
+        break;
+    
+obj.Shutdown()
 
-# G.run()
-
-# while(input() != "q"):
-#     print("running")
-# G.run()
-# app = g.QApplication([])
-# window = g.GUI()
-# window.show()
-# app.exit(app.exec())
-
-# cam = g.IPCamera("10.165.3.64", "admin", "admin")
-# cam.initialize()
-# print(cam)
-# cam.show()
-
-# print("continue")
-# cam.close()
-
-site = s.Site()
-site.start()
-site.show()
-site.close()
+#w.webcamCV()
