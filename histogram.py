@@ -12,11 +12,11 @@ def webcamCV():
     cap = cv2.VideoCapture(0)
 
     # the output will be written to output.avi
-    out = cv2.VideoWriter(
-        'output.avi',
-        cv2.VideoWriter_fourcc(*'MJPG'),
-        15.,
-        (400,400))
+    # out = cv2.VideoWriter(
+    #     'output.avi',
+    #     cv2.VideoWriter_fourcc(*'MJPG'),
+    #     15.,
+    #     (400,400))
 
     while(True):
         # Capture frame-by-frame
@@ -39,7 +39,7 @@ def webcamCV():
                             (0, 255, 0), 2)
         
         # Write the output video 
-        out.write(frame.astype('uint8'))
+        # out.write(frame.astype('uint8'))
         # Display the resulting frame
         cv2.imshow('frame',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -48,7 +48,7 @@ def webcamCV():
     # When everything done, release the capture
     cap.release()
     # and release the output
-    out.release()
+    # out.release()
     # finally, close the window
     cv2.destroyAllWindows()
     cv2.waitKey(1)
