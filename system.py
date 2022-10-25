@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from siteclass import Site
 import json
 import threading

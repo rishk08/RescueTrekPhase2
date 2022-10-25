@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
 from time import sleep
+import constant as const
 
 class Site:
     siteID = ""
@@ -8,6 +8,8 @@ class Site:
         self.siteID = siteId
     
     def Run(self):
+        if("Camera" == const.CAMERA):
+            print("Constants work")
         while(True):
             print("Running ", self.siteID)
             sleep(1)
