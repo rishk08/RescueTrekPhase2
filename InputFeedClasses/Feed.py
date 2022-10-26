@@ -1,5 +1,4 @@
 from pkgutil import get_data
-import histogram as w
 from threading import Thread
 from abc import ABC, abstractmethod
 # from Model import GunDetection

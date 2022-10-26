@@ -1,6 +1,7 @@
-from Feed import Feed
+from InputFeedClasses.Feed import Feed
 import cv2
 from collections import deque
+import constant as const
 class IPCamera(Feed):
     def __init__(self, ip, username = "", password = "", models = None):
         super().__init__(models)
@@ -52,9 +53,13 @@ class IPCamera(Feed):
 
     #Retrieves an individual frame
     def get_data(self):
-        ret, frame = self.cap.read()
-        frame = cv2.resize(frame, (400, 400))
-        return frame
+        try:
+            ret, frame = self.cap.read()
+            frame = cv2.resize(frame, (400, 400))
+            return frame
+        except AttributeError as err:
+            print(err)
+            print("did you initilize the camera?")
     
     # gets new frame from camera and sets it as attribute
     def update_frame(self):
@@ -80,4 +85,4 @@ class IPCamera(Feed):
         
     #Returns sensor type
     def get_sensor_type(self):
-        return "camera"
+        return const.CAMERA
