@@ -1,4 +1,3 @@
-#import histogram as w
 from system import System
     
 obj = System('config.json')
@@ -14,4 +13,3 @@ while(True):
     
 obj.Shutdown()
 
-#w.webcamCV()
