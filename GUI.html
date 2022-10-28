@@ -1,0 +1,943 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module GUI</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>GUI</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/joey/Capstone/RescueTrek/GUI.py">/Users/joey/Capstone/RescueTrek/GUI.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="cv2.html">cv2</a><br>
+</td><td width="25%" valign=top><a href="pyqtgraph.html">pyqtgraph</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="PyQt6.QtWidgets.html#QMainWindow">PyQt6.QtWidgets.QMainWindow</a>(<a href="PyQt6.QtWidgets.html#QWidget">PyQt6.QtWidgets.QWidget</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="GUI.html#CameraWindow">CameraWindow</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="GUI.html#Camera">Camera</a>
+</font></dt><dt><font face="helvetica, arial"><a href="GUI.html#GUI">GUI</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Camera">class <strong>Camera</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Camera">Camera</a>(cam_num)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Camera-__init__"><strong>__init__</strong></a>(self, cam_num)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Camera-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Camera-get_frame"><strong>get_frame</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Camera-initialize"><strong>initialize</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Camera-show"><strong>show</strong></a>(self)</dt><dd><tt>#this&nbsp;will&nbsp;need&nbsp;a&nbsp;thread&nbsp;as&nbsp;is</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CameraWindow">class <strong>CameraWindow</strong></a>(<a href="PyQt6.QtWidgets.html#QMainWindow">PyQt6.QtWidgets.QMainWindow</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#CameraWindow">CameraWindow</a>(camera)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="GUI.html#CameraWindow">CameraWindow</a></dd>
+<dd><a href="PyQt6.QtWidgets.html#QMainWindow">PyQt6.QtWidgets.QMainWindow</a></dd>
+<dd><a href="PyQt6.QtWidgets.html#QWidget">PyQt6.QtWidgets.QWidget</a></dd>
+<dd><a href="PyQt6.QtCore.html#QObject">PyQt6.QtCore.QObject</a></dd>
+<dd><a href="PyQt6.sip.html#wrapper">PyQt6.sip.wrapper</a></dd>
+<dd><a href="PyQt6.QtGui.html#QPaintDevice">PyQt6.QtGui.QPaintDevice</a></dd>
+<dd><a href="PyQt6.sip.html#simplewrapper">PyQt6.sip.simplewrapper</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="CameraWindow-__init__"><strong>__init__</strong></a>(self, camera)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-button_pressed"><strong>button_pressed</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CameraWindow-get_frame"><strong>get_frame</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CameraWindow-set_frame"><strong>set_frame</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CameraWindow-startCamera"><strong>startCamera</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CameraWindow-update_image"><strong>update_image</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CameraWindow-video"><strong>video</strong></a>(self)</dt><dd><tt>#thread&nbsp;here</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="PyQt6.QtWidgets.html#QMainWindow">PyQt6.QtWidgets.QMainWindow</a>:<br>
+<dl><dt><a name="CameraWindow-addDockWidget"><strong>addDockWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-addDockWidget">addDockWidget</a>(self,&nbsp;Qt.DockWidgetArea,&nbsp;QDockWidget)<br>
+<a href="#CameraWindow-addDockWidget">addDockWidget</a>(self,&nbsp;Qt.DockWidgetArea,&nbsp;QDockWidget,&nbsp;Qt.Orientation)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-addToolBar"><strong>addToolBar</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-addToolBar">addToolBar</a>(self,&nbsp;Qt.ToolBarArea,&nbsp;QToolBar)<br>
+<a href="#CameraWindow-addToolBar">addToolBar</a>(self,&nbsp;QToolBar)<br>
+<a href="#CameraWindow-addToolBar">addToolBar</a>(self,&nbsp;str)&nbsp;-&gt;&nbsp;QToolBar</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-addToolBarBreak"><strong>addToolBarBreak</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-addToolBarBreak">addToolBarBreak</a>(self,&nbsp;area:&nbsp;Qt.ToolBarArea&nbsp;=&nbsp;Qt.TopToolBarArea)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-centralWidget"><strong>centralWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-centralWidget">centralWidget</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-contextMenuEvent"><strong>contextMenuEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-contextMenuEvent">contextMenuEvent</a>(self,&nbsp;QContextMenuEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-corner"><strong>corner</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-corner">corner</a>(self,&nbsp;Qt.Corner)&nbsp;-&gt;&nbsp;Qt.DockWidgetArea</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-createPopupMenu"><strong>createPopupMenu</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-createPopupMenu">createPopupMenu</a>(self)&nbsp;-&gt;&nbsp;QMenu</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dockOptions"><strong>dockOptions</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dockOptions">dockOptions</a>(self)&nbsp;-&gt;&nbsp;<a href="PyQt6.QtWidgets.html#QMainWindow">QMainWindow</a>.DockOption</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dockWidgetArea"><strong>dockWidgetArea</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dockWidgetArea">dockWidgetArea</a>(self,&nbsp;QDockWidget)&nbsp;-&gt;&nbsp;Qt.DockWidgetArea</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-documentMode"><strong>documentMode</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-documentMode">documentMode</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-event"><strong>event</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-event">event</a>(self,&nbsp;QEvent)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-iconSize"><strong>iconSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-iconSize">iconSize</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<strong>iconSizeChanged</strong> = &lt;unbound PYQT_SIGNAL iconSizeChanged(QSize)&gt;
+<dl><dt><a name="CameraWindow-insertToolBar"><strong>insertToolBar</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-insertToolBar">insertToolBar</a>(self,&nbsp;QToolBar,&nbsp;QToolBar)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-insertToolBarBreak"><strong>insertToolBarBreak</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-insertToolBarBreak">insertToolBarBreak</a>(self,&nbsp;QToolBar)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isAnimated"><strong>isAnimated</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isAnimated">isAnimated</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isDockNestingEnabled"><strong>isDockNestingEnabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isDockNestingEnabled">isDockNestingEnabled</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isSeparator"><strong>isSeparator</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isSeparator">isSeparator</a>(self,&nbsp;QPoint)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-menuBar"><strong>menuBar</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-menuBar">menuBar</a>(self)&nbsp;-&gt;&nbsp;QMenuBar</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-menuWidget"><strong>menuWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-menuWidget">menuWidget</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-removeDockWidget"><strong>removeDockWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-removeDockWidget">removeDockWidget</a>(self,&nbsp;QDockWidget)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-removeToolBar"><strong>removeToolBar</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-removeToolBar">removeToolBar</a>(self,&nbsp;QToolBar)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-removeToolBarBreak"><strong>removeToolBarBreak</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-removeToolBarBreak">removeToolBarBreak</a>(self,&nbsp;QToolBar)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-resizeDocks"><strong>resizeDocks</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-resizeDocks">resizeDocks</a>(self,&nbsp;Iterable[QDockWidget],&nbsp;Iterable[int],&nbsp;Qt.Orientation)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-restoreDockWidget"><strong>restoreDockWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-restoreDockWidget">restoreDockWidget</a>(self,&nbsp;QDockWidget)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-restoreState"><strong>restoreState</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-restoreState">restoreState</a>(self,&nbsp;QByteArray,&nbsp;version:&nbsp;int&nbsp;=&nbsp;0)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-saveState"><strong>saveState</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-saveState">saveState</a>(self,&nbsp;version:&nbsp;int&nbsp;=&nbsp;0)&nbsp;-&gt;&nbsp;QByteArray</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setAnimated"><strong>setAnimated</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setAnimated">setAnimated</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setCentralWidget"><strong>setCentralWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setCentralWidget">setCentralWidget</a>(self,&nbsp;QWidget)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setCorner"><strong>setCorner</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setCorner">setCorner</a>(self,&nbsp;Qt.Corner,&nbsp;Qt.DockWidgetArea)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setDockNestingEnabled"><strong>setDockNestingEnabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setDockNestingEnabled">setDockNestingEnabled</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setDockOptions"><strong>setDockOptions</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setDockOptions">setDockOptions</a>(self,&nbsp;<a href="PyQt6.QtWidgets.html#QMainWindow">QMainWindow</a>.DockOption)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setDocumentMode"><strong>setDocumentMode</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setDocumentMode">setDocumentMode</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setIconSize"><strong>setIconSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setIconSize">setIconSize</a>(self,&nbsp;QSize)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMenuBar"><strong>setMenuBar</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMenuBar">setMenuBar</a>(self,&nbsp;QMenuBar)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMenuWidget"><strong>setMenuWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMenuWidget">setMenuWidget</a>(self,&nbsp;QWidget)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setStatusBar"><strong>setStatusBar</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setStatusBar">setStatusBar</a>(self,&nbsp;QStatusBar)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setTabPosition"><strong>setTabPosition</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setTabPosition">setTabPosition</a>(self,&nbsp;Qt.DockWidgetArea,&nbsp;QTabWidget.TabPosition)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setTabShape"><strong>setTabShape</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setTabShape">setTabShape</a>(self,&nbsp;QTabWidget.TabShape)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setToolButtonStyle"><strong>setToolButtonStyle</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setToolButtonStyle">setToolButtonStyle</a>(self,&nbsp;Qt.ToolButtonStyle)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setUnifiedTitleAndToolBarOnMac"><strong>setUnifiedTitleAndToolBarOnMac</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setUnifiedTitleAndToolBarOnMac">setUnifiedTitleAndToolBarOnMac</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-splitDockWidget"><strong>splitDockWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-splitDockWidget">splitDockWidget</a>(self,&nbsp;QDockWidget,&nbsp;QDockWidget,&nbsp;Qt.Orientation)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-statusBar"><strong>statusBar</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-statusBar">statusBar</a>(self)&nbsp;-&gt;&nbsp;QStatusBar</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-tabPosition"><strong>tabPosition</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-tabPosition">tabPosition</a>(self,&nbsp;Qt.DockWidgetArea)&nbsp;-&gt;&nbsp;QTabWidget.TabPosition</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-tabShape"><strong>tabShape</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-tabShape">tabShape</a>(self)&nbsp;-&gt;&nbsp;QTabWidget.TabShape</tt></dd></dl>
+
+<strong>tabifiedDockWidgetActivated</strong> = &lt;unbound PYQT_SIGNAL tabifiedDockWidgetActivated(QDockWidget*)&gt;
+<dl><dt><a name="CameraWindow-tabifiedDockWidgets"><strong>tabifiedDockWidgets</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-tabifiedDockWidgets">tabifiedDockWidgets</a>(self,&nbsp;QDockWidget)&nbsp;-&gt;&nbsp;List[QDockWidget]</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-tabifyDockWidget"><strong>tabifyDockWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-tabifyDockWidget">tabifyDockWidget</a>(self,&nbsp;QDockWidget,&nbsp;QDockWidget)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-takeCentralWidget"><strong>takeCentralWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-takeCentralWidget">takeCentralWidget</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-toolBarArea"><strong>toolBarArea</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-toolBarArea">toolBarArea</a>(self,&nbsp;QToolBar)&nbsp;-&gt;&nbsp;Qt.ToolBarArea</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-toolBarBreak"><strong>toolBarBreak</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-toolBarBreak">toolBarBreak</a>(self,&nbsp;QToolBar)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-toolButtonStyle"><strong>toolButtonStyle</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-toolButtonStyle">toolButtonStyle</a>(self)&nbsp;-&gt;&nbsp;Qt.ToolButtonStyle</tt></dd></dl>
+
+<strong>toolButtonStyleChanged</strong> = &lt;unbound PYQT_SIGNAL toolButtonStyleChanged(Qt::ToolButtonStyle)&gt;
+<dl><dt><a name="CameraWindow-unifiedTitleAndToolBarOnMac"><strong>unifiedTitleAndToolBarOnMac</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-unifiedTitleAndToolBarOnMac">unifiedTitleAndToolBarOnMac</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="PyQt6.QtWidgets.html#QMainWindow">PyQt6.QtWidgets.QMainWindow</a>:<br>
+<dl><dt><strong>DockOption</strong> = &lt;enum 'DockOption'&gt;<dd><tt>An&nbsp;enumeration.</tt></dl>
+
+<hr>
+Methods inherited from <a href="PyQt6.QtWidgets.html#QWidget">PyQt6.QtWidgets.QWidget</a>:<br>
+<dl><dt><a name="CameraWindow-acceptDrops"><strong>acceptDrops</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-acceptDrops">acceptDrops</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-accessibleDescription"><strong>accessibleDescription</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-accessibleDescription">accessibleDescription</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-accessibleName"><strong>accessibleName</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-accessibleName">accessibleName</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-actionEvent"><strong>actionEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-actionEvent">actionEvent</a>(self,&nbsp;QActionEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-actions"><strong>actions</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-actions">actions</a>(self)&nbsp;-&gt;&nbsp;List[QAction]</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-activateWindow"><strong>activateWindow</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-activateWindow">activateWindow</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-addAction"><strong>addAction</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;QIcon,&nbsp;str)&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;QIcon,&nbsp;str,&nbsp;PYQT_SLOT,&nbsp;type:&nbsp;Qt.ConnectionType&nbsp;=&nbsp;Qt.AutoConnection)&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;QIcon,&nbsp;str,&nbsp;Union[QKeySequence,&nbsp;QKeySequence.StandardKey,&nbsp;str,&nbsp;int])&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;QIcon,&nbsp;str,&nbsp;Union[QKeySequence,&nbsp;QKeySequence.StandardKey,&nbsp;str,&nbsp;int],&nbsp;PYQT_SLOT,&nbsp;type:&nbsp;Qt.ConnectionType&nbsp;=&nbsp;Qt.AutoConnection)&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;str)&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;str,&nbsp;Union[QKeySequence,&nbsp;QKeySequence.StandardKey,&nbsp;str,&nbsp;int])&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;str,&nbsp;PYQT_SLOT,&nbsp;type:&nbsp;Qt.ConnectionType&nbsp;=&nbsp;Qt.AutoConnection)&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;str,&nbsp;Union[QKeySequence,&nbsp;QKeySequence.StandardKey,&nbsp;str,&nbsp;int],&nbsp;PYQT_SLOT,&nbsp;type:&nbsp;Qt.ConnectionType&nbsp;=&nbsp;Qt.AutoConnection)&nbsp;-&gt;&nbsp;QAction<br>
+<a href="#CameraWindow-addAction">addAction</a>(self,&nbsp;QAction)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-addActions"><strong>addActions</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-addActions">addActions</a>(self,&nbsp;Iterable[QAction])</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-adjustSize"><strong>adjustSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-adjustSize">adjustSize</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-autoFillBackground"><strong>autoFillBackground</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-autoFillBackground">autoFillBackground</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-backgroundRole"><strong>backgroundRole</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-backgroundRole">backgroundRole</a>(self)&nbsp;-&gt;&nbsp;QPalette.ColorRole</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-baseSize"><strong>baseSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-baseSize">baseSize</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-changeEvent"><strong>changeEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-changeEvent">changeEvent</a>(self,&nbsp;QEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-childAt"><strong>childAt</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-childAt">childAt</a>(self,&nbsp;QPoint)&nbsp;-&gt;&nbsp;QWidget<br>
+<a href="#CameraWindow-childAt">childAt</a>(self,&nbsp;int,&nbsp;int)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-childrenRect"><strong>childrenRect</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-childrenRect">childrenRect</a>(self)&nbsp;-&gt;&nbsp;QRect</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-childrenRegion"><strong>childrenRegion</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-childrenRegion">childrenRegion</a>(self)&nbsp;-&gt;&nbsp;QRegion</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-clearFocus"><strong>clearFocus</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-clearFocus">clearFocus</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-clearMask"><strong>clearMask</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-clearMask">clearMask</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-close"><strong>close</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-close">close</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-closeEvent"><strong>closeEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-closeEvent">closeEvent</a>(self,&nbsp;QCloseEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-contentsMargins"><strong>contentsMargins</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-contentsMargins">contentsMargins</a>(self)&nbsp;-&gt;&nbsp;QMargins</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-contentsRect"><strong>contentsRect</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-contentsRect">contentsRect</a>(self)&nbsp;-&gt;&nbsp;QRect</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-contextMenuPolicy"><strong>contextMenuPolicy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-contextMenuPolicy">contextMenuPolicy</a>(self)&nbsp;-&gt;&nbsp;Qt.ContextMenuPolicy</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-create"><strong>create</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-create">create</a>(self,&nbsp;window:&nbsp;PyQt6.sip.voidptr&nbsp;=&nbsp;0,&nbsp;initializeWindow:&nbsp;bool&nbsp;=&nbsp;True,&nbsp;destroyOldWindow:&nbsp;bool&nbsp;=&nbsp;True)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-createWindowContainer"><strong>createWindowContainer</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-createWindowContainer">createWindowContainer</a>(QWindow,&nbsp;parent:&nbsp;QWidget&nbsp;=&nbsp;None,&nbsp;flags:&nbsp;Qt.WindowType&nbsp;=&nbsp;Qt.WindowFlags())&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-cursor"><strong>cursor</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-cursor">cursor</a>(self)&nbsp;-&gt;&nbsp;QCursor</tt></dd></dl>
+
+<strong>customContextMenuRequested</strong> = &lt;unbound PYQT_SIGNAL customContextMenuRequested(QPoint)&gt;
+<dl><dt><a name="CameraWindow-destroy"><strong>destroy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-destroy">destroy</a>(self,&nbsp;destroyWindow:&nbsp;bool&nbsp;=&nbsp;True,&nbsp;destroySubWindows:&nbsp;bool&nbsp;=&nbsp;True)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-devType"><strong>devType</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-devType">devType</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dragEnterEvent"><strong>dragEnterEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dragEnterEvent">dragEnterEvent</a>(self,&nbsp;QDragEnterEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dragLeaveEvent"><strong>dragLeaveEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dragLeaveEvent">dragLeaveEvent</a>(self,&nbsp;QDragLeaveEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dragMoveEvent"><strong>dragMoveEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dragMoveEvent">dragMoveEvent</a>(self,&nbsp;QDragMoveEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dropEvent"><strong>dropEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dropEvent">dropEvent</a>(self,&nbsp;QDropEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-effectiveWinId"><strong>effectiveWinId</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-effectiveWinId">effectiveWinId</a>(self)&nbsp;-&gt;&nbsp;PyQt6.sip.voidptr</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-ensurePolished"><strong>ensurePolished</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-ensurePolished">ensurePolished</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-enterEvent"><strong>enterEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-enterEvent">enterEvent</a>(self,&nbsp;QEnterEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-find"><strong>find</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-find">find</a>(PyQt6.sip.voidptr)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusInEvent"><strong>focusInEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusInEvent">focusInEvent</a>(self,&nbsp;QFocusEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusNextChild"><strong>focusNextChild</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusNextChild">focusNextChild</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusNextPrevChild"><strong>focusNextPrevChild</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusNextPrevChild">focusNextPrevChild</a>(self,&nbsp;bool)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusOutEvent"><strong>focusOutEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusOutEvent">focusOutEvent</a>(self,&nbsp;QFocusEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusPolicy"><strong>focusPolicy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusPolicy">focusPolicy</a>(self)&nbsp;-&gt;&nbsp;Qt.FocusPolicy</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusPreviousChild"><strong>focusPreviousChild</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusPreviousChild">focusPreviousChild</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusProxy"><strong>focusProxy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusProxy">focusProxy</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-focusWidget"><strong>focusWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-focusWidget">focusWidget</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-font"><strong>font</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-font">font</a>(self)&nbsp;-&gt;&nbsp;QFont</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-fontInfo"><strong>fontInfo</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-fontInfo">fontInfo</a>(self)&nbsp;-&gt;&nbsp;QFontInfo</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-fontMetrics"><strong>fontMetrics</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-fontMetrics">fontMetrics</a>(self)&nbsp;-&gt;&nbsp;QFontMetrics</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-foregroundRole"><strong>foregroundRole</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-foregroundRole">foregroundRole</a>(self)&nbsp;-&gt;&nbsp;QPalette.ColorRole</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-frameGeometry"><strong>frameGeometry</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-frameGeometry">frameGeometry</a>(self)&nbsp;-&gt;&nbsp;QRect</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-frameSize"><strong>frameSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-frameSize">frameSize</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-geometry"><strong>geometry</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-geometry">geometry</a>(self)&nbsp;-&gt;&nbsp;QRect</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-grab"><strong>grab</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-grab">grab</a>(self,&nbsp;rectangle:&nbsp;QRect&nbsp;=&nbsp;QRect(QPoint(0,0),QSize(-1,-1)))&nbsp;-&gt;&nbsp;QPixmap</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-grabGesture"><strong>grabGesture</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-grabGesture">grabGesture</a>(self,&nbsp;Qt.GestureType,&nbsp;flags:&nbsp;Qt.GestureFlag&nbsp;=&nbsp;Qt.GestureFlags())</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-grabKeyboard"><strong>grabKeyboard</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-grabKeyboard">grabKeyboard</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-grabMouse"><strong>grabMouse</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-grabMouse">grabMouse</a>(self)<br>
+<a href="#CameraWindow-grabMouse">grabMouse</a>(self,&nbsp;Union[QCursor,&nbsp;Qt.CursorShape])</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-grabShortcut"><strong>grabShortcut</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-grabShortcut">grabShortcut</a>(self,&nbsp;Union[QKeySequence,&nbsp;QKeySequence.StandardKey,&nbsp;str,&nbsp;int],&nbsp;context:&nbsp;Qt.ShortcutContext&nbsp;=&nbsp;Qt.WindowShortcut)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-graphicsEffect"><strong>graphicsEffect</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-graphicsEffect">graphicsEffect</a>(self)&nbsp;-&gt;&nbsp;QGraphicsEffect</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-graphicsProxyWidget"><strong>graphicsProxyWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-graphicsProxyWidget">graphicsProxyWidget</a>(self)&nbsp;-&gt;&nbsp;QGraphicsProxyWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-hasFocus"><strong>hasFocus</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-hasFocus">hasFocus</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-hasHeightForWidth"><strong>hasHeightForWidth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-hasHeightForWidth">hasHeightForWidth</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-hasMouseTracking"><strong>hasMouseTracking</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-hasMouseTracking">hasMouseTracking</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-hasTabletTracking"><strong>hasTabletTracking</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-hasTabletTracking">hasTabletTracking</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-height"><strong>height</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-height">height</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-heightForWidth"><strong>heightForWidth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-heightForWidth">heightForWidth</a>(self,&nbsp;int)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-hide"><strong>hide</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-hide">hide</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-hideEvent"><strong>hideEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-hideEvent">hideEvent</a>(self,&nbsp;QHideEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-initPainter"><strong>initPainter</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-initPainter">initPainter</a>(self,&nbsp;QPainter)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-inputMethodEvent"><strong>inputMethodEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-inputMethodEvent">inputMethodEvent</a>(self,&nbsp;QInputMethodEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-inputMethodHints"><strong>inputMethodHints</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-inputMethodHints">inputMethodHints</a>(self)&nbsp;-&gt;&nbsp;Qt.InputMethodHint</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-inputMethodQuery"><strong>inputMethodQuery</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-inputMethodQuery">inputMethodQuery</a>(self,&nbsp;Qt.InputMethodQuery)&nbsp;-&gt;&nbsp;Any</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-insertAction"><strong>insertAction</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-insertAction">insertAction</a>(self,&nbsp;QAction,&nbsp;QAction)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-insertActions"><strong>insertActions</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-insertActions">insertActions</a>(self,&nbsp;QAction,&nbsp;Iterable[QAction])</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isActiveWindow"><strong>isActiveWindow</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isActiveWindow">isActiveWindow</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isAncestorOf"><strong>isAncestorOf</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isAncestorOf">isAncestorOf</a>(self,&nbsp;QWidget)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isEnabled"><strong>isEnabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isEnabled">isEnabled</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isEnabledTo"><strong>isEnabledTo</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isEnabledTo">isEnabledTo</a>(self,&nbsp;QWidget)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isFullScreen"><strong>isFullScreen</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isFullScreen">isFullScreen</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isHidden"><strong>isHidden</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isHidden">isHidden</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isLeftToRight"><strong>isLeftToRight</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isLeftToRight">isLeftToRight</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isMaximized"><strong>isMaximized</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isMaximized">isMaximized</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isMinimized"><strong>isMinimized</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isMinimized">isMinimized</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isModal"><strong>isModal</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isModal">isModal</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isRightToLeft"><strong>isRightToLeft</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isRightToLeft">isRightToLeft</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isVisible"><strong>isVisible</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isVisible">isVisible</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isVisibleTo"><strong>isVisibleTo</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isVisibleTo">isVisibleTo</a>(self,&nbsp;QWidget)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isWindow"><strong>isWindow</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isWindow">isWindow</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isWindowModified"><strong>isWindowModified</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isWindowModified">isWindowModified</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-keyPressEvent"><strong>keyPressEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-keyPressEvent">keyPressEvent</a>(self,&nbsp;QKeyEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-keyReleaseEvent"><strong>keyReleaseEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-keyReleaseEvent">keyReleaseEvent</a>(self,&nbsp;QKeyEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-keyboardGrabber"><strong>keyboardGrabber</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-keyboardGrabber">keyboardGrabber</a>()&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-layout"><strong>layout</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-layout">layout</a>(self)&nbsp;-&gt;&nbsp;QLayout</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-layoutDirection"><strong>layoutDirection</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-layoutDirection">layoutDirection</a>(self)&nbsp;-&gt;&nbsp;Qt.LayoutDirection</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-leaveEvent"><strong>leaveEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-leaveEvent">leaveEvent</a>(self,&nbsp;QEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-locale"><strong>locale</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-locale">locale</a>(self)&nbsp;-&gt;&nbsp;QLocale</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-lower"><strong>lower</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-lower">lower</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mapFrom"><strong>mapFrom</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mapFrom">mapFrom</a>(self,&nbsp;QWidget,&nbsp;QPoint)&nbsp;-&gt;&nbsp;QPoint<br>
+<a href="#CameraWindow-mapFrom">mapFrom</a>(self,&nbsp;QWidget,&nbsp;QPointF)&nbsp;-&gt;&nbsp;QPointF</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mapFromGlobal"><strong>mapFromGlobal</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mapFromGlobal">mapFromGlobal</a>(self,&nbsp;QPoint)&nbsp;-&gt;&nbsp;QPoint<br>
+<a href="#CameraWindow-mapFromGlobal">mapFromGlobal</a>(self,&nbsp;QPointF)&nbsp;-&gt;&nbsp;QPointF</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mapFromParent"><strong>mapFromParent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mapFromParent">mapFromParent</a>(self,&nbsp;QPoint)&nbsp;-&gt;&nbsp;QPoint<br>
+<a href="#CameraWindow-mapFromParent">mapFromParent</a>(self,&nbsp;QPointF)&nbsp;-&gt;&nbsp;QPointF</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mapTo"><strong>mapTo</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mapTo">mapTo</a>(self,&nbsp;QWidget,&nbsp;QPoint)&nbsp;-&gt;&nbsp;QPoint<br>
+<a href="#CameraWindow-mapTo">mapTo</a>(self,&nbsp;QWidget,&nbsp;QPointF)&nbsp;-&gt;&nbsp;QPointF</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mapToGlobal"><strong>mapToGlobal</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mapToGlobal">mapToGlobal</a>(self,&nbsp;QPoint)&nbsp;-&gt;&nbsp;QPoint<br>
+<a href="#CameraWindow-mapToGlobal">mapToGlobal</a>(self,&nbsp;QPointF)&nbsp;-&gt;&nbsp;QPointF</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mapToParent"><strong>mapToParent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mapToParent">mapToParent</a>(self,&nbsp;QPoint)&nbsp;-&gt;&nbsp;QPoint<br>
+<a href="#CameraWindow-mapToParent">mapToParent</a>(self,&nbsp;QPointF)&nbsp;-&gt;&nbsp;QPointF</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mask"><strong>mask</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mask">mask</a>(self)&nbsp;-&gt;&nbsp;QRegion</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-maximumHeight"><strong>maximumHeight</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-maximumHeight">maximumHeight</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-maximumSize"><strong>maximumSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-maximumSize">maximumSize</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-maximumWidth"><strong>maximumWidth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-maximumWidth">maximumWidth</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-metric"><strong>metric</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-metric">metric</a>(self,&nbsp;QPaintDevice.PaintDeviceMetric)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-minimumHeight"><strong>minimumHeight</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-minimumHeight">minimumHeight</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-minimumSize"><strong>minimumSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-minimumSize">minimumSize</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-minimumSizeHint"><strong>minimumSizeHint</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-minimumSizeHint">minimumSizeHint</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-minimumWidth"><strong>minimumWidth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-minimumWidth">minimumWidth</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mouseDoubleClickEvent"><strong>mouseDoubleClickEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mouseDoubleClickEvent">mouseDoubleClickEvent</a>(self,&nbsp;QMouseEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mouseGrabber"><strong>mouseGrabber</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mouseGrabber">mouseGrabber</a>()&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mouseMoveEvent"><strong>mouseMoveEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mouseMoveEvent">mouseMoveEvent</a>(self,&nbsp;QMouseEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mousePressEvent"><strong>mousePressEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mousePressEvent">mousePressEvent</a>(self,&nbsp;QMouseEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-mouseReleaseEvent"><strong>mouseReleaseEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-mouseReleaseEvent">mouseReleaseEvent</a>(self,&nbsp;QMouseEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-move"><strong>move</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-move">move</a>(self,&nbsp;QPoint)<br>
+<a href="#CameraWindow-move">move</a>(self,&nbsp;int,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-moveEvent"><strong>moveEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-moveEvent">moveEvent</a>(self,&nbsp;QMoveEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-nativeEvent"><strong>nativeEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-nativeEvent">nativeEvent</a>(self,&nbsp;QByteArray,&nbsp;PyQt6.sip.voidptr)&nbsp;-&gt;&nbsp;Tuple[bool,&nbsp;PyQt6.sip.voidptr]</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-nativeParentWidget"><strong>nativeParentWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-nativeParentWidget">nativeParentWidget</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-nextInFocusChain"><strong>nextInFocusChain</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-nextInFocusChain">nextInFocusChain</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-normalGeometry"><strong>normalGeometry</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-normalGeometry">normalGeometry</a>(self)&nbsp;-&gt;&nbsp;QRect</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-overrideWindowFlags"><strong>overrideWindowFlags</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-overrideWindowFlags">overrideWindowFlags</a>(self,&nbsp;Qt.WindowType)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-overrideWindowState"><strong>overrideWindowState</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-overrideWindowState">overrideWindowState</a>(self,&nbsp;Qt.WindowState)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-paintEngine"><strong>paintEngine</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-paintEngine">paintEngine</a>(self)&nbsp;-&gt;&nbsp;QPaintEngine</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-paintEvent"><strong>paintEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-paintEvent">paintEvent</a>(self,&nbsp;QPaintEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-palette"><strong>palette</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-palette">palette</a>(self)&nbsp;-&gt;&nbsp;QPalette</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-parentWidget"><strong>parentWidget</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-parentWidget">parentWidget</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-pos"><strong>pos</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-pos">pos</a>(self)&nbsp;-&gt;&nbsp;QPoint</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-previousInFocusChain"><strong>previousInFocusChain</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-previousInFocusChain">previousInFocusChain</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-raise_"><strong>raise_</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-raise_">raise_</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-rect"><strong>rect</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-rect">rect</a>(self)&nbsp;-&gt;&nbsp;QRect</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-releaseKeyboard"><strong>releaseKeyboard</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-releaseKeyboard">releaseKeyboard</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-releaseMouse"><strong>releaseMouse</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-releaseMouse">releaseMouse</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-releaseShortcut"><strong>releaseShortcut</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-releaseShortcut">releaseShortcut</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-removeAction"><strong>removeAction</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-removeAction">removeAction</a>(self,&nbsp;QAction)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-render"><strong>render</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-render">render</a>(self,&nbsp;QPaintDevice,&nbsp;targetOffset:&nbsp;QPoint&nbsp;=&nbsp;QPoint(),&nbsp;sourceRegion:&nbsp;QRegion&nbsp;=&nbsp;QRegion(),&nbsp;flags:&nbsp;QWidget.RenderFlag&nbsp;=&nbsp;QWidget.RenderFlags(QWidget.DrawWindowBackground|QWidget.DrawChildren))<br>
+<a href="#CameraWindow-render">render</a>(self,&nbsp;QPainter,&nbsp;targetOffset:&nbsp;QPoint&nbsp;=&nbsp;QPoint(),&nbsp;sourceRegion:&nbsp;QRegion&nbsp;=&nbsp;QRegion(),&nbsp;flags:&nbsp;QWidget.RenderFlag&nbsp;=&nbsp;QWidget.RenderFlags(QWidget.DrawWindowBackground|QWidget.DrawChildren))</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-repaint"><strong>repaint</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-repaint">repaint</a>(self)<br>
+<a href="#CameraWindow-repaint">repaint</a>(self,&nbsp;int,&nbsp;int,&nbsp;int,&nbsp;int)<br>
+<a href="#CameraWindow-repaint">repaint</a>(self,&nbsp;QRect)<br>
+<a href="#CameraWindow-repaint">repaint</a>(self,&nbsp;QRegion)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-resize"><strong>resize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-resize">resize</a>(self,&nbsp;QSize)<br>
+<a href="#CameraWindow-resize">resize</a>(self,&nbsp;int,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-resizeEvent"><strong>resizeEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-resizeEvent">resizeEvent</a>(self,&nbsp;QResizeEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-restoreGeometry"><strong>restoreGeometry</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-restoreGeometry">restoreGeometry</a>(self,&nbsp;QByteArray)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-saveGeometry"><strong>saveGeometry</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-saveGeometry">saveGeometry</a>(self)&nbsp;-&gt;&nbsp;QByteArray</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-screen"><strong>screen</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-screen">screen</a>(self)&nbsp;-&gt;&nbsp;QScreen</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-scroll"><strong>scroll</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-scroll">scroll</a>(self,&nbsp;int,&nbsp;int)<br>
+<a href="#CameraWindow-scroll">scroll</a>(self,&nbsp;int,&nbsp;int,&nbsp;QRect)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setAcceptDrops"><strong>setAcceptDrops</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setAcceptDrops">setAcceptDrops</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setAccessibleDescription"><strong>setAccessibleDescription</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setAccessibleDescription">setAccessibleDescription</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setAccessibleName"><strong>setAccessibleName</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setAccessibleName">setAccessibleName</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setAttribute"><strong>setAttribute</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setAttribute">setAttribute</a>(self,&nbsp;Qt.WidgetAttribute,&nbsp;on:&nbsp;bool&nbsp;=&nbsp;True)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setAutoFillBackground"><strong>setAutoFillBackground</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setAutoFillBackground">setAutoFillBackground</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setBackgroundRole"><strong>setBackgroundRole</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setBackgroundRole">setBackgroundRole</a>(self,&nbsp;QPalette.ColorRole)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setBaseSize"><strong>setBaseSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setBaseSize">setBaseSize</a>(self,&nbsp;int,&nbsp;int)<br>
+<a href="#CameraWindow-setBaseSize">setBaseSize</a>(self,&nbsp;QSize)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setContentsMargins"><strong>setContentsMargins</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setContentsMargins">setContentsMargins</a>(self,&nbsp;int,&nbsp;int,&nbsp;int,&nbsp;int)<br>
+<a href="#CameraWindow-setContentsMargins">setContentsMargins</a>(self,&nbsp;QMargins)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setContextMenuPolicy"><strong>setContextMenuPolicy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setContextMenuPolicy">setContextMenuPolicy</a>(self,&nbsp;Qt.ContextMenuPolicy)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setCursor"><strong>setCursor</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setCursor">setCursor</a>(self,&nbsp;Union[QCursor,&nbsp;Qt.CursorShape])</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setDisabled"><strong>setDisabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setDisabled">setDisabled</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setEnabled"><strong>setEnabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setEnabled">setEnabled</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setFixedHeight"><strong>setFixedHeight</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setFixedHeight">setFixedHeight</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setFixedSize"><strong>setFixedSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setFixedSize">setFixedSize</a>(self,&nbsp;QSize)<br>
+<a href="#CameraWindow-setFixedSize">setFixedSize</a>(self,&nbsp;int,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setFixedWidth"><strong>setFixedWidth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setFixedWidth">setFixedWidth</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setFocus"><strong>setFocus</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setFocus">setFocus</a>(self)<br>
+<a href="#CameraWindow-setFocus">setFocus</a>(self,&nbsp;Qt.FocusReason)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setFocusPolicy"><strong>setFocusPolicy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setFocusPolicy">setFocusPolicy</a>(self,&nbsp;Qt.FocusPolicy)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setFocusProxy"><strong>setFocusProxy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setFocusProxy">setFocusProxy</a>(self,&nbsp;QWidget)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setFont"><strong>setFont</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setFont">setFont</a>(self,&nbsp;QFont)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setForegroundRole"><strong>setForegroundRole</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setForegroundRole">setForegroundRole</a>(self,&nbsp;QPalette.ColorRole)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setGeometry"><strong>setGeometry</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setGeometry">setGeometry</a>(self,&nbsp;QRect)<br>
+<a href="#CameraWindow-setGeometry">setGeometry</a>(self,&nbsp;int,&nbsp;int,&nbsp;int,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setGraphicsEffect"><strong>setGraphicsEffect</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setGraphicsEffect">setGraphicsEffect</a>(self,&nbsp;QGraphicsEffect)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setHidden"><strong>setHidden</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setHidden">setHidden</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setInputMethodHints"><strong>setInputMethodHints</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setInputMethodHints">setInputMethodHints</a>(self,&nbsp;Qt.InputMethodHint)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setLayout"><strong>setLayout</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setLayout">setLayout</a>(self,&nbsp;QLayout)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setLayoutDirection"><strong>setLayoutDirection</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setLayoutDirection">setLayoutDirection</a>(self,&nbsp;Qt.LayoutDirection)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setLocale"><strong>setLocale</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setLocale">setLocale</a>(self,&nbsp;QLocale)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMask"><strong>setMask</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMask">setMask</a>(self,&nbsp;QBitmap)<br>
+<a href="#CameraWindow-setMask">setMask</a>(self,&nbsp;QRegion)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMaximumHeight"><strong>setMaximumHeight</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMaximumHeight">setMaximumHeight</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMaximumSize"><strong>setMaximumSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMaximumSize">setMaximumSize</a>(self,&nbsp;int,&nbsp;int)<br>
+<a href="#CameraWindow-setMaximumSize">setMaximumSize</a>(self,&nbsp;QSize)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMaximumWidth"><strong>setMaximumWidth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMaximumWidth">setMaximumWidth</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMinimumHeight"><strong>setMinimumHeight</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMinimumHeight">setMinimumHeight</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMinimumSize"><strong>setMinimumSize</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMinimumSize">setMinimumSize</a>(self,&nbsp;int,&nbsp;int)<br>
+<a href="#CameraWindow-setMinimumSize">setMinimumSize</a>(self,&nbsp;QSize)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMinimumWidth"><strong>setMinimumWidth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMinimumWidth">setMinimumWidth</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setMouseTracking"><strong>setMouseTracking</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setMouseTracking">setMouseTracking</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setPalette"><strong>setPalette</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setPalette">setPalette</a>(self,&nbsp;QPalette)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setParent"><strong>setParent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setParent">setParent</a>(self,&nbsp;QWidget)<br>
+<a href="#CameraWindow-setParent">setParent</a>(self,&nbsp;QWidget,&nbsp;Qt.WindowType)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setScreen"><strong>setScreen</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setScreen">setScreen</a>(self,&nbsp;QScreen)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setShortcutAutoRepeat"><strong>setShortcutAutoRepeat</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setShortcutAutoRepeat">setShortcutAutoRepeat</a>(self,&nbsp;int,&nbsp;enabled:&nbsp;bool&nbsp;=&nbsp;True)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setShortcutEnabled"><strong>setShortcutEnabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setShortcutEnabled">setShortcutEnabled</a>(self,&nbsp;int,&nbsp;enabled:&nbsp;bool&nbsp;=&nbsp;True)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setSizeIncrement"><strong>setSizeIncrement</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setSizeIncrement">setSizeIncrement</a>(self,&nbsp;int,&nbsp;int)<br>
+<a href="#CameraWindow-setSizeIncrement">setSizeIncrement</a>(self,&nbsp;QSize)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setSizePolicy"><strong>setSizePolicy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setSizePolicy">setSizePolicy</a>(self,&nbsp;QSizePolicy)<br>
+<a href="#CameraWindow-setSizePolicy">setSizePolicy</a>(self,&nbsp;QSizePolicy.Policy,&nbsp;QSizePolicy.Policy)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setStatusTip"><strong>setStatusTip</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setStatusTip">setStatusTip</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setStyle"><strong>setStyle</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setStyle">setStyle</a>(self,&nbsp;QStyle)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setStyleSheet"><strong>setStyleSheet</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setStyleSheet">setStyleSheet</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setTabOrder"><strong>setTabOrder</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setTabOrder">setTabOrder</a>(QWidget,&nbsp;QWidget)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setTabletTracking"><strong>setTabletTracking</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setTabletTracking">setTabletTracking</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setToolTip"><strong>setToolTip</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setToolTip">setToolTip</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setToolTipDuration"><strong>setToolTipDuration</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setToolTipDuration">setToolTipDuration</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setUpdatesEnabled"><strong>setUpdatesEnabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setUpdatesEnabled">setUpdatesEnabled</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setVisible"><strong>setVisible</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setVisible">setVisible</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWhatsThis"><strong>setWhatsThis</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWhatsThis">setWhatsThis</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowFilePath"><strong>setWindowFilePath</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowFilePath">setWindowFilePath</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowFlag"><strong>setWindowFlag</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowFlag">setWindowFlag</a>(self,&nbsp;Qt.WindowType,&nbsp;on:&nbsp;bool&nbsp;=&nbsp;True)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowFlags"><strong>setWindowFlags</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowFlags">setWindowFlags</a>(self,&nbsp;Qt.WindowType)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowIcon"><strong>setWindowIcon</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowIcon">setWindowIcon</a>(self,&nbsp;QIcon)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowIconText"><strong>setWindowIconText</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowIconText">setWindowIconText</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowModality"><strong>setWindowModality</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowModality">setWindowModality</a>(self,&nbsp;Qt.WindowModality)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowModified"><strong>setWindowModified</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowModified">setWindowModified</a>(self,&nbsp;bool)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowOpacity"><strong>setWindowOpacity</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowOpacity">setWindowOpacity</a>(self,&nbsp;float)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowRole"><strong>setWindowRole</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowRole">setWindowRole</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowState"><strong>setWindowState</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowState">setWindowState</a>(self,&nbsp;Qt.WindowState)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setWindowTitle"><strong>setWindowTitle</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setWindowTitle">setWindowTitle</a>(self,&nbsp;str)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-sharedPainter"><strong>sharedPainter</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-sharedPainter">sharedPainter</a>(self)&nbsp;-&gt;&nbsp;QPainter</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-show"><strong>show</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-show">show</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-showEvent"><strong>showEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-showEvent">showEvent</a>(self,&nbsp;QShowEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-showFullScreen"><strong>showFullScreen</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-showFullScreen">showFullScreen</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-showMaximized"><strong>showMaximized</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-showMaximized">showMaximized</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-showMinimized"><strong>showMinimized</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-showMinimized">showMinimized</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-showNormal"><strong>showNormal</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-showNormal">showNormal</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-size"><strong>size</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-size">size</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-sizeHint"><strong>sizeHint</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-sizeHint">sizeHint</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-sizeIncrement"><strong>sizeIncrement</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-sizeIncrement">sizeIncrement</a>(self)&nbsp;-&gt;&nbsp;QSize</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-sizePolicy"><strong>sizePolicy</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-sizePolicy">sizePolicy</a>(self)&nbsp;-&gt;&nbsp;QSizePolicy</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-stackUnder"><strong>stackUnder</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-stackUnder">stackUnder</a>(self,&nbsp;QWidget)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-statusTip"><strong>statusTip</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-statusTip">statusTip</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-style"><strong>style</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-style">style</a>(self)&nbsp;-&gt;&nbsp;QStyle</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-styleSheet"><strong>styleSheet</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-styleSheet">styleSheet</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-tabletEvent"><strong>tabletEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-tabletEvent">tabletEvent</a>(self,&nbsp;QTabletEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-testAttribute"><strong>testAttribute</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-testAttribute">testAttribute</a>(self,&nbsp;Qt.WidgetAttribute)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-toolTip"><strong>toolTip</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-toolTip">toolTip</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-toolTipDuration"><strong>toolTipDuration</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-toolTipDuration">toolTipDuration</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-underMouse"><strong>underMouse</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-underMouse">underMouse</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-ungrabGesture"><strong>ungrabGesture</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-ungrabGesture">ungrabGesture</a>(self,&nbsp;Qt.GestureType)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-unsetCursor"><strong>unsetCursor</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-unsetCursor">unsetCursor</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-unsetLayoutDirection"><strong>unsetLayoutDirection</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-unsetLayoutDirection">unsetLayoutDirection</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-unsetLocale"><strong>unsetLocale</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-unsetLocale">unsetLocale</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-update"><strong>update</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-update">update</a>(self)<br>
+<a href="#CameraWindow-update">update</a>(self,&nbsp;QRect)<br>
+<a href="#CameraWindow-update">update</a>(self,&nbsp;QRegion)<br>
+<a href="#CameraWindow-update">update</a>(self,&nbsp;int,&nbsp;int,&nbsp;int,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-updateGeometry"><strong>updateGeometry</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-updateGeometry">updateGeometry</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-updateMicroFocus"><strong>updateMicroFocus</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-updateMicroFocus">updateMicroFocus</a>(self,&nbsp;query:&nbsp;Qt.InputMethodQuery&nbsp;=&nbsp;Qt.ImQueryAll)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-updatesEnabled"><strong>updatesEnabled</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-updatesEnabled">updatesEnabled</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-visibleRegion"><strong>visibleRegion</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-visibleRegion">visibleRegion</a>(self)&nbsp;-&gt;&nbsp;QRegion</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-whatsThis"><strong>whatsThis</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-whatsThis">whatsThis</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-wheelEvent"><strong>wheelEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-wheelEvent">wheelEvent</a>(self,&nbsp;QWheelEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-width"><strong>width</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-width">width</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-winId"><strong>winId</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-winId">winId</a>(self)&nbsp;-&gt;&nbsp;PyQt6.sip.voidptr</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-window"><strong>window</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-window">window</a>(self)&nbsp;-&gt;&nbsp;QWidget</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowFilePath"><strong>windowFilePath</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowFilePath">windowFilePath</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowFlags"><strong>windowFlags</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowFlags">windowFlags</a>(self)&nbsp;-&gt;&nbsp;Qt.WindowType</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowHandle"><strong>windowHandle</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowHandle">windowHandle</a>(self)&nbsp;-&gt;&nbsp;QWindow</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowIcon"><strong>windowIcon</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowIcon">windowIcon</a>(self)&nbsp;-&gt;&nbsp;QIcon</tt></dd></dl>
+
+<strong>windowIconChanged</strong> = &lt;unbound PYQT_SIGNAL windowIconChanged(QIcon)&gt;
+<dl><dt><a name="CameraWindow-windowIconText"><strong>windowIconText</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowIconText">windowIconText</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<strong>windowIconTextChanged</strong> = &lt;unbound PYQT_SIGNAL windowIconTextChanged(QString)&gt;
+<dl><dt><a name="CameraWindow-windowModality"><strong>windowModality</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowModality">windowModality</a>(self)&nbsp;-&gt;&nbsp;Qt.WindowModality</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowOpacity"><strong>windowOpacity</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowOpacity">windowOpacity</a>(self)&nbsp;-&gt;&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowRole"><strong>windowRole</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowRole">windowRole</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowState"><strong>windowState</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowState">windowState</a>(self)&nbsp;-&gt;&nbsp;Qt.WindowState</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-windowTitle"><strong>windowTitle</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowTitle">windowTitle</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<strong>windowTitleChanged</strong> = &lt;unbound PYQT_SIGNAL windowTitleChanged(QString)&gt;
+<dl><dt><a name="CameraWindow-windowType"><strong>windowType</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-windowType">windowType</a>(self)&nbsp;-&gt;&nbsp;Qt.WindowType</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-x"><strong>x</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-x">x</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-y"><strong>y</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-y">y</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="PyQt6.QtWidgets.html#QWidget">PyQt6.QtWidgets.QWidget</a>:<br>
+<dl><dt><strong>RenderFlag</strong> = &lt;enum 'RenderFlag'&gt;<dd><tt>An&nbsp;enumeration.</tt></dl>
+
+<hr>
+Methods inherited from <a href="PyQt6.QtCore.html#QObject">PyQt6.QtCore.QObject</a>:<br>
+<dl><dt><a name="CameraWindow-__getattr__"><strong>__getattr__</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-__getattr__">__getattr__</a>(self,&nbsp;str)&nbsp;-&gt;&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-blockSignals"><strong>blockSignals</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-blockSignals">blockSignals</a>(self,&nbsp;bool)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-childEvent"><strong>childEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-childEvent">childEvent</a>(self,&nbsp;QChildEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-children"><strong>children</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-children">children</a>(self)&nbsp;-&gt;&nbsp;List[QObject]</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-connectNotify"><strong>connectNotify</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-connectNotify">connectNotify</a>(self,&nbsp;QMetaMethod)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-customEvent"><strong>customEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-customEvent">customEvent</a>(self,&nbsp;QEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-deleteLater"><strong>deleteLater</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-deleteLater">deleteLater</a>(self)</tt></dd></dl>
+
+<strong>destroyed</strong> = &lt;unbound PYQT_SIGNAL destroyed(QObject*)&gt;
+<dl><dt><a name="CameraWindow-disconnect"><strong>disconnect</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-disconnect">disconnect</a>(QMetaObject.Connection)&nbsp;-&gt;&nbsp;bool<br>
+<a href="#CameraWindow-disconnect">disconnect</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-disconnectNotify"><strong>disconnectNotify</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-disconnectNotify">disconnectNotify</a>(self,&nbsp;QMetaMethod)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dumpObjectInfo"><strong>dumpObjectInfo</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dumpObjectInfo">dumpObjectInfo</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dumpObjectTree"><strong>dumpObjectTree</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dumpObjectTree">dumpObjectTree</a>(self)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-dynamicPropertyNames"><strong>dynamicPropertyNames</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-dynamicPropertyNames">dynamicPropertyNames</a>(self)&nbsp;-&gt;&nbsp;List[QByteArray]</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-eventFilter"><strong>eventFilter</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-eventFilter">eventFilter</a>(self,&nbsp;QObject,&nbsp;QEvent)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-findChild"><strong>findChild</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-findChild">findChild</a>(self,&nbsp;type,&nbsp;name:&nbsp;str&nbsp;=&nbsp;'',&nbsp;options:&nbsp;Qt.FindChildOption&nbsp;=&nbsp;Qt.FindChildrenRecursively)&nbsp;-&gt;&nbsp;QObject<br>
+<a href="#CameraWindow-findChild">findChild</a>(self,&nbsp;Tuple,&nbsp;name:&nbsp;str&nbsp;=&nbsp;'',&nbsp;options:&nbsp;Qt.FindChildOption&nbsp;=&nbsp;Qt.FindChildrenRecursively)&nbsp;-&gt;&nbsp;QObject</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-findChildren"><strong>findChildren</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-findChildren">findChildren</a>(self,&nbsp;type,&nbsp;name:&nbsp;str&nbsp;=&nbsp;'',&nbsp;options:&nbsp;Qt.FindChildOption&nbsp;=&nbsp;Qt.FindChildrenRecursively)&nbsp;-&gt;&nbsp;List[QObject]<br>
+<a href="#CameraWindow-findChildren">findChildren</a>(self,&nbsp;Tuple,&nbsp;name:&nbsp;str&nbsp;=&nbsp;'',&nbsp;options:&nbsp;Qt.FindChildOption&nbsp;=&nbsp;Qt.FindChildrenRecursively)&nbsp;-&gt;&nbsp;List[QObject]<br>
+<a href="#CameraWindow-findChildren">findChildren</a>(self,&nbsp;type,&nbsp;QRegularExpression,&nbsp;options:&nbsp;Qt.FindChildOption&nbsp;=&nbsp;Qt.FindChildrenRecursively)&nbsp;-&gt;&nbsp;List[QObject]<br>
+<a href="#CameraWindow-findChildren">findChildren</a>(self,&nbsp;Tuple,&nbsp;QRegularExpression,&nbsp;options:&nbsp;Qt.FindChildOption&nbsp;=&nbsp;Qt.FindChildrenRecursively)&nbsp;-&gt;&nbsp;List[QObject]</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-inherits"><strong>inherits</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-inherits">inherits</a>(self,&nbsp;str)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-installEventFilter"><strong>installEventFilter</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-installEventFilter">installEventFilter</a>(self,&nbsp;QObject)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isQuickItemType"><strong>isQuickItemType</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isQuickItemType">isQuickItemType</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isSignalConnected"><strong>isSignalConnected</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isSignalConnected">isSignalConnected</a>(self,&nbsp;QMetaMethod)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isWidgetType"><strong>isWidgetType</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isWidgetType">isWidgetType</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-isWindowType"><strong>isWindowType</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-isWindowType">isWindowType</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-killTimer"><strong>killTimer</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-killTimer">killTimer</a>(self,&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-metaObject"><strong>metaObject</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-metaObject">metaObject</a>(self)&nbsp;-&gt;&nbsp;QMetaObject</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-moveToThread"><strong>moveToThread</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-moveToThread">moveToThread</a>(self,&nbsp;QThread)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-objectName"><strong>objectName</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-objectName">objectName</a>(self)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<strong>objectNameChanged</strong> = &lt;unbound PYQT_SIGNAL objectNameChanged(QString)&gt;
+<dl><dt><a name="CameraWindow-parent"><strong>parent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-parent">parent</a>(self)&nbsp;-&gt;&nbsp;QObject</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-property"><strong>property</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-property">property</a>(self,&nbsp;str)&nbsp;-&gt;&nbsp;Any</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-pyqtConfigure"><strong>pyqtConfigure</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt>QObject.<a href="#CameraWindow-pyqtConfigure">pyqtConfigure</a>(...)<br>
+&nbsp;<br>
+Each&nbsp;keyword&nbsp;argument&nbsp;is&nbsp;either&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;Qt&nbsp;property&nbsp;or&nbsp;a&nbsp;Qt&nbsp;signal.<br>
+For&nbsp;properties&nbsp;the&nbsp;property&nbsp;is&nbsp;set&nbsp;to&nbsp;the&nbsp;given&nbsp;value&nbsp;which&nbsp;should&nbsp;be&nbsp;of&nbsp;an<br>
+appropriate&nbsp;type.<br>
+For&nbsp;signals&nbsp;the&nbsp;signal&nbsp;is&nbsp;connected&nbsp;to&nbsp;the&nbsp;given&nbsp;value&nbsp;which&nbsp;should&nbsp;be&nbsp;a<br>
+callable.</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-receivers"><strong>receivers</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-receivers">receivers</a>(self,&nbsp;PYQT_SIGNAL)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-removeEventFilter"><strong>removeEventFilter</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-removeEventFilter">removeEventFilter</a>(self,&nbsp;QObject)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-sender"><strong>sender</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-sender">sender</a>(self)&nbsp;-&gt;&nbsp;QObject</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-senderSignalIndex"><strong>senderSignalIndex</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-senderSignalIndex">senderSignalIndex</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setObjectName"><strong>setObjectName</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setObjectName">setObjectName</a>(self,&nbsp;Union[QByteArray,&nbsp;str])</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-setProperty"><strong>setProperty</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-setProperty">setProperty</a>(self,&nbsp;str,&nbsp;Any)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-signalsBlocked"><strong>signalsBlocked</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-signalsBlocked">signalsBlocked</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-startTimer"><strong>startTimer</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-startTimer">startTimer</a>(self,&nbsp;int,&nbsp;timerType:&nbsp;Qt.TimerType&nbsp;=&nbsp;Qt.CoarseTimer)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-thread"><strong>thread</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-thread">thread</a>(self)&nbsp;-&gt;&nbsp;QThread</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-timerEvent"><strong>timerEvent</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-timerEvent">timerEvent</a>(self,&nbsp;QTimerEvent)</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-tr"><strong>tr</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-tr">tr</a>(str,&nbsp;disambiguation:&nbsp;str&nbsp;=&nbsp;None,&nbsp;n:&nbsp;int&nbsp;=&nbsp;-1)&nbsp;-&gt;&nbsp;str</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="PyQt6.QtCore.html#QObject">PyQt6.QtCore.QObject</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="PyQt6.QtCore.html#QObject">PyQt6.QtCore.QObject</a>:<br>
+<dl><dt><strong>staticMetaObject</strong> = &lt;PyQt6.QtCore.QMetaObject object&gt;</dl>
+
+<hr>
+Methods inherited from <a href="PyQt6.QtGui.html#QPaintDevice">PyQt6.QtGui.QPaintDevice</a>:<br>
+<dl><dt><a name="CameraWindow-colorCount"><strong>colorCount</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-colorCount">colorCount</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-depth"><strong>depth</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-depth">depth</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-devicePixelRatio"><strong>devicePixelRatio</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-devicePixelRatio">devicePixelRatio</a>(self)&nbsp;-&gt;&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-devicePixelRatioF"><strong>devicePixelRatioF</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-devicePixelRatioF">devicePixelRatioF</a>(self)&nbsp;-&gt;&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-devicePixelRatioFScale"><strong>devicePixelRatioFScale</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-devicePixelRatioFScale">devicePixelRatioFScale</a>()&nbsp;-&gt;&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-heightMM"><strong>heightMM</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-heightMM">heightMM</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-logicalDpiX"><strong>logicalDpiX</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-logicalDpiX">logicalDpiX</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-logicalDpiY"><strong>logicalDpiY</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-logicalDpiY">logicalDpiY</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-paintingActive"><strong>paintingActive</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-paintingActive">paintingActive</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-physicalDpiX"><strong>physicalDpiX</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-physicalDpiX">physicalDpiX</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-physicalDpiY"><strong>physicalDpiY</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-physicalDpiY">physicalDpiY</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="CameraWindow-widthMM"><strong>widthMM</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt><a href="#CameraWindow-widthMM">widthMM</a>(self)&nbsp;-&gt;&nbsp;int</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="PyQt6.QtGui.html#QPaintDevice">PyQt6.QtGui.QPaintDevice</a>:<br>
+<dl><dt><strong>PaintDeviceMetric</strong> = &lt;enum 'PaintDeviceMetric'&gt;<dd><tt>An&nbsp;enumeration.</tt></dl>
+
+<hr>
+Static methods inherited from <a href="PyQt6.sip.html#simplewrapper">PyQt6.sip.simplewrapper</a>:<br>
+<dl><dt><a name="CameraWindow-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="PyQt6.sip.html#wrappertype">PyQt6.sip.wrappertype</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="PyQt6.sip.html#simplewrapper">PyQt6.sip.simplewrapper</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GUI">class <strong>GUI</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#GUI">GUI</a>(camera)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="GUI-__init__"><strong>__init__</strong></a>(self, camera)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="GUI-run"><strong>run</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

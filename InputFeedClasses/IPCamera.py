@@ -53,6 +53,7 @@ class IPCamera(Feed):
 
     #Retrieves an individual frame
     def get_data(self):
+        """Retrieves an individual frame"""
         try:
             ret, frame = self.cap.read()
             frame = cv2.resize(frame, (400, 400))
