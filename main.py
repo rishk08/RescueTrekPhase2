@@ -1,24 +1,15 @@
-import histogram as w
-import GUI as g
-# w.webcamCV()
+from system import System
+    
+obj = System('config.json')
 
-cam = g.Camera('rtsp://admin:@10.224.3.244/1')
-cam.initialize()
+obj.StartUp()
 
-G = g.GUI(cam)
+#Determine way to halt main thread and listen for event to shutdown system
+while(True):
+    #Running system
+    i = 0
+    if(i == 1):
+        break;
+    
+obj.Shutdown()
 
-G.run()
-
-# while(input() != "q"):
-#     print("running")
-# G.run()
-# app = g.QApplication([])
-# window = g.GUI()
-# window.show()
-# app.exit(app.exec())
-
-# cam = g.Camera(0)
-# cam.initialize()
-# print(cam)
-# cam.show()
-# cam.close()
