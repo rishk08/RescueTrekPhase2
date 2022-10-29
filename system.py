@@ -1,7 +1,9 @@
 from siteclass import Site
 import json
 import threading
-
+import GUI
+import queue
+import cv2
 class System:
     listOfSites = []
     listOfSiteThreads = []
@@ -79,6 +81,21 @@ class System:
             
         #Startup GUI/Display class here, gets it's own thread
         #displayObj = ...
+        q = queue.Queue()
+        qq = queue.Queue()
+        qqq = queue.Queue()
+        dequeues = [q, qq, qqq]
+        def fillQueues(dequeus):
+            while True:
+                if not q.full:
+                    dequeues[0].put(cv2.imread("photos/images.jpg"))
+                    dequeues[0].put(cv2.imread("photos/images2.jpg"))
+        fill = threading.Thread(target=fillQueues, args=(dequeues,))
+        fill.start()
+        
+        displayObj = GUI.GUI(dequeues)
+        displayObj.start()
+        displayObj.join()
             
     def Shutdown(self):
         #displayObj.Shutdown()

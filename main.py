@@ -1,15 +1,17 @@
 from system import System
-    
-obj = System('config.json')
+from GUI import GUI  
 
-obj.StartUp()
+G = GUI(System('config.json'))
+# obj = System('config.json')
 
-#Determine way to halt main thread and listen for event to shutdown system
-while(True):
-    #Running system
-    i = 0
-    if(i == 1):
-        break;
+# obj.StartUp()
+
+# #Determine way to halt main thread and listen for event to shutdown system
+# while(True):
+#     #Running system
+#     i = 0
+#     if(i == 1):
+#         break;
     
-obj.Shutdown()
+# obj.Shutdown()
 
