@@ -1,7 +1,8 @@
 from system import System
-from GUI import GUI  
-
-G = GUI(System('config.json'))
+# from GUI import GUI  
+from GUITesting import GUI  
+from InputFeedClasses.IPCamera import IPCamera
+# G = GUI(System('config.json'))
 # obj = System('config.json')
 
 # obj.StartUp()
@@ -14,4 +15,13 @@ G = GUI(System('config.json'))
 #         break;
     
 # obj.Shutdown()
+camera = IPCamera("0","admin","admin")
+camera2 = IPCamera("1","admin","admin")
 
+# G = GUI([camera,camera,camera2,camera2])
+# G = GUI([camera, camera2])
+G = GUI([camera, camera, camera2])
+G.run()
+
+
+#intiialize GUI with no input parameters

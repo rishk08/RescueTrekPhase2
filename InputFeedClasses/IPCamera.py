@@ -24,8 +24,9 @@ class IPCamera(Feed):
         try:
             cam_string = "rtsp://"+self.username+":"+self.password+"@"+self.ip+"/1"
             self.link = cam_string
-            self.cap = cv2.VideoCapture(0)
-            self.priorities = {model: {0:0} for model in self.models}
+            self.cap = cv2.VideoCapture(int(self.ip)) #cam_string goes here
+            if self.models != None:
+                self.priorities = {model: {0:0} for model in self.models}
         except Exception as Argument:
             print("error with camera with ip", self.ip, "\n", "Error:", Argument)
     
