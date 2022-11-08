@@ -24,7 +24,10 @@ class IPCamera(Feed):
         try:
             cam_string = "rtsp://"+self.username+":"+self.password+"@"+self.ip+"/1"
             self.link = cam_string
-            self.cap = cv2.VideoCapture(int(self.ip)) #cam_string goes here
+            if self.ip == "0" or self.ip == "1":
+                self.cap = cv2.VideoCapture(int(self.ip)) #cam_string goes here
+            else:
+                self.cap = cv2.VideoCapture(cam_string)
             if self.models != None:
                 self.priorities = {model: {0:0} for model in self.models}
         except Exception as Argument:
@@ -88,3 +91,13 @@ class IPCamera(Feed):
     #Returns sensor type
     def get_sensor_type(self):
         return const.CAMERA
+    def show(self):
+        while(True):
+            # Capture frame-by-frame
+            ret, frame = self.cap.read()
+            # resizing for faster detection
+            frame = cv2.resize(frame, (400, 400))
+            gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
+            cv2.imshow('frame',frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break

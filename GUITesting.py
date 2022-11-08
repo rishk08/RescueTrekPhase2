@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.central_widget)
         self.showMaximized()
         self.button_start = QPushButton('start', self.central_widget)
-        self.main_layout.addWidget(self.button_start,0,1)
+        self.main_layout.addWidget(self.button_start,0,0,1,1)
         self.button_start.clicked.connect(self.run)
         self.priority_view = RawImageWidget(scaled=True)
         self.priority_num = 0
@@ -81,6 +81,7 @@ class MainWindow(QMainWindow):
         pass
     def run(self):
         self.button_start.hide()
+        # Replace self.cameras with location of cameras from system produced by startup()
         i = 0
         for camera in self.cameras:
             cam = CameraWindow(camera)
@@ -105,6 +106,7 @@ class CameraWindow(QWidget):
         self.frame = None
         
         self.layout.addWidget(self.image_view)
+
         self.start = 0
         self.current = 0
         # self.video_frame = QtGui.QLabel()
