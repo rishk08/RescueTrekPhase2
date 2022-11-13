@@ -1,6 +1,6 @@
 from system import System
 # from GUI import GUI  
-from GUITesting import GUI  
+from GUI import GUI  
 from InputFeedClasses.IPCamera import IPCamera
 # G = GUI(System('config.json'))
 # obj = System('config.json')
@@ -17,11 +17,11 @@ from InputFeedClasses.IPCamera import IPCamera
 # obj.Shutdown()
 camera = IPCamera("0","admin","admin")
 camera2 = IPCamera("1","admin","admin")
-camera3 = IPCamera("10.165.13.216","admin","Camera123")
+camera3 = IPCamera("10.165.1.199","admin","Camera123")
 
 # G = GUI([camera,camera,camera2,camera2])
 # G = GUI([camera, camera2])
-G = GUI([camera, camera3, camera2])
+G = GUI([camera, camera2, camera2])
 G.run()
 # camera3.initialize()
 # camera3.show()

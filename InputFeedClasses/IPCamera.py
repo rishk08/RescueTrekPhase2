@@ -60,7 +60,7 @@ class IPCamera(Feed):
         """Retrieves an individual frame"""
         try:
             ret, frame = self.cap.read()
-            frame = cv2.resize(frame, (400, 400))
+            # frame = cv2.resize(frame, (400, 400))
             return frame
         except AttributeError as err:
             print(err)

@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.central_widget)
         self.showMaximized()
         self.button_start = QPushButton('start', self.central_widget)
-        self.main_layout.addWidget(self.button_start,0,0,1,1)
+        self.main_layout.addWidget(self.button_start,0,1)
         self.button_start.clicked.connect(self.run)
         self.priority_view = RawImageWidget(scaled=True)
         self.priority_num = 0
@@ -104,6 +104,7 @@ class CameraWindow(QWidget):
 
         self.image_view = RawImageWidget(scaled=True)
         self.frame = None
+        self.frame_updated = False
         
         self.layout.addWidget(self.image_view)
 
@@ -111,14 +112,16 @@ class CameraWindow(QWidget):
         self.current = 0
         # self.video_frame = QtGui.QLabel()
         self.timer = QTimer()
-        self.timer.timeout.connect(self.update_image_fps)
+        self.timer.timeout.connect(self.update_image_no_deque)
         self.timer.timeout.connect(self.update_time)
         self.timer.start(.05)
 
+        #thread to pull in images in a loop
         self.get_frame_thread = Thread(target=self.get_frame)
         self.get_frame_thread.daemon = True
         self.get_frame_thread.start()
-        self.update_image()
+        # self.update_image()
+        
 
 
     def update_time(self):
@@ -142,6 +145,24 @@ class CameraWindow(QWidget):
             # print("deque empty?")
             pass
     # cv2.putText(outputImage, "FPS: " + str(int(fps)), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+    def update_image_no_deque(self):
+        # self.startCamera()
+        if self.frame_updated:
+            try:
+                frame = self.frame
+                fps = 1 / (self.current - self.start)
+                self.start = time.time()
+                print(type(frame))
+                print(str(int(fps)) + " cam " + str(self.camera.ip))
+                cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+                self.image_view.setImage(frame)
+                
+                self.frame_updated = False
+                print("update_image_no_deque worked")
+            except Exception as err:
+                print(err)
+                print("error in no deque")
+    
     def update_image(self):
         # frame = self.camera.get_data()
         if self.deque:
@@ -152,26 +173,22 @@ class CameraWindow(QWidget):
         else:
             print("deque empty?")
 
-    def start_threads(self):
-        get_frame_thread = Thread(target=self.get_frame)
-        get_frame_thread.daemon = True
-        get_frame_thread.start()
+    # def start_threads(self):
+    #     get_frame_thread = Thread(target=self.get_frame)
+    #     get_frame_thread.daemon = True
+    #     get_frame_thread.start()
 
     def startCamera(self):
         self.camera.initialize()
-
-    #thread here
-    def video(self):
-        #create class boolean to determine if camera needs initialized
-        for _ in range (50):
-            frame = self.camera.get_data()
-            self.image_view.setImage(frame)
+    
     def get_frame(self):
         # self.startCamera()
         while True:
             try:
                 frame = self.camera.get_data()
                 self.deque.append(frame)
+                self.frame = frame
+                self.frame_updated = True
                 # self.deque.append(frame)
                 # frame = self.deque[-1]
                 # self.image_view.setImage(frame.T)
@@ -195,3 +212,7 @@ class CameraWindow(QWidget):
     
 
 
+#get_frame 
+#append queue
+#update image fps
+#pop queue
