@@ -1,7 +1,8 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, \
-    QPushButton, QVBoxLayout, QWidget, QGridLayout,QLayoutItem, QLabel
-from PyQt6.QtCore import QTimer
-# from PyQt6.QtGui import QGridLayout
+    QPushButton, QVBoxLayout, QWidget, QGridLayout,QLayoutItem, QLabel, QSizePolicy
+from PyQt6.QtCore import QTimer, Qt
+# from PyQt6 import QtCore
+from PyQt6.QtGui import QPixmap
 # import pyqt
 import pyqtgraph
 from pyqtgraph import ImageView, RawImageWidget, ImageItem
@@ -33,22 +34,38 @@ class GUI():
 class MainWindow(QMainWindow):
     def __init__(self,cameras):
         super().__init__()
-        
+        self.setStyleSheet(open('css/stylesheet.css').read())
         self.cameras = []
         self.cameraWindows = []
-        self.central_widget = QWidget()
+        self.central_widget = QLabel("Null Threat")
         self.main_layout = QGridLayout()
         self.setWindowTitle("Null Threat")
         self.central_widget.setLayout(self.main_layout)
         self.setCentralWidget(self.central_widget)
         self.showMaximized()
-        self.button_start = QPushButton('start', self.central_widget)
-        self.main_layout.addWidget(self.button_start,0,1)
+        self.button_start = QPushButton('start')
+        self.button_start.setStyleSheet(open('css/buttons.css').read())
+        self.main_layout.addWidget(self.button_start,1,0,2,1)
         self.button_start.clicked.connect(self.run)
         self.priority_view = RawImageWidget(scaled=True)
+        self.priority_label = QLabel()
         self.priority_num = 0
+        # self.main_layout.setRowMinimumHeight( 0, 3)
+        self.button_start.setFixedHeight(100)
+        self.button_start.setFixedWidth(300)
+
+        self.label = QLabel("Null Threat", self.central_widget)
+        # self.main_layout.addWidget(self.label,0,0)
+        self.central_widget.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        pixmap = QPixmap('null_threat_grey.png')
+        self.central_widget.setPixmap(pixmap)
+        self.central_widget.setScaledContents(True)
         
         self.main_layout.addWidget(self.priority_view, 0, 0, 3, 1)
+        self.main_layout.addWidget(self.priority_label, 0, 0, 3, 1)
+        self.priority_view.hide()
+        self.priority_label.hide()
+
         self.start = 0
         self.current = 0
         
@@ -70,6 +87,8 @@ class MainWindow(QMainWindow):
         else:
             self.priority_num = 0
         self.priority_view.setImage(self.cameraWindows[self.priority_num].frame) #= self.cameraWindows[0].return_frame()
+        # self.priority_view.setImage(cv2.resize(self.cameraWindows[self.priority_num].frame, (400, 400)))
+        # self.cameraWindows[self.priority_num].resize(400,400)
         print("attempted to update priority")
 
     def update_time(self):
@@ -81,6 +100,8 @@ class MainWindow(QMainWindow):
         pass
     def run(self):
         self.button_start.hide()
+        self.priority_view.show()
+        # self.priority_label.show()
         # Replace self.cameras with location of cameras from system produced by startup()
         i = 0
         for camera in self.cameras:
@@ -96,7 +117,7 @@ class MainWindow(QMainWindow):
 class CameraWindow(QWidget):
     def __init__(self,camera):
         super().__init__()
-
+        self.setStyleSheet(open('css/cameraWindow.css').read())
         self.deque = deque(maxlen=100)
 
         self.camera = camera
