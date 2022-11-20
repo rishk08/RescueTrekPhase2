@@ -13,12 +13,19 @@ import InputFeedClasses.IPCamera
 import queue
 import threading
 import time
+from modelclass import *
 
 pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
+
+
+itemDetector = imageDetector("/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models/checkpoints/my_mobilenet_v12_model", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/coco.names", 0.5)
+
+
 
 class GUI():
     def __init__(self,cameras) -> None:
         #start system here
+        # self.itemDetector = imageDetector("C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models\\checkpoints\\my_mobilenet_v12_model", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\coco_v2.names", 0.5)
         self.app = QApplication([])
         self.window = MainWindow(cameras)
         self.window.show()
@@ -35,8 +42,12 @@ class MainWindow(QMainWindow):
     def __init__(self,cameras):
         super().__init__()
         self.setStyleSheet(open('css/stylesheet.css').read())
+        self.confidenceLevels = []
         self.cameras = []
         self.cameraWindows = []
+
+        self.priorityWindow = None
+        #Here to keep feed with most recent gun detected in the priority feed if no further guns are detected in other feeds
         self.central_widget = QLabel("Null Threat")
         self.main_layout = QGridLayout()
         self.setWindowTitle("Null Threat")
@@ -70,6 +81,8 @@ class MainWindow(QMainWindow):
         self.current = 0
         
         self.timer = QTimer()
+
+        # update priority / time every second
         self.timer.timeout.connect(self.update_priority)
         self.timer.timeout.connect(self.update_time)
         self.timer.start(1000)
@@ -82,13 +95,33 @@ class MainWindow(QMainWindow):
         
     #modify this to check from list of priorities
     def update_priority(self):
-        if self.priority_num < (len(self.cameraWindows) - 1):
-            self.priority_num = self.priority_num + 1
+        # if self.priority_num < (len(self.cameraWindows) - 1):
+        #     self.priority_num = self.priority_num + 1
+        # else:
+        #     self.priority_num = 0
+        # self.priority_view.setImage(self.cameraWindows[self.priority_num].frame) #= self.cameraWindows[0].return_frame()
+
+        # iterating over camera windows to get one with highest priority level
+        confidenceVal = None
+        priorityCameraWindow = None
+        for cameraWindow in self.cameraWindows:
+            if not confidenceVal:
+                confidenceVal = cameraWindow.confidenceLevel
+                priorityCameraWindow = cameraWindow
+                maxConfidence = cameraWindow.confidenceLevel
+            elif confidenceVal < cameraWindow.confidenceLevel:
+                confidenceVal = cameraWindow.confidenceLevel
+                priorityCameraWindow = cameraWindow
+                maxConfidence = cameraWindow.confidenceLevel
+        
+        #This should be a value that's less than the threshold we set, but for now the value can be 0
+        if (maxConfidence == 0):
+            priorityCameraWindow = self.priorityWindow
         else:
-            self.priority_num = 0
-        self.priority_view.setImage(self.cameraWindows[self.priority_num].frame) #= self.cameraWindows[0].return_frame()
-        # self.priority_view.setImage(cv2.resize(self.cameraWindows[self.priority_num].frame, (400, 400)))
-        # self.cameraWindows[self.priority_num].resize(400,400)
+            self.priorityWindow = priorityCameraWindow
+
+        self.priority_view.setImage(priorityCameraWindow.frame) #= self.cameraWindows[0].return_frame()
+            
         print("attempted to update priority")
 
     def update_time(self):
@@ -168,9 +201,15 @@ class CameraWindow(QWidget):
     
     def update_image_no_deque(self):
         # self.startCamera()
+        global itemDetector
+
         if self.frame_updated:
             try:
-                frame = self.frame
+                # frame = self.frame
+                # frame = None
+                # Creating BoundingBox here
+                self.confidenceLevel, frame = itemDetector.detector.createBoundingBox(self.frame)
+                # # Creating boundingBox end
                 fps = 1 / (self.current - self.start)
                 self.start = time.time()
                 print(type(frame))
