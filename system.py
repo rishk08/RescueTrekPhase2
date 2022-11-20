@@ -3,6 +3,7 @@ import json
 import threading
 from InputFeedClasses.IPCamera import IPCamera
 import constant as const
+import sys
 
 class System:
     listOfActiveModels = []
@@ -17,7 +18,8 @@ class System:
         self.listOfActiveModels = []
         self.listOfModelReferences = []
         
-        self.listOfCameras = self.SetCameras(data)
+        self.listOfCameras = []
+        self.SetCameras(data)
         self.GetListOfActiveModels(data)
         self.InitializeModels()
               
@@ -27,24 +29,53 @@ class System:
         return
     
     def SetCameras(self, configData):
-        siteId = ""
-        location = ""
-        username = ""
-        password = ""
-        ip = ""
+        # siteId = ""
+        # location = ""
+        # username = ""
+        # password = ""
+        # ip = ""
         for site in configData['ListOfSites']:
+            siteId = ""
+            location = ""
+            username = ""
+            password = ""
+            ip = ""
             siteId = site['SiteID']
-            location = site['BuildLocation']
+            location = site['BuildingLocation']
             for sensor in site['ListOfSensors']:
                 if(sensor['SensorType'] == const.CAMERA):
+                    print(const.CAMERA)
                     ip = sensor['IP']
                     username = sensor['Username']
                     password = sensor['Password']
-                    break
+                    print(ip)
+                    print(username)
+                    print(password)
+                    print(location)
+                    camera = IPCamera(ip, username, password, location)
+                    print("Camera " + siteId + " is initialized\n")
+                    self.listOfCameras.append(camera)
+        
+        print("initialized cameras")
+
+        
+        # i = 1
+        # for camera in self.listOfCameras:
+        #     # print(camera.location)
+        #     if camera == None:
+        #         print(i)
+        #     i += 1
+        # sys.exit(0)
+        # for camera in self.listOfCameras:
+        #     camera.get_data()
+        #     print(i)
+        #     i += 1
+        # sys.exit()
+                    
                 
-        camera = IPCamera(ip, username, password, location)
-        print("Camera " + siteId + " is initialized\n")
-        self.listOfCameras.append(camera)
+        # camera = IPCamera(ip, username, password, location)
+        # print("Camera " + siteId + " is initialized\n")
+        # self.listOfCameras.append(camera)
         
     def GetCameras(self):
         return self.listOfCameras

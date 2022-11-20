@@ -6,9 +6,9 @@
             "ListOfSensors": [
                 {
                     "SensorType": "Camera",
-                    "IP": "10.224.242.127",
+                    "IP": "0", 
                     "Username": "admin",
-                    "Password": "Camera123"
+                    "Password": "admin"
                 }
 
             ]
@@ -19,9 +19,9 @@
             "ListOfSensors": [
                 {
                     "SensorType": "Camera",
-                    "IP": "10.224.8.239",
+                    "IP": "0", 
                     "Username": "admin",
-                    "Password": "Camera123"
+                    "Password": "admin"
                 }
 
             ]
@@ -32,9 +32,9 @@
             "ListOfSensors": [
                 {
                     "SensorType": "Camera",
-                    "IP": "10.224.8.239",
+                    "IP": "0", 
                     "Username": "admin",
-                    "Password": "Camera123"
+                    "Password": "admin"
                 }
 
             ]

@@ -62,10 +62,11 @@ class IPCamera(Feed):
         try:
             ret, frame = self.cap.read()
             # frame = cv2.resize(frame, (400, 400))
+            # print(self.location, " worked")
             return frame
         except AttributeError as err:
             print(err)
-            print("did you initilize the camera?")
+            print("did you initilize the camera? ")
     
     # gets new frame from camera and sets it as attribute
     def update_frame(self):
