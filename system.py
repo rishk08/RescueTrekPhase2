@@ -1,54 +1,89 @@
 from siteclass import Site
 import json
 import threading
-import GUI
-import queue
-import cv2
+from InputFeedClasses.IPCamera import IPCamera
+import constant as const
+import sys
+
 class System:
-    listOfSites = []
-    listOfSiteThreads = []
     listOfActiveModels = []
     listOfModelReferences = []
-    displayObj = ""
+    listOfCameras = []
     
     def __init__(self, configFile):
         #Read in config file
         f = open(configFile)
         data = json.load(f)
         
+        self.listOfActiveModels = []
+        self.listOfModelReferences = []
+        
+        self.listOfCameras = []
+        self.SetCameras(data)
         self.GetListOfActiveModels(data)
         self.InitializeModels()
-        self.InitializeSites(data)
-        
-                    
-                    
-    def InitializeSites(self, configData):
-        sensorData = configData['SensorData']
-        for site in configData['ListOfSites']:
-            siteId = site['SiteID']
-            
-            listOfSensors = []
-            for sensor in site['ListOfSensors']:
-                listOfSensors.append(sensor)
-
-            modelInfo = []
-            #Grab a list of all the models that will be used per site
-            for sensor in listOfSensors:
-                sensorType = sensor['SensorType']
-                sensorModels = sensorData[sensorType]['Models']
-                modelInfo.append(sensorModels)
-            
-            listOfModelsForSite = []    
-            #Need a loop that reference the listOfModelReferences and create a list of
-            #model references that will be utilized for each site
-            
-            obj = Site(siteId, listOfSensors, listOfModelsForSite, configData)
-            self.listOfSites.append(obj)
               
     def InitializeModels(self):
         #Determine how to load in the models and cache them perhaps
         #Save them as a key value pair {SensorType: ModelReference}
         return
+    
+    def SetCameras(self, configData):
+        # siteId = ""
+        # location = ""
+        # username = ""
+        # password = ""
+        # ip = ""
+        i = 1
+        oneCamera = None
+        for site in configData['ListOfSites']:
+            siteId = ""
+            location = ""
+            username = ""
+            password = ""
+            ip = ""
+            siteId = site['SiteID']
+            location = site['BuildingLocation']
+            for sensor in site['ListOfSensors']:
+                if(sensor['SensorType'] == const.CAMERA):
+                    print(const.CAMERA)
+                    ip = sensor['IP']
+                    username = sensor['Username']
+                    password = sensor['Password']
+                    print(ip)
+                    print(username)
+                    print(password)
+                    print(location)
+                    if oneCamera != None:
+                        break
+                    oneCamera = IPCamera(ip, username, password, location)
+                    # print("Camera " + siteId + " is initialized\n")
+                    # self.listOfCameras.append(camera)
+        self.listOfCameras = [oneCamera, oneCamera, oneCamera]
+        # print("initialized " + str(len(self.listOfCameras)) + " cameras")
+
+        
+        # i = 1
+        # for camera in self.listOfCameras:
+        #     # print(camera.location)
+        #     if camera == None:
+        #         print(i)
+        #     i += 1
+        # sys.exit(0)
+        # for camera in self.listOfCameras:
+        #     camera.get_data()
+        #     print(i)
+        #     i += 1
+        # sys.exit()
+                    
+                
+        # camera = IPCamera(ip, username, password, location)
+        # print("Camera " + siteId + " is initialized\n")
+        # self.listOfCameras.append(camera)
+        
+    def GetCameras(self):
+        return self.listOfCameras
+                
                     
     def GetListOfActiveModels(self, configData):
         sensorData = configData['SensorData']

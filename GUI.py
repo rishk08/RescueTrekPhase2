@@ -13,6 +13,7 @@ import InputFeedClasses.IPCamera
 import queue
 import threading
 import time
+from system import System
 from modelclass import *
 
 pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
@@ -23,11 +24,13 @@ itemDetector = imageDetector("/Users/joey/Downloads/modelsCorrectDirectoryLayout
 
 
 class GUI():
-    def __init__(self,cameras) -> None:
+    def __init__(self, configFile) -> None:
         #start system here
         # self.itemDetector = imageDetector("C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models\\checkpoints\\my_mobilenet_v12_model", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\coco_v2.names", 0.5)
+        self.system = System(configFile)
+        self.cameras = self.system.GetCameras()
         self.app = QApplication([])
-        self.window = MainWindow(cameras)
+        self.window = MainWindow(self.cameras)
         self.window.show()
         self.app.exit(self.app.exec())
 
