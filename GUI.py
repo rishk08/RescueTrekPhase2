@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
         self.label = QLabel("Null Threat", self.central_widget)
         # self.main_layout.addWidget(self.label,0,0)
         self.central_widget.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        pixmap = QPixmap('null_threat_grey.png')
+        pixmap = QPixmap('imgs/null_threat_grey.png')
         self.central_widget.setPixmap(pixmap)
         self.central_widget.setScaledContents(True)
         
