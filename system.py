@@ -34,6 +34,8 @@ class System:
         # username = ""
         # password = ""
         # ip = ""
+        i = 1
+        oneCamera = None
         for site in configData['ListOfSites']:
             siteId = ""
             location = ""
@@ -52,11 +54,13 @@ class System:
                     print(username)
                     print(password)
                     print(location)
-                    camera = IPCamera(ip, username, password, location)
-                    print("Camera " + siteId + " is initialized\n")
-                    self.listOfCameras.append(camera)
-        
-        print("initialized cameras")
+                    if oneCamera != None:
+                        break
+                    oneCamera = IPCamera(ip, username, password, location)
+                    # print("Camera " + siteId + " is initialized\n")
+                    # self.listOfCameras.append(camera)
+        self.listOfCameras = [oneCamera, oneCamera, oneCamera]
+        # print("initialized " + str(len(self.listOfCameras)) + " cameras")
 
         
         # i = 1
