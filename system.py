@@ -1,52 +1,54 @@
 from siteclass import Site
 import json
 import threading
+from InputFeedClasses.IPCamera import IPCamera
+import constant as const
 
 class System:
-    listOfSites = []
-    listOfSiteThreads = []
     listOfActiveModels = []
     listOfModelReferences = []
-    displayObj = ""
+    listOfCameras = []
     
     def __init__(self, configFile):
         #Read in config file
         f = open(configFile)
         data = json.load(f)
         
+        self.listOfActiveModels = []
+        self.listOfModelReferences = []
+        
+        self.listOfCameras = self.SetCameras(data)
         self.GetListOfActiveModels(data)
         self.InitializeModels()
-        self.InitializeSites(data)
-        
-                    
-                    
-    def InitializeSites(self, configData):
-        sensorData = configData['SensorData']
-        for site in configData['ListOfSites']:
-            siteId = site['SiteID']
-            
-            listOfSensors = []
-            for sensor in site['ListOfSensors']:
-                listOfSensors.append(sensor)
-
-            modelInfo = []
-            #Grab a list of all the models that will be used per site
-            for sensor in listOfSensors:
-                sensorType = sensor['SensorType']
-                sensorModels = sensorData[sensorType]['Models']
-                modelInfo.append(sensorModels)
-            
-            listOfModelsForSite = []    
-            #Need a loop that reference the listOfModelReferences and create a list of
-            #model references that will be utilized for each site
-            
-            obj = Site(siteId, listOfSensors, listOfModelsForSite, configData)
-            self.listOfSites.append(obj)
               
     def InitializeModels(self):
         #Determine how to load in the models and cache them perhaps
         #Save them as a key value pair {SensorType: ModelReference}
         return
+    
+    def SetCameras(self, configData):
+        siteId = ""
+        location = ""
+        username = ""
+        password = ""
+        ip = ""
+        for site in configData['ListOfSites']:
+            siteId = site['SiteID']
+            location = site['BuildLocation']
+            for sensor in site['ListOfSensors']:
+                if(sensor['SensorType'] == const.CAMERA):
+                    ip = sensor['IP']
+                    username = sensor['Username']
+                    password = sensor['Password']
+                    break
+                
+        camera = IPCamera(ip, username, password, location)
+        print("Camera " + siteId + " is initialized\n")
+        self.listOfCameras.append(camera)
+        
+    def GetCameras(self):
+        return self.listOfCameras
+                
                     
     def GetListOfActiveModels(self, configData):
         sensorData = configData['SensorData']
