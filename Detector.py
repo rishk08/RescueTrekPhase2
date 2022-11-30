@@ -82,7 +82,7 @@ class Detector:
         boundingBoxIndex = tf.image.non_max_suppression(boundingBoxes, classScores, max_output_size=50,
                                                         iou_threshold=threshold, score_threshold=threshold)
 
-        print("amount of bounding boxes:", len(boundingBoxes))
+        # print("amount of bounding boxes:", len(boundingBoxes))
 
         if len(boundingBoxes) != 0:
             # print("bbIndex:", boundingBoxIndex)
@@ -102,7 +102,7 @@ class Detector:
 
                 ymin, xmin, ymax, xmax = boundingBox
 
-                print("BOUNDING BOX:", boundingBox)
+                # print("BOUNDING BOX:", boundingBox)
                 xmin, xmax, ymin, ymax = (int(xmin * imW), int(xmax * imW), int(ymin * imH), int(ymax * imH))
 
                 cv2.rectangle(image, (xmin, ymin), (xmax, ymax), color=classColor, thickness=1)
@@ -126,7 +126,7 @@ class Detector:
                 # bottom right, bottom and then right
                 cv2.line(image, (xmax, ymax), (xmax - lineWidth, ymax), classColor, thickness=5)
                 cv2.line(image, (xmax, ymax), (xmax, ymax - lineWidth), classColor, thickness=5)
-            print("MaxConfidence is : ", maxConfidence)
+            # print("MaxConfidence is : ", maxConfidence)
             return (maxConfidence, image)
             # self.boundingBoxes.append((maxConfidence, image
 

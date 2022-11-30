@@ -23,8 +23,7 @@ pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
 
 
 # itemDetector = imageDetector("/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models/checkpoints/my_mobilenet_v12_model", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/coco.names", 0.5)
-itemDetector = imageDetector("/Users/sgrac/Documents/FALL 2022/CSCE-482/Deep-Learning/scripts/pre-trained_models/checkpoints/my_mobilenet_v12_model", "/Users/sgrac/Documents/FALL 2022/CSCE-482/Deep-Learning/scripts/pre-trained_models", "/Users/sgrac/Documents/FALL 2022/CSCE-482/Deep-Learning/scripts/coco_v2.names", 0.5)
-
+itemDetector = imageDetector("C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models\\checkpoints\\mobilenet_v12.2_model_10_boxes", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\coco_v2.names", 0.5)
 
 class GUI():
     def __init__(self, configFile) -> None:
@@ -143,45 +142,51 @@ class MainWindow(QMainWindow):
         # self.priority_view.setImage(self.cameraWindows[self.priority_num].frame) #= self.cameraWindows[0].return_frame()
 
         # iterating over camera windows to get one with highest priority level
-        confidenceVal = None
-        priorityCameraWindow = None
-        maxConfidence = 0
-        cameraName = "Priority Cam: "
-        for cameraWindow in self.cameraWindows:
-            if not confidenceVal:
-                confidenceVal = cameraWindow.confidenceLevel
-                priorityCameraWindow = cameraWindow
-                maxConfidence = cameraWindow.confidenceLevel
-                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
-            elif confidenceVal < cameraWindow.confidenceLevel:
-                confidenceVal = cameraWindow.confidenceLevel
-                priorityCameraWindow = cameraWindow
-                maxConfidence = cameraWindow.confidenceLevel
-                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
-        
-        #This should be a value that's less than the threshold we set, but for now the value can be 0
-        if (maxConfidence == 0):
-            priorityCameraWindow = self.priorityWindow
-        else:
-            self.priorityWindow = priorityCameraWindow
+        try:
+            confidenceVal = None
+            priorityCameraWindow = None
+            maxConfidence = 0
+            cameraName = "Priority Cam: "
+            for cameraWindow in self.cameraWindows:
+                if not confidenceVal:
+                    confidenceVal = cameraWindow.confidenceLevel
+                    priorityCameraWindow = cameraWindow
+                    maxConfidence = cameraWindow.confidenceLevel
+                    cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
+                elif confidenceVal < cameraWindow.confidenceLevel:
+                    confidenceVal = cameraWindow.confidenceLevel
+                    priorityCameraWindow = cameraWindow
+                    maxConfidence = cameraWindow.confidenceLevel
+                    cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
+            
+            #This should be a value that's less than the threshold we set, but for now the value can be 0
+            if (maxConfidence == 0):
+                priorityCameraWindow = self.priorityWindow
+            else:
+                self.priorityWindow = priorityCameraWindow
 
-        # self.priority_view.setImage(priorityCameraWindow.frame) #= self.cameraWindows[0].return_frame()
-        frame = priorityCameraWindow.frame
-        image = QImage(frame, frame.shape[1], frame.shape[0], 
-                       frame.strides[0], QImage.Format.Format_RGB888)
+            # self.priority_view.setImage(priorityCameraWindow.frame) #= self.cameraWindows[0].return_frame()
+            frame = priorityCameraWindow.boundingBoxFrame
 
-        image = image.rgbSwapped()
-        # self.image_label.setPixmap(QPixmap.fromImage(image))
-        
-        # self.image_view.setImage(frame)
-        
-        print(cameraName, type(cameraName))
-        self.priority_view.setPixmap(QPixmap.fromImage(image))
-        self.priority_label.setText(cameraName)
-        self.priority_view.setScaledContents(True)
-        
+            image = QImage(frame, frame.shape[1], frame.shape[0], 
+                        frame.strides[0], QImage.Format.Format_RGB888)
 
-        print("attempted to update priority")
+            image = image.rgbSwapped()
+            # self.image_label.setPixmap(QPixmap.fromImage(image))
+            
+            # self.image_view.setImage(frame)
+            
+            # print(cameraName, type(cameraName))
+            self.priority_view.setPixmap(QPixmap.fromImage(image))
+            self.priority_label.setText(cameraName)
+            self.priority_view.setScaledContents(True)
+            
+
+            # print("attempted to update priority")
+        
+        except Exception as err:
+            print(err)
+            print("There is an error in updating the priorities ")
 
     def update_time(self):
         self.current = time.time()
@@ -211,7 +216,7 @@ class MainWindow(QMainWindow):
         self.main_layout.addWidget(self.button_update_threshold,i, 1, 1, 1)
     
     def open_threshold_menu(self):
-        print("This will open the additional window to update threshold\n\n\n")
+        # print("This will open the additional window to update threshold\n\n\n")
         try:
             self.threshold_window = ThresholdWindow()
             
@@ -290,6 +295,7 @@ class CameraWindow(QWidget):
         # self.image_view = RawImageWidget(scaled=True)
         # self.image_view = QLabel()
         self.frame = None
+        self.boundingBoxFrame = None
         self.frame_updated = False
         
         
@@ -327,8 +333,8 @@ class CameraWindow(QWidget):
                 frame = self.deque.pop()
                 fps = 1 / (self.current - self.start)
                 self.start = time.time()
-                print(type(frame))
-                print(str(int(fps)) + " cam " + str(self.camera.ip))
+                # print(type(frame))
+                # print(str(int(fps)) + " cam " + str(self.camera.ip))
                 cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
                 # self.image_view.setImage(frame)
                 image = QImage(frame, frame.shape[1], frame.shape[0], 
@@ -365,8 +371,8 @@ class CameraWindow(QWidget):
                 self.start = self.current
 
                 
-                print("type: ", type(frame))
-                print(str(int(fps)) + " cam " + str(self.camera.ip))
+                # print("type: ", type(frame))
+                # print(str(int(fps)) + " cam " + str(self.camera.ip))
                 cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
                 
                 image = QImage(frame, frame.shape[1], frame.shape[0], 
@@ -380,8 +386,9 @@ class CameraWindow(QWidget):
                 self.image_view.setPixmap(QPixmap.fromImage(image))
                 self.image_view.setScaledContents(True)
                 
+                self.boundingBoxFrame = frame
                 self.frame_updated = False
-                print("update_image_no_deque worked")
+                # print("update_image_no_deque worked")
             except Exception as err:
                 print(err)
                 print("error in no deque")
@@ -401,7 +408,7 @@ class CameraWindow(QWidget):
                 # self.deque.append(frame)
                 # frame = self.deque[-1]
                 # self.image_view.setImage(frame.T)
-                print("get_frame worked")
+                # print("get_frame worked")
             except Exception as err:
                 print(err)
                 print("deque error probably full")

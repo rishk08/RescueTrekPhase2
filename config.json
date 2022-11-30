@@ -1,31 +1,6 @@
 {
     "ListOfSites": [
-        {
-            "SiteID": "Site1",
-            "BuildingLocation": "Front door",
-            "ListOfSensors": [
-                {
-                    "SensorType": "Camera",
-                    "IP": "0", 
-                    "Username": "admin",
-                    "Password": "admin"
-                }
 
-            ]
-        },
-        {
-            "SiteID": "Site2",
-            "BuildingLocation": "Back door",
-            "ListOfSensors": [
-                {
-                    "SensorType": "Camera",
-                    "IP": "0", 
-                    "Username": "admin",
-                    "Password": "admin"
-                }
-
-            ]
-        },
         {
             "SiteID": "Site3",
             "BuildingLocation": "Hallway",
