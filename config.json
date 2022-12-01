@@ -10,6 +10,12 @@
                     "IP": "0", 
                     "Username": "admin",
                     "Password": "admin"
+                },
+                {
+                    "SensorType": "Camera",
+                    "IP": "192.168.1.183", 
+                    "Username": "admin",
+                    "Password": "Camera123"
                 }
 
             ]
