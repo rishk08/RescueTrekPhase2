@@ -24,7 +24,8 @@ pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
 
 
 # itemDetector = imageDetector("/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models/checkpoints/my_mobilenet_v12_model", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/coco.names", 0.5)
-itemDetector = imageDetector("C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models\\checkpoints\\mobilenet_v12.2_model_10_boxes", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\coco_v2.names", 0.5)
+itemDetector = imageDetector("/Users/sgrac/Documents/FALL 2022/CSCE-482/Deep-Learning/scripts/pre-trained_models/checkpoints/mobilenet_v2.09_model", "/Users/sgrac/Documents/FALL 2022/CSCE-482/Deep-Learning/scripts/pre-trained_models", "/Users/sgrac/Documents/FALL 2022/CSCE-482/Deep-Learning/scripts/coco_v2.names", 0.5)
+
 
 class GUI():
     def __init__(self, configFile) -> None:
@@ -122,6 +123,7 @@ class MainWindow(QMainWindow):
 
         self.start = 0
         self.current = 0
+        self.counter = 0
         
         self.timer = QTimer()
 
@@ -133,6 +135,7 @@ class MainWindow(QMainWindow):
 
         self.timer.timeout.connect(self.update_priority)
         self.timer.timeout.connect(self.update_time)
+        self.timer.timeout.connect(self.update_counter)
         self.timer.start(10)
     
 
@@ -147,8 +150,7 @@ class MainWindow(QMainWindow):
         # else:
         #     self.priority_num = 0
         # self.priority_view.setImage(self.cameraWindows[self.priority_num].frame) #= self.cameraWindows[0].return_frame()
-
-        # iterating over camera windows to get one with highest priority level
+        print(self.counter)
         confidenceVal = self.confidenceVal
         priorityCameraWindow = self.priorityCameraWindow
         maxConfidence = self.maxConfidence
@@ -156,68 +158,72 @@ class MainWindow(QMainWindow):
         currPriorityCamera = self.currPriorityCamera
         currOldPriorityCamera = self.currOldPriorityCamera
         index = 0
-        for cameraWindow in self.cameraWindows:
-            if not confidenceVal:
-                # for i in range(len(self.cameraWindows)):
-                #     self.cameraWindows[i].update_border(False,False)
-                confidenceVal = cameraWindow.confidenceLevel
-                priorityCameraWindow = cameraWindow
-                maxConfidence = cameraWindow.confidenceLevel
-                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
-                
-                currPriorityCamera = index
-                # priorityCameraWindow.update_border(True, False)
-            elif confidenceVal < cameraWindow.confidenceLevel and currPriorityCamera != index:
-                # print(index, "camera was decreased")
-                # priorityCameraWindow.update_border(False, True)
-                # if currOldPriorityCamera != index:
-                #     self.cameraWindows[currOldPriorityCamera].update_border(False, False)
-                currOldPriorityCamera = currPriorityCamera
-                
-                confidenceVal = cameraWindow.confidenceLevel
-                priorityCameraWindow = cameraWindow
-                maxConfidence = cameraWindow.confidenceLevel
-                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
-                # priorityCameraWindow.update_border(True, False)
-                currPriorityCamera = index
-                # do if statement that checks for old priority camera and changes based on that
-                # if index == 0:
-                #     print(len(self.cameraWindows)-1, "camera was increased")
-                # else:
-                #     print(index-1, "camera was increased")
-            # elif cameraWindow != priorityCameraWindow: 
-            #     # print(index, "camera was decreased")
-            #     cameraWindow.update_border(False, False)
-            # print("type of camerawindow:", type(cameraWindow))
+        if self.counter % 10 == 0:
+        # iterating over camera windows to get one with highest priority level
             
-            index += 1
-        
-        #This should be a value that's less than the threshold we set, but for now the value can be 0
-        if (self.priorityWindow == None):
-            self.priorityWindow = priorityCameraWindow
-            self.priorityWindow.update_border(True,False)
-        elif priorityCameraWindow == self.oldPriorityWindow and priorityCameraWindow != None:
-            self.oldPriorityWindow = self.priorityWindow
-            self.priorityWindow = priorityCameraWindow
-            self.priorityWindow.update_border(True,False)
-            self.oldPriorityWindow.update_border(False,True)
-        elif self.oldPriorityWindow == None and self.priorityWindow != priorityCameraWindow and self.priorityWindow != None:
-            self.oldPriorityWindow = self.priorityWindow
-            self.priorityWindow = priorityCameraWindow
-            self.oldPriorityWindow.update_border(False,True)
-            self.priorityWindow.update_border(True,False)
-        elif priorityCameraWindow != self.oldPriorityWindow and priorityCameraWindow != self.priorityWindow and self.priorityWindow != None and self.oldPriorityWindow != None:
-            self.oldPriorityWindow.update_border(False,False)
-            self.oldPriorityWindow = self.priorityWindow
-            self.priorityWindow = priorityCameraWindow
-            self.oldPriorityWindow.update_border(False,True)
-            self.priorityWindow.update_border(True,False)
-        
+            for cameraWindow in self.cameraWindows:
+                if not confidenceVal:
+                    # for i in range(len(self.cameraWindows)):
+                    #     self.cameraWindows[i].update_border(False,False)
+                    confidenceVal = cameraWindow.confidenceLevel
+                    priorityCameraWindow = cameraWindow
+                    maxConfidence = cameraWindow.confidenceLevel
+                    cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
+                    
+                    currPriorityCamera = index
+                    # priorityCameraWindow.update_border(True, False)
+                elif confidenceVal < cameraWindow.confidenceLevel and currPriorityCamera != index:
+                    # print(index, "camera was decreased")
+                    # priorityCameraWindow.update_border(False, True)
+                    # if currOldPriorityCamera != index:
+                    #     self.cameraWindows[currOldPriorityCamera].update_border(False, False)
+                    currOldPriorityCamera = currPriorityCamera
+                    
+                    confidenceVal = cameraWindow.confidenceLevel
+                    priorityCameraWindow = cameraWindow
+                    maxConfidence = cameraWindow.confidenceLevel
+                    
+                    # priorityCameraWindow.update_border(True, False)
+                    currPriorityCamera = index
+                    # do if statement that checks for old priority camera and changes based on that
+                    # if index == 0:
+                    #     print(len(self.cameraWindows)-1, "camera was increased")
+                    # else:
+                    #     print(index-1, "camera was increased")
+                # elif cameraWindow != priorityCameraWindow: 
+                #     # print(index, "camera was decreased")
+                #     cameraWindow.update_border(False, False)
+                # print("type of camerawindow:", type(cameraWindow))
+                
+                index += 1
+            
+            #This should be a value that's less than the threshold we set, but for now the value can be 0
+            if (self.priorityWindow == None):
+                self.priorityWindow = priorityCameraWindow
+                self.priorityWindow.update_border(True,False)
+            elif priorityCameraWindow == self.oldPriorityWindow and priorityCameraWindow != None:
+                self.oldPriorityWindow = self.priorityWindow
+                self.priorityWindow = priorityCameraWindow
+                self.priorityWindow.update_border(True,False)
+                self.oldPriorityWindow.update_border(False,True)
+            elif self.oldPriorityWindow == None and self.priorityWindow != priorityCameraWindow and self.priorityWindow != None:
+                self.oldPriorityWindow = self.priorityWindow
+                self.priorityWindow = priorityCameraWindow
+                self.oldPriorityWindow.update_border(False,True)
+                self.priorityWindow.update_border(True,False)
+            elif priorityCameraWindow != self.oldPriorityWindow and priorityCameraWindow != self.priorityWindow and self.priorityWindow != None and self.oldPriorityWindow != None:
+                self.oldPriorityWindow.update_border(False,False)
+                self.oldPriorityWindow = self.priorityWindow
+                self.priorityWindow = priorityCameraWindow
+                self.oldPriorityWindow.update_border(False,True)
+                self.priorityWindow.update_border(True,False)
+            
         priorityCameraWindow = self.priorityWindow
+        cameraName = "Priority Cam: " + priorityCameraWindow.camera.locations
         # self.priority_view.setImage(priorityCameraWindow.frame) #= self.cameraWindows[0].return_frame()
         frame = priorityCameraWindow.boundingBoxFrame
         image = QImage(frame, frame.shape[1], frame.shape[0], 
-                       frame.strides[0], QImage.Format.Format_RGB888)
+                    frame.strides[0], QImage.Format.Format_RGB888)
 
         image = image.rgbSwapped()
         # self.image_label.setPixmap(QPixmap.fromImage(image))
@@ -230,34 +236,15 @@ class MainWindow(QMainWindow):
         self.priority_view.setScaledContents(True)
 
 
-        # i = 0
-        # for camera in self.cameras:
-        #     # cam = CameraWindow(camera)
-        #     # self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
-        #     # camera_layout = cam.return_frame()
-        #     camera_layout = QLabel()
-        #     print(self.colorList)
-        #     red, green, blue = self.colorList[i]
-        #     print("COLOR:::::::::::::::::::::::::::", red, green, blue)
-        #     style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-right:50%; margin-left: 250%;'
-        #     print(style, style, style, style, style)
-        #     camera_layout.setStyleSheet(style)
-        #     self.main_layout.addWidget(camera_layout,i,1,1,1)
-
-        #     # self.cameraWindows.append(cam)
-        #     i += 1
-        # print(self.colorList)
-        # red, green, blue = self.colorList[currCam]
-        # print("COLOR:::::::::::::::::::::::::::", red, green, blue)
-        # style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-bottom: 150%; margin-top: 150%'
-        # print(style, style, style, style, style)
-        # self.priority_view.setStyleSheet(style)
         return (confidenceVal, priorityCameraWindow, maxConfidence, currPriorityCamera, currOldPriorityCamera)
 
         # print("attempted to update priority")
 
     def update_time(self):
         self.current = time.time()
+
+    def update_counter(self):
+        self.counter += 1
 
         
     def startup():
@@ -271,21 +258,9 @@ class MainWindow(QMainWindow):
         i = 0
         for camera in self.cameras:
             cam = CameraWindow(camera)
-            # self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
-            # camera_layout = cam.return_frame()
-            # print(self.colorList)
-            # red, green, blue = self.colorList[i]
-            # print("COLOR:::::::::::::::::::::::::::", red, green, blue)
-            # style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-right:50%; margin-left: 250%;'
-            # print(style, style, style, style, style)
-            # camera_layout.setStyleSheet(style)
-            # cam_widgit, pri_border, old_pri_border = cam.return_frame()
+
             self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
             
-            # self.main_layout.addWidget(pri_border,i,1,1,1)
-            # self.main_layout.addWidget(old_pri_border,i,1,1,1)
-            # self.main_layout.addWidget(cam_widgit,i,1,1,1)
-
             self.cameraWindows.append(cam)
             i += 1
         for camera in self.cameraWindows:
@@ -416,12 +391,12 @@ class CameraWindow(QWidget):
     def update_border(self, is_pri = False, is_old_pri = False):
 
         if is_pri:
-            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid red;')
+            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid rgb(139, 0, 0);')
             # self.image_old_pri_border.hide()
             # self.image_pri_border.show()
             # print("Showing priority...")
         elif is_old_pri :
-            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid yellow;')
+            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid rgb(255, 195, 0);')
             # self.image_pri_border.hide()
             # self.image_old_pri_border.show()
             # print("Hiding priority... Showing Old Priority...")
