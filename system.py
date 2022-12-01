@@ -4,7 +4,8 @@ import threading
 from InputFeedClasses.IPCamera import IPCamera
 import constant as const
 import sys
-
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
 class System:
     listOfActiveModels = []
     listOfModelReferences = []

@@ -7,13 +7,19 @@
             "ListOfSensors": [
                 {
                     "SensorType": "Camera",
-                    "IP": "0", 
+                    "IP": "192.168.1.183", 
+                    "Username": "admin",
+                    "Password": "Camera123"
+                },
+                {
+                    "SensorType": "Camera",
+                    "IP": "1", 
                     "Username": "admin",
                     "Password": "admin"
                 },
                 {
                     "SensorType": "Camera",
-                    "IP": "192.168.1.183", 
+                    "IP": "192.168.1.246", 
                     "Username": "admin",
                     "Password": "Camera123"
                 }
@@ -27,7 +33,7 @@
                 {
                     "Name": "UnnamedImageDetector",
                     "Data": {
-                        "ModelPath": "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models\\checkpoints\\my_mobilenet_v12_model",
+                        "ModelPath": "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models\\checkpoints\\mobilenet_v12.2_model",
                         "ModelFolder": "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models",
                         "LabelPath": "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\coco_v2.names",
                         "Threshold": 0.5

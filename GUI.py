@@ -16,6 +16,7 @@ import threading
 import time
 from system import System
 from modelclass import *
+import numpy as np
 
 import constant as const
 
@@ -53,8 +54,9 @@ class MainWindow(QMainWindow):
         self.confidenceLevels = []
         self.cameras = []
         self.cameraWindows = []
-
+        self.colorList = np.random.uniform(low=0, high=255, size =(len(cameras), 3))
         self.priorityWindow = None
+        self.oldPriorityWindow = None
         #Here to keep feed with most recent gun detected in the priority feed if no further guns are detected in other feeds
         self.central_widget = QLabel("Null Threat")
         self.main_layout = QGridLayout()        
@@ -99,6 +101,7 @@ class MainWindow(QMainWindow):
         self.priority_view.hide()
         self.priority_label.hide()
         
+
 ############
 # have a widget over another widget to give each one it's own background
         # priority_cam = QLabel(
@@ -123,15 +126,19 @@ class MainWindow(QMainWindow):
         self.timer = QTimer()
 
         # update priority / time every second
+
+        #make these variables as self.variables, test it?        
+        self.confidenceVal, self.priorityCameraWindow, self.maxConfidence, self.currPriorityCamera, self.currOldPriorityCamera = None, None, 0, 0, 0
+        # self.timer.timeout.connect(self.update_priority)
+
         self.timer.timeout.connect(self.update_priority)
         self.timer.timeout.connect(self.update_time)
         self.timer.start(10)
-
+    
 
         #make system provide cameras, put this in a function and remove parameter
         for camera in cameras:
             self.cameras.append(camera)
-        
         
     #modify this to check from list of priorities
     def update_priority(self):
@@ -142,51 +149,112 @@ class MainWindow(QMainWindow):
         # self.priority_view.setImage(self.cameraWindows[self.priority_num].frame) #= self.cameraWindows[0].return_frame()
 
         # iterating over camera windows to get one with highest priority level
-        try:
-            confidenceVal = None
-            priorityCameraWindow = None
-            maxConfidence = 0
-            cameraName = "Priority Cam: "
-            for cameraWindow in self.cameraWindows:
-                if not confidenceVal:
-                    confidenceVal = cameraWindow.confidenceLevel
-                    priorityCameraWindow = cameraWindow
-                    maxConfidence = cameraWindow.confidenceLevel
-                    cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
-                elif confidenceVal < cameraWindow.confidenceLevel:
-                    confidenceVal = cameraWindow.confidenceLevel
-                    priorityCameraWindow = cameraWindow
-                    maxConfidence = cameraWindow.confidenceLevel
-                    cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
+        confidenceVal = self.confidenceVal
+        priorityCameraWindow = self.priorityCameraWindow
+        maxConfidence = self.maxConfidence
+        cameraName = "Priority Cam: "
+        currPriorityCamera = self.currPriorityCamera
+        currOldPriorityCamera = self.currOldPriorityCamera
+        index = 0
+        for cameraWindow in self.cameraWindows:
+            if not confidenceVal:
+                # for i in range(len(self.cameraWindows)):
+                #     self.cameraWindows[i].update_border(False,False)
+                confidenceVal = cameraWindow.confidenceLevel
+                priorityCameraWindow = cameraWindow
+                maxConfidence = cameraWindow.confidenceLevel
+                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
+                
+                currPriorityCamera = index
+                # priorityCameraWindow.update_border(True, False)
+            elif confidenceVal < cameraWindow.confidenceLevel and currPriorityCamera != index:
+                # print(index, "camera was decreased")
+                # priorityCameraWindow.update_border(False, True)
+                # if currOldPriorityCamera != index:
+                #     self.cameraWindows[currOldPriorityCamera].update_border(False, False)
+                currOldPriorityCamera = currPriorityCamera
+                
+                confidenceVal = cameraWindow.confidenceLevel
+                priorityCameraWindow = cameraWindow
+                maxConfidence = cameraWindow.confidenceLevel
+                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
+                # priorityCameraWindow.update_border(True, False)
+                currPriorityCamera = index
+                # do if statement that checks for old priority camera and changes based on that
+                # if index == 0:
+                #     print(len(self.cameraWindows)-1, "camera was increased")
+                # else:
+                #     print(index-1, "camera was increased")
+            # elif cameraWindow != priorityCameraWindow: 
+            #     # print(index, "camera was decreased")
+            #     cameraWindow.update_border(False, False)
+            # print("type of camerawindow:", type(cameraWindow))
             
-            #This should be a value that's less than the threshold we set, but for now the value can be 0
-            if (maxConfidence == 0):
-                priorityCameraWindow = self.priorityWindow
-            else:
-                self.priorityWindow = priorityCameraWindow
-
-            # self.priority_view.setImage(priorityCameraWindow.frame) #= self.cameraWindows[0].return_frame()
-            frame = priorityCameraWindow.boundingBoxFrame
-
-            image = QImage(frame, frame.shape[1], frame.shape[0], 
-                        frame.strides[0], QImage.Format.Format_RGB888)
-
-            image = image.rgbSwapped()
-            # self.image_label.setPixmap(QPixmap.fromImage(image))
-            
-            # self.image_view.setImage(frame)
-            
-            # print(cameraName, type(cameraName))
-            self.priority_view.setPixmap(QPixmap.fromImage(image))
-            self.priority_label.setText(cameraName)
-            self.priority_view.setScaledContents(True)
-            
-
-            # print("attempted to update priority")
+            index += 1
         
-        except Exception as err:
-            print(err)
-            print("There is an error in updating the priorities ")
+        #This should be a value that's less than the threshold we set, but for now the value can be 0
+        if (self.priorityWindow == None):
+            self.priorityWindow = priorityCameraWindow
+            self.priorityWindow.update_border(True,False)
+        elif priorityCameraWindow == self.oldPriorityWindow and priorityCameraWindow != None:
+            self.oldPriorityWindow = self.priorityWindow
+            self.priorityWindow = priorityCameraWindow
+            self.priorityWindow.update_border(True,False)
+            self.oldPriorityWindow.update_border(False,True)
+        elif self.oldPriorityWindow == None and self.priorityWindow != priorityCameraWindow and self.priorityWindow != None:
+            self.oldPriorityWindow = self.priorityWindow
+            self.priorityWindow = priorityCameraWindow
+            self.oldPriorityWindow.update_border(False,True)
+            self.priorityWindow.update_border(True,False)
+        elif priorityCameraWindow != self.oldPriorityWindow and priorityCameraWindow != self.priorityWindow and self.priorityWindow != None and self.oldPriorityWindow != None:
+            self.oldPriorityWindow.update_border(False,False)
+            self.oldPriorityWindow = self.priorityWindow
+            self.priorityWindow = priorityCameraWindow
+            self.oldPriorityWindow.update_border(False,True)
+            self.priorityWindow.update_border(True,False)
+        
+        priorityCameraWindow = self.priorityWindow
+        # self.priority_view.setImage(priorityCameraWindow.frame) #= self.cameraWindows[0].return_frame()
+        frame = priorityCameraWindow.boundingBoxFrame
+        image = QImage(frame, frame.shape[1], frame.shape[0], 
+                       frame.strides[0], QImage.Format.Format_RGB888)
+
+        image = image.rgbSwapped()
+        # self.image_label.setPixmap(QPixmap.fromImage(image))
+        
+        # self.image_view.setImage(frame)
+        
+        # print(cameraName, type(cameraName))
+        self.priority_view.setPixmap(QPixmap.fromImage(image))
+        self.priority_label.setText(cameraName)
+        self.priority_view.setScaledContents(True)
+
+
+        # i = 0
+        # for camera in self.cameras:
+        #     # cam = CameraWindow(camera)
+        #     # self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
+        #     # camera_layout = cam.return_frame()
+        #     camera_layout = QLabel()
+        #     print(self.colorList)
+        #     red, green, blue = self.colorList[i]
+        #     print("COLOR:::::::::::::::::::::::::::", red, green, blue)
+        #     style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-right:50%; margin-left: 250%;'
+        #     print(style, style, style, style, style)
+        #     camera_layout.setStyleSheet(style)
+        #     self.main_layout.addWidget(camera_layout,i,1,1,1)
+
+        #     # self.cameraWindows.append(cam)
+        #     i += 1
+        # print(self.colorList)
+        # red, green, blue = self.colorList[currCam]
+        # print("COLOR:::::::::::::::::::::::::::", red, green, blue)
+        # style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-bottom: 150%; margin-top: 150%'
+        # print(style, style, style, style, style)
+        # self.priority_view.setStyleSheet(style)
+        return (confidenceVal, priorityCameraWindow, maxConfidence, currPriorityCamera, currOldPriorityCamera)
+
+        # print("attempted to update priority")
 
     def update_time(self):
         self.current = time.time()
@@ -204,7 +272,19 @@ class MainWindow(QMainWindow):
         for camera in self.cameras:
             cam = CameraWindow(camera)
             # self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
+            # camera_layout = cam.return_frame()
+            # print(self.colorList)
+            # red, green, blue = self.colorList[i]
+            # print("COLOR:::::::::::::::::::::::::::", red, green, blue)
+            # style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-right:50%; margin-left: 250%;'
+            # print(style, style, style, style, style)
+            # camera_layout.setStyleSheet(style)
+            # cam_widgit, pri_border, old_pri_border = cam.return_frame()
             self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
+            
+            # self.main_layout.addWidget(pri_border,i,1,1,1)
+            # self.main_layout.addWidget(old_pri_border,i,1,1,1)
+            # self.main_layout.addWidget(cam_widgit,i,1,1,1)
 
             self.cameraWindows.append(cam)
             i += 1
@@ -213,13 +293,14 @@ class MainWindow(QMainWindow):
 
         self.button_update_threshold = QPushButton('Update Threshold')
         self.button_update_threshold.clicked.connect(self.open_threshold_menu)
+        self.button_update_threshold.setStyleSheet('background-color: black; color: white; margin-right:50%; margin-left: 250%')
+
         self.main_layout.addWidget(self.button_update_threshold,i, 1, 1, 1)
     
     def open_threshold_menu(self):
         # print("This will open the additional window to update threshold\n\n\n")
         try:
             self.threshold_window = ThresholdWindow()
-            
             self.threshold_window.show()
         except Exception as err:
             print(err)
@@ -252,7 +333,6 @@ class ThresholdWindow(QWidget):
         button_enter.clicked.connect(self.enteredValues)
 
         layout = QFormLayout()
-        # layout.setStyleSheet('background-color: black; color: white; margin-right:50%; margin-left: 250%')
         layout.addRow(self.status_text)
         layout.addRow("Threshold Value", threshold_value_input)
         layout.addRow("Password", password_text_input)
@@ -290,7 +370,8 @@ class CameraWindow(QWidget):
         self.deque = deque(maxlen=100)
 
         self.camera = camera
-        self.layout = QVBoxLayout()
+        # self.layout = QVBoxLayout()
+        self.layout = QGridLayout()
 
         # self.image_view = RawImageWidget(scaled=True)
         # self.image_view = QLabel()
@@ -303,9 +384,20 @@ class CameraWindow(QWidget):
             pixmap=QPixmap("imgs/null_threat_discord.png")
         )
         self.image_view.setScaledContents(True)
-        self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%')
+        self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%;')
+        # self.image_pri_border = QLabel()
+        # self.image_old_pri_border = QLabel()
+        # self.image_pri_border.setStyleSheet('margin-right:50%; margin-left: 250%; border: 20px solid red;')
+        # self.image_old_pri_border.setStyleSheet('margin-right:50%; margin-left: 250%; border: 15px solid yellow;')
+        self.is_pri = False
+        self.is_old_pri = False
 
-        self.layout.addWidget(self.image_view)
+        # self.layout.addWidget(self.image_pri_border)
+        # self.layout.addWidget(self.image_old_pri_border)
+        # self.layout.addWidget(self.image_view)
+
+        # self.image_pri_border.hide()
+        # self.image_old_pri_border.hide()
 
         self.start = 0
         self.current = 0
@@ -320,7 +412,30 @@ class CameraWindow(QWidget):
         self.get_frame_thread.daemon = True
         self.get_frame_thread.start()
         # self.update_image()
+
+    def update_border(self, is_pri = False, is_old_pri = False):
+
+        if is_pri:
+            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid red;')
+            # self.image_old_pri_border.hide()
+            # self.image_pri_border.show()
+            # print("Showing priority...")
+        elif is_old_pri :
+            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid yellow;')
+            # self.image_pri_border.hide()
+            # self.image_old_pri_border.show()
+            # print("Hiding priority... Showing Old Priority...")
+        else:
+            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid black;')
+            # self.image_pri_border.hide()
+            # self.image_old_pri_border.hide()
+            # print("Hiding priority... Hiding priority...")
         
+        self.is_pri = is_pri
+        self.is_old_pri = is_old_pri
+
+    def get_priority(self):
+        return (self.is_pri, self.is_old_pri)
 
 
     def update_time(self):
@@ -337,6 +452,7 @@ class CameraWindow(QWidget):
                 # print(str(int(fps)) + " cam " + str(self.camera.ip))
                 cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
                 # self.image_view.setImage(frame)
+                # frame = 
                 image = QImage(frame, frame.shape[1], frame.shape[0], 
                        frame.strides[0], QImage.Format.Format_RGB888)
 
@@ -379,6 +495,8 @@ class CameraWindow(QWidget):
                        frame.strides[0], QImage.Format.Format_RGB888)
 
                 image = image.rgbSwapped()
+
+                # print("type: ", type(image), " vs ", type(frame))
                 # self.image_label.setPixmap(QPixmap.fromImage(image))
                 
                 # self.image_view.setImage(frame)
@@ -417,6 +535,7 @@ class CameraWindow(QWidget):
         pass
 
     def return_frame(self):
+        # return (self.image_view, self.image_pri_border, self.image_old_pri_border)
         return self.image_view
 
     def return_cv2_frame(self):
