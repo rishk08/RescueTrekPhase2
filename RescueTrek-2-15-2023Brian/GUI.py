@@ -24,7 +24,7 @@ pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
 
 
 # itemDetector = imageDetector("/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models/checkpoints/my_mobilenet_v12_model", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/coco.names", 0.5)
-itemDetector = imageDetector("C:\\Users\\barnw\\Documents\\A&M Classes\\Coding Classes\\CSCE 483\\Updated Project\\my_mobilenet_v14_model", "C:\\Users\\barnw\\Documents\\A&M Classes\\Coding Classes\\CSCE 483\\Updated Project\\pretrained_models", "C:\\Users\\barnw\\Documents\\A&M Classes\\Coding Classes\\CSCE 483\\Updated Project\\coco_v2.names", 0.5)
+itemDetector = imageDetector("C:/Users/richi/Downloads/RescueTrekPhase2/my_mobilenet_v14_model","C:/Users/richi/Downloads/pretrained_models-20230223T195458Z-002","C:/Users/richi/Downloads/RescueTrekPhase2/coco_v2.names", 0.5)
 
 class GUI:
     def __init__(self, configFile) -> None:
