@@ -1,11 +1,17 @@
 import cv2
 import numpy as np
+from keras.models import load_model
+from keras.preprocessing import image
+from keras_vggface.utils import preprocess_input
 
 # Load the known face images and their names
 known_faces = [
-    cv2.imread('C:/Users/richi/Downloads/RescueTrekPhase2/RescueTrek-2-15-2023Brian/facepics/richie1.jpg')
+    image.load_img('C:/Users/richi/Downloads/RescueTrekPhase2/RescueTrek-2-15-2023Brian/facepics/richie1.jpg', target_size=(224, 224))
 ]
 known_names = ['Richie']
+
+# Load the VGGFace model for feature extraction
+model = load_model('vggface.h5')
 
 # Initialize the video capture object
 cap = cv2.VideoCapture(0)
@@ -27,16 +33,19 @@ while True:
     # Identify the persons in the detected faces
     names = []
     for (x, y, w, h) in faces:
-        face_roi = gray_frame[y:y + h, x:x + w]
-        face_encoding = cv2.resize(face_roi, (128, 128))
-        face_encoding = cv2.cvtColor(face_encoding, cv2.COLOR_GRAY2RGB)
+        face_img = frame[y:y+h, x:x+w]
+        face_img = cv2.resize(face_img, (224, 224))
+        face_img = image.img_to_array(face_img)
+        face_img = np.expand_dims(face_img, axis=0)
+        face_img = preprocess_input(face_img)
+        face_encoding = model.predict(face_img)
         matches = []
         for known_face in known_faces:
-            known_face_encoding = cv2.resize(known_face, (128, 128))
-            known_face_encoding = cv2.cvtColor(known_face_encoding, cv2.COLOR_BGR2RGB)
-            match = cv2.compareHist(cv2.calcHist([face_encoding], [0], None, [256], [0, 256]),
-                                    cv2.calcHist([known_face_encoding], [0], None, [256], [0, 256]),
-                                    cv2.HISTCMP_CORREL)
+            known_face = image.img_to_array(known_face)
+            known_face = np.expand_dims(known_face, axis=0)
+            known_face = preprocess_input(known_face)
+            known_face_encoding = model.predict(known_face)
+            match = np.dot(face_encoding.flatten(), known_face_encoding.flatten()) / (np.linalg.norm(face_encoding) * np.linalg.norm(known_face_encoding))
             matches.append(match)
         best_match_index = np.argmax(matches)
         if matches[best_match_index] > 0.5:
