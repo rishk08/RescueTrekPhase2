@@ -6,8 +6,10 @@ pip3 install virtualenv
 create venv folder:
 virtualenv venv -p python3 
 
-activate virtual environment:
-source venv/bin/activate 
+activate virtual environment (Git bash terminal for Windows):
+source venv/scripts/activate (Windows)
+OR 
+source venv/bin/activate (Linux/MacOS)
 
-This command will list all installed packages into requirments.txt for easy replication:
-pip3 freeze > requirments.txt
+This command will list all installed packages into requirements.txt for easy replication:
+pip3 freeze > requirements.txt
