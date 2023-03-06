@@ -7,7 +7,7 @@
 
 ### Steps
 
-**Note**: If you already have a Python virtual environment set up, you can skip the first few steps and start from step 4.
+**Note**: If you already have a Python virtual environment set up, you can skip the first few steps and start from step 5.
 
 1. Open your terminal or command prompt.
 2. Install the virtualenv package by running the following command:
