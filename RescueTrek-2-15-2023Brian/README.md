@@ -1,4 +1,4 @@
-#### RescueTrek
+# RescueTrek
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@
     ```
 
 
-(Optional) To list all the installed packages in the virtual environment into `requirements.txt`, run the following command:
+7. (Optional) To list all the installed packages in the virtual environment into `requirements.txt`, run the following command:
 
     ```
     pip3 freeze > requirements.txt
