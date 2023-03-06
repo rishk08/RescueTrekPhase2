@@ -23,238 +23,112 @@ import constant as const
 pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
 
 
-# itemDetector = imageDetector("/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models/checkpoints/my_mobilenet_v12_model", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/pretrained_models", "/Users/joey/Downloads/modelsCorrectDirectoryLayout/coco.names", 0.5)
-itemDetector = imageDetector("my_mobilenet_v14_model","../pretrained_models","../coco_v2.names", 0.5)
+# Create the image detector object
+itemDetector = imageDetector("my_mobilenet_v14_model", "../pretrained_models", "../coco_v2.names", 0.5)
+
 
 class GUI:
-    def __init__(self, configFile) -> None:
-        #start system here
-        # self.itemDetector = imageDetector("C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models\\checkpoints\\my_mobilenet_v12_model", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\pretrained_models", "C:\\Users\\bceup\\PycharmProjects\\modelTryingOut\\coco_v2.names", 0.5)
+    def __init__(self, configFile):
+        # Start the system and set up the GUI
         self.system = System(configFile)
         self.cameras = self.system.GetCameras()
+        self.itemDetectorThreshold = 0.5
         self.app = QApplication([])
         self.window = MainWindow(self.cameras)
-
-        self.itemDetectorThreshold = 0.5
-
         self.window.show()
-        self.app.exit(self.app.exec())
+        self.app.exec()
 
     def run(self):
-        # self.window.run()
-        pass
-        
-        
+        # Call the GUI's run method
+        self.window.run()
 
 
 class MainWindow(QMainWindow):
-    def __init__(self,cameras):
+    def __init__(self, cameras):
         super().__init__()
+        
         self.setStyleSheet(open('css/stylesheet.css').read())
         self.confidenceLevels = []
         self.cameras = []
         self.cameraWindows = []
-        self.colorList = np.random.uniform(low=0, high=255, size =(len(cameras), 3))
+        self.colorList = np.random.uniform(low=0, high=255, size=(len(cameras), 3))
         self.priorityWindow = None
         self.oldPriorityWindow = None
-        #Here to keep feed with most recent gun detected in the priority feed if no further guns are detected in other feeds
+        
+        # Here to keep feed with most recent gun detected in the priority feed if no further guns are detected in other feeds
         self.central_widget = QLabel("Null Threat")
-        self.main_layout = QGridLayout()        
-        self.setWindowTitle("Null Threat")
-        self.central_widget.setLayout(self.main_layout)
-        self.setCentralWidget(self.central_widget)
-        self.showMaximized()
-        self.button_start = QPushButton('start')
-        self.button_start.setStyleSheet(open('css/buttons.css').read())
-        self.main_layout.addWidget(self.button_start,1,0,2,1)
-        self.button_start.clicked.connect(self.run)
-        
-        self.priority_view = QLabel(
-            pixmap=QPixmap("imgs/null_threat_discord.png")
-        )
-        self.priority_view.setFixedHeight(900)
-        self.priority_view.setFixedWidth(900)
-        self.priority_view.setScaledContents(True)
-        self.priority_view.setStyleSheet('margin-bottom: 150%; margin-top: 150%;')
-
-        # self.priority_view = RawImageWidget(scaled=True) # change to Qlabel, add background to each camera, play with
-        
-        self.priority_label = QLabel(text="Priority Cam: ")
-        # self.priority_label.setFixedHeight(100)
-        self.priority_label.setFixedWidth(900)
-        self.priority_label.setStyleSheet('background-color:black; color: white; margin-bottom: 150%; margin-top: 150%; magin-left: -350%')
-
-        self.priority_num = 0
-        # self.main_layout.setRowMinimumHeight( 0, 3)
-        self.button_start.setFixedHeight(100)
-        self.button_start.setFixedWidth(300)
-
-        self.label = QLabel("Null Threat", self.central_widget)
-        # self.main_layout.addWidget(self.label,0,0)
         self.central_widget.setAlignment(Qt.AlignmentFlag.AlignCenter)
         pixmap = QPixmap('imgs/null_threat_grey.png')
         self.central_widget.setPixmap(pixmap)
         self.central_widget.setScaledContents(True)
-       
+        
+        self.setWindowTitle("Null Threat")
+        self.setCentralWidget(self.central_widget)
+        self.showMaximized()
+
+        self.button_start = QPushButton('start')
+        self.button_start.setStyleSheet(open('css/buttons.css').read())
+        self.button_start.setFixedHeight(100)
+        self.button_start.setFixedWidth(300)
+        
+        self.main_layout = QGridLayout(self.central_widget) 
+        self.main_layout.addWidget(self.button_start, 1, 0, 2, 1)
+        
+        self.priority_view = QLabel(pixmap=QPixmap("imgs/null_threat_discord.png"))
+        self.priority_view.setFixedHeight(900)
+        self.priority_view.setFixedWidth(900)
+        self.priority_view.setScaledContents(True)
+        self.priority_view.setStyleSheet('margin-bottom: 150%; margin-top: 150%;')
         self.main_layout.addWidget(self.priority_view, 0, 0, 3, 1)
+        
+        self.priority_label = QLabel(text="Priority Cam: ")
+        self.priority_label.setFixedWidth(900)
+        self.priority_label.setStyleSheet('background-color:black; color: white; margin-bottom: 150%; margin-top: 150%; magin-left: -350%')
         self.main_layout.addWidget(self.priority_label, 0, 0, 3, 1, Qt.AlignmentFlag.AlignTop)
+        
         self.priority_view.hide()
         self.priority_label.hide()
-        
 
-############
-# have a widget over another widget to give each one it's own background
-        # priority_cam = QLabel(
-        #     pixmap=QPixmap("/Users/sgrac/Documents/FALL 2022/CSCE-482/Deep-Learning/scripts/test/gun.jpg")
-        # )#image
-        # priority_text = QLabel(text="Priority")
-        # # priority_widget = QWidget()
-        # priority_widget = self.central_widget#flip?
-        # self.setCentralWidget(priority_widget)
-        # priority_layout = QVBoxLayout(priority_widget)
-        
-
-        # priority_layout.addWidget(priority_cam, alignment=Qt.AlignmentFlag.AlignLeft)
-        # priority_layout.addWidget(priority_text, alignment=Qt.AlignmentFlag.AlignLeft)
-        # # priority_layout.addWidget(priority_cam, 0, 0, 3, 1)
-        # # priority_layout.addWidget(priority_text, 0, 0, 3, 1)
-############
-
-        self.start = 0
-        self.current = 0
-        
-        self.timer = QTimer()
-
-        # update priority / time every second
-
-        #make these variables as self.variables, test it?        
-        self.confidenceVal, self.priorityCameraWindow, self.maxConfidence, self.currPriorityCamera, self.currOldPriorityCamera = None, None, 0, 0, 0
-        # self.timer.timeout.connect(self.update_priority)
-
+        self.button_start.clicked.connect(self.run)
+        self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_priority)
         self.timer.timeout.connect(self.update_time)
         self.timer.start(10)
-    
 
-        #make system provide cameras, put this in a function and remove parameter
+        self.confidenceVal = None
+        self.priorityCameraWindow = None
+        self.maxConfidence = 0
+        self.currPriorityCamera = 0
+        self.currOldPriorityCamera = 0
+
+        # make system provide cameras, put this in a function and remove parameter
         for camera in cameras:
             self.cameras.append(camera)
         
-    #modify this to check from list of priorities
+        
     def update_priority(self):
-        # if self.priority_num < (len(self.cameraWindows) - 1):
-        #     self.priority_num = self.priority_num + 1
-        # else:
-        #     self.priority_num = 0
-        # self.priority_view.setImage(self.cameraWindows[self.priority_num].frame) #= self.cameraWindows[0].return_frame()
-
-        # iterating over camera windows to get one with highest priority level
-        confidenceVal = self.confidenceVal
-        priorityCameraWindow = self.priorityCameraWindow
-        maxConfidence = self.maxConfidence
-        cameraName = "Priority Cam: "
-        currPriorityCamera = self.currPriorityCamera
-        currOldPriorityCamera = self.currOldPriorityCamera
-        index = 0
-        for cameraWindow in self.cameraWindows:
-            if not confidenceVal:
-                # for i in range(len(self.cameraWindows)):
-                #     self.cameraWindows[i].update_border(False,False)
-                confidenceVal = cameraWindow.confidenceLevel
-                priorityCameraWindow = cameraWindow
-                maxConfidence = cameraWindow.confidenceLevel
-                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
-                
-                currPriorityCamera = index
-                # priorityCameraWindow.update_border(True, False)
-            elif confidenceVal < cameraWindow.confidenceLevel and currPriorityCamera != index:
-                # print(index, "camera was decreased")
-                # priorityCameraWindow.update_border(False, True)
-                # if currOldPriorityCamera != index:
-                #     self.cameraWindows[currOldPriorityCamera].update_border(False, False)
-                currOldPriorityCamera = currPriorityCamera
-                
-                confidenceVal = cameraWindow.confidenceLevel
-                priorityCameraWindow = cameraWindow
-                maxConfidence = cameraWindow.confidenceLevel
-                cameraName = "Priority Cam: " + priorityCameraWindow.camera.ip
-                # priorityCameraWindow.update_border(True, False)
-                currPriorityCamera = index
-                # do if statement that checks for old priority camera and changes based on that
-                # if index == 0:
-                #     print(len(self.cameraWindows)-1, "camera was increased")
-                # else:
-                #     print(index-1, "camera was increased")
-            # elif cameraWindow != priorityCameraWindow: 
-            #     # print(index, "camera was decreased")
-            #     cameraWindow.update_border(False, False)
-            # print("type of camerawindow:", type(cameraWindow))
-            
-            index += 1
+        # Create a list of tuples of (camera, priority) from the cameras list
+        priorities = [(camera, i) for i, camera in enumerate(self.cameras)]
         
-        #This should be a value that's less than the threshold we set, but for now the value can be 0
-        if (self.priorityWindow == None):
-            self.priorityWindow = priorityCameraWindow
-            self.priorityWindow.update_border(True,False)
-        elif priorityCameraWindow == self.oldPriorityWindow and priorityCameraWindow != None:
-            self.oldPriorityWindow = self.priorityWindow
-            self.priorityWindow = priorityCameraWindow
-            self.priorityWindow.update_border(True,False)
-            self.oldPriorityWindow.update_border(False,True)
-        elif self.oldPriorityWindow == None and self.priorityWindow != priorityCameraWindow and self.priorityWindow != None:
-            self.oldPriorityWindow = self.priorityWindow
-            self.priorityWindow = priorityCameraWindow
-            self.oldPriorityWindow.update_border(False,True)
-            self.priorityWindow.update_border(True,False)
-        elif priorityCameraWindow != self.oldPriorityWindow and priorityCameraWindow != self.priorityWindow and self.priorityWindow != None and self.oldPriorityWindow != None:
-            self.oldPriorityWindow.update_border(False,False)
-            self.oldPriorityWindow = self.priorityWindow
-            self.priorityWindow = priorityCameraWindow
-            self.oldPriorityWindow.update_border(False,True)
-            self.priorityWindow.update_border(True,False)
+        # Sort the priorities list by priority level in descending order
+        priorities.sort(key=lambda x: x[1], reverse=True)
         
-        priorityCameraWindow = self.priorityWindow
-        # self.priority_view.setImage(priorityCameraWindow.frame) #= self.cameraWindows[0].return_frame()
-        frame = priorityCameraWindow.boundingBoxFrame
+        # Get the camera object with the highest priority level
+        priority_camera = priorities[0][0]
+        
+        # Set the priority window to display the bounding box frame of the camera object
+        if self.priorityWindow is None:
+            self.priorityWindow = priority_camera
+        elif priority_camera != self.priorityWindow and priority_camera != self.oldPriorityWindow:
+            self.oldPriorityWindow = self.priorityWindow
+            self.priorityWindow = priority_camera
+        
+        frame = self.priorityWindow.boundingBoxFrame
         image = QImage(frame, frame.shape[1], frame.shape[0], 
-                       frame.strides[0], QImage.Format.Format_RGB888)
-
+                    frame.strides[0], QImage.Format.Format_RGB888)
         image = image.rgbSwapped()
-        # self.image_label.setPixmap(QPixmap.fromImage(image))
-        
-        # self.image_view.setImage(frame)
-        
-        # print(cameraName, type(cameraName))
         self.priority_view.setPixmap(QPixmap.fromImage(image))
-        self.priority_label.setText(cameraName)
-        self.priority_view.setScaledContents(True)
 
-
-        # i = 0
-        # for camera in self.cameras:
-        #     # cam = CameraWindow(camera)
-        #     # self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
-        #     # camera_layout = cam.return_frame()
-        #     camera_layout = QLabel()
-        #     print(self.colorList)
-        #     red, green, blue = self.colorList[i]
-        #     print("COLOR:::::::::::::::::::::::::::", red, green, blue)
-        #     style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-right:50%; margin-left: 250%;'
-        #     print(style, style, style, style, style)
-        #     camera_layout.setStyleSheet(style)
-        #     self.main_layout.addWidget(camera_layout,i,1,1,1)
-
-        #     # self.cameraWindows.append(cam)
-        #     i += 1
-        # print(self.colorList)
-        # red, green, blue = self.colorList[currCam]
-        # print("COLOR:::::::::::::::::::::::::::", red, green, blue)
-        # style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-bottom: 150%; margin-top: 150%'
-        # print(style, style, style, style, style)
-        # self.priority_view.setStyleSheet(style)
-        return (confidenceVal, priorityCameraWindow, maxConfidence, currPriorityCamera, currOldPriorityCamera)
-
-        # print("attempted to update priority")
 
     def update_time(self):
         self.current = time.time()
@@ -263,42 +137,25 @@ class MainWindow(QMainWindow):
     def startup():
         """call system startup and get the number of feeds so the GUI can organize itself"""
         pass
+
     def run(self):
         self.button_start.hide()
         self.priority_view.show()
         self.priority_label.show()
         # Replace self.cameras with location of cameras from system produced by startup()
-        i = 0
-        for camera in self.cameras:
+        for i, camera in enumerate(self.cameras):
             cam = CameraWindow(camera)
-            # self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
-            # camera_layout = cam.return_frame()
-            # print(self.colorList)
-            # red, green, blue = self.colorList[i]
-            # print("COLOR:::::::::::::::::::::::::::", red, green, blue)
-            # style = 'border: 10px solid rgb('+ str(red) + ", "+ str(green) + ", " + str(blue) + '); margin-right:50%; margin-left: 250%;'
-            # print(style, style, style, style, style)
-            # camera_layout.setStyleSheet(style)
-            # cam_widgit, pri_border, old_pri_border = cam.return_frame()
-            self.main_layout.addWidget(cam.return_frame(),i,1,1,1)
-            
-            # self.main_layout.addWidget(pri_border,i,1,1,1)
-            # self.main_layout.addWidget(old_pri_border,i,1,1,1)
-            # self.main_layout.addWidget(cam_widgit,i,1,1,1)
-
+            self.main_layout.addWidget(cam.return_frame(), i, 1, 1, 1)
             self.cameraWindows.append(cam)
-            i += 1
         for camera in self.cameraWindows:
             camera.startCamera()
 
         self.button_update_threshold = QPushButton('Update Threshold')
         self.button_update_threshold.clicked.connect(self.open_threshold_menu)
         self.button_update_threshold.setStyleSheet('background-color: black; color: white; margin-right:50%; margin-left: 250%')
+        self.main_layout.addWidget(self.button_update_threshold, len(self.cameraWindows), 1, 1, 1)
 
-        self.main_layout.addWidget(self.button_update_threshold,i, 1, 1, 1)
-    
     def open_threshold_menu(self):
-        # print("This will open the additional window to update threshold\n\n\n")
         try:
             self.threshold_window = ThresholdWindow()
             self.threshold_window.show()
@@ -306,252 +163,186 @@ class MainWindow(QMainWindow):
             print(err)
             print("Unable to initializeWindow")
             sys.exit(0)
-
+            
 
 class ThresholdWindow(QWidget):
     """
-    This "window" is a QWidget. If it has no parent, it
-    will appear as a free-floating window as we want.
+    This window allows the user to change the threshold value for item detection.
     """
     def __init__(self):
         super().__init__()
-        self.password = ""
-        self.threshold_value = const.ITEM_DETECTOR_THRESHOLD
-        self.status_text = QLabel()
-        
-        self.status_text.setText("Enter Password and Threshold Values")
 
-        password_text_input = QLineEdit()
-        password_text_input.textChanged.connect(self.passwordTextChanged)
-        password_text_input.setEchoMode(QLineEdit.EchoMode.Password)
+        self.password_input = QLineEdit()
+        self.password_input.textChanged.connect(self.password_text_changed)
+        self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
 
-        threshold_value_input = QLineEdit()
-        threshold_value_input.setValidator(QDoubleValidator(0.99,99.99,2))
-        threshold_value_input.textChanged.connect(self.thresholdNumberChanged)
+        self.threshold_input = QLineEdit()
+        self.threshold_input.setValidator(QDoubleValidator(0.99, 99.99, 2))
+        self.threshold_input.textChanged.connect(self.threshold_number_changed)
 
-        button_enter = QPushButton('Enter')
-        button_enter.clicked.connect(self.enteredValues)
+        self.status_label = QLabel("Enter Password and Threshold Values")
+
+        enter_button = QPushButton('Enter')
+        enter_button.clicked.connect(self.entered_values)
 
         layout = QFormLayout()
-        layout.addRow(self.status_text)
-        layout.addRow("Threshold Value", threshold_value_input)
-        layout.addRow("Password", password_text_input)
-        layout.addRow(button_enter)
+        layout.addRow(self.status_label)
+        layout.addRow("Threshold Value", self.threshold_input)
+        layout.addRow("Password", self.password_input)
+        layout.addRow(enter_button)
 
         self.setLayout(layout)
         self.setWindowTitle("Change Threshold Value")
 
-    def passwordTextChanged(self, text):
+        self.password = ""
+        self.threshold_value = const.ITEM_DETECTOR_THRESHOLD
+
+    def password_text_changed(self, text):
+        """Update the stored password when the password input changes."""
         self.password = text
 
-    def thresholdNumberChanged(self, text):
+    def threshold_number_changed(self, text):
+        """Update the stored threshold value when the threshold input changes."""
         self.threshold_value = float(text)
 
-    
-    def enteredValues(self):
-        if self.password == const.ADMINISTRATOR_PASSWORD:
-            if self.threshold_value >= 1 or self.threshold_value <= 0.2:
-                self.status_text.setText("The value you enter must be between 0.2 and 1.")
-            else:
-                const.list_of_values.change_threshold_value(self.threshold_value)
-                self.status_text.setText("The threshold was changed to " + str(const.list_of_values.return_threshold_value()))
+    def validate_entered_values(self):
+        """Validate the entered password and threshold value."""
+        if self.password != const.ADMINISTRATOR_PASSWORD:
+            return False, "Incorrect password."
 
-        # print("Testing output")
-        # print(const.list_of_values.return_threshold_value)
-        # sys.exit(0)
+        if self.threshold_value < 0.2 or self.threshold_value > 1:
+            return False, "The threshold value must be between 0.2 and 1."
 
-        
+        return True, ""
+
+    def entered_values(self):
+        """
+        Update the threshold value if the entered password is correct and
+        the threshold value is valid.
+        """
+        is_valid, message = self.validate_entered_values()
+        if not is_valid:
+            self.status_label.setText(message)
+            return
+
+        const.list_of_values.change_threshold_value(self.threshold_value)
+        self.status_label.setText(f"The threshold was changed to {self.threshold_value}.")
+
 
 """Individual window for a camera feed"""
 class CameraWindow(QWidget):
-    def __init__(self,camera):
+    def __init__(self, camera):
         super().__init__()
         self.setStyleSheet(open('css/cameraWindow.css').read())
         self.deque = deque(maxlen=100)
 
         self.camera = camera
-        # self.layout = QVBoxLayout()
         self.layout = QGridLayout()
 
-        # self.image_view = RawImageWidget(scaled=True)
-        # self.image_view = QLabel()
         self.frame = None
         self.boundingBoxFrame = None
         self.frame_updated = False
-        
-        
+
         self.image_view = QLabel(
             pixmap=QPixmap("imgs/null_threat_discord.png")
         )
         self.image_view.setScaledContents(True)
         self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%;')
-        # self.image_pri_border = QLabel()
-        # self.image_old_pri_border = QLabel()
-        # self.image_pri_border.setStyleSheet('margin-right:50%; margin-left: 250%; border: 20px solid red;')
-        # self.image_old_pri_border.setStyleSheet('margin-right:50%; margin-left: 250%; border: 15px solid yellow;')
         self.is_pri = False
         self.is_old_pri = False
 
-        # self.layout.addWidget(self.image_pri_border)
-        # self.layout.addWidget(self.image_old_pri_border)
-        # self.layout.addWidget(self.image_view)
-
-        # self.image_pri_border.hide()
-        # self.image_old_pri_border.hide()
-
         self.start = 0
         self.current = 0
-        # self.video_frame = QtGui.QLabel()
+
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_image_no_deque)
-        # self.timer.timeout.connect(self.update_time)
         self.timer.start(.05)
 
-        #thread to pull in images in a loop
         self.get_frame_thread = Thread(target=self.get_frame)
         self.get_frame_thread.daemon = True
         self.get_frame_thread.start()
-        # self.update_image()
 
-    def update_border(self, is_pri = False, is_old_pri = False):
+    def get_frame(self):
+        while True:
+            try:
+                frame = self.camera.get_data()
+                self.frame = frame
+                self.frame_updated = True
+            except Exception as err:
+                print(err)
+                print("deque error probably full")
 
-        if is_pri:
-            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid red;')
-            # self.image_old_pri_border.hide()
-            # self.image_pri_border.show()
-            # print("Showing priority...")
-        elif is_old_pri :
-            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid yellow;')
-            # self.image_pri_border.hide()
-            # self.image_old_pri_border.show()
-            # print("Hiding priority... Showing Old Priority...")
-        else:
-            self.image_view.setStyleSheet('margin-right:50%; margin-left: 250%; border: 10px solid black;')
-            # self.image_pri_border.hide()
-            # self.image_old_pri_border.hide()
-            # print("Hiding priority... Hiding priority...")
+    def update_image_no_deque(self):
+        global itemDetector
+
+        if self.frame_updated:
+            try:
+                self.confidenceLevel, frame = itemDetector.detector.createBoundingBox(self.frame, const.list_of_values.return_threshold_value())
+                self.current = time.time()
+                fps = 1 / (self.current - self.start)
+                self.start = self.current
+                cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+                image = QImage(frame, frame.shape[1], frame.shape[0], 
+                       frame.strides[0], QImage.Format.Format_RGB888)
+                image = image.rgbSwapped()
+                self.image_view.setPixmap(QPixmap.fromImage(image))
+                self.image_view.setScaledContents(True)
+                self.boundingBoxFrame = frame
+                self.frame_updated = False
+            except Exception as err:
+                print(err)
+                print("error in no deque")
+
+    def update_border(self, is_pri=False, is_old_pri=False):
+        border_color = {
+            True: 'red',
+            False: {
+                True: 'yellow',
+                False: 'black'
+            }
+        }[is_pri][is_old_pri]
+        border_style = f'margin-right:50%; margin-left: 250%; border: 10px solid {border_color};'
         
+        self.image_view.setStyleSheet(border_style)
         self.is_pri = is_pri
         self.is_old_pri = is_old_pri
 
     def get_priority(self):
         return (self.is_pri, self.is_old_pri)
 
-
     def update_time(self):
         self.current = time.time()
+
     def update_image_fps(self):
-        # frame = self.camera.get_data()
-        if self.deque:
-            try:
-                # frame = self.deque[-1]
-                frame = self.deque.pop()
-                fps = 1 / (self.current - self.start)
-                self.start = time.time()
-                # print(type(frame))
-                # print(str(int(fps)) + " cam " + str(self.camera.ip))
-                cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-                # self.image_view.setImage(frame)
-                # frame = 
-                image = QImage(frame, frame.shape[1], frame.shape[0], 
-                       frame.strides[0], QImage.Format.Format_RGB888)
+        if not self.deque:
+            return
+        
+        frame = self.deque.pop()
+        fps = 1 / (self.current - self.start)
+        self.start = time.time()
+        
+        try:
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+            
+            image = QImage(frame, frame.shape[1], frame.shape[0], frame.strides[0], QImage.Format.Format_RGB888)
+            image = image.rgbSwapped()
 
-                image = image.rgbSwapped()
-                # self.image_label.setPixmap(QPixmap.fromImage(image))
-                
-                # self.image_view.setImage(frame)
-                self.image_view.setPixmap(QPixmap.fromImage(image))
-                self.image_view.setScaledContents(True)
-                self.frame = frame
-            except:
-                print("maybe empty")
-        else:
-            # print("deque empty?")
-            pass
-    
-    def update_image_no_deque(self):
-        # self.startCamera()
-        global itemDetector
+            self.image_view.setPixmap(QPixmap.fromImage(image))
+            self.image_view.setScaledContents(True)
+            self.frame = frame
 
-        if self.frame_updated:
-            try:
-                # frame = self.frame
-                # frame = None
-                # Creating BoundingBox here
-                self.confidenceLevel, frame = itemDetector.detector.createBoundingBox(self.frame, const.list_of_values.return_threshold_value())
-                # # Creating boundingBox end
-                self.current = time.time()
-
-                fps = 1 / (self.current - self.start)
-
-                self.start = self.current
-
-                
-                # print("type: ", type(frame))
-                # print(str(int(fps)) + " cam " + str(self.camera.ip))
-                cv2.putText(frame, "FPS: " + str(int(fps)) + " cam " + str(self.camera.ip), (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
-                
-                image = QImage(frame, frame.shape[1], frame.shape[0], 
-                       frame.strides[0], QImage.Format.Format_RGB888)
-
-                image = image.rgbSwapped()
-
-                # print("type: ", type(image), " vs ", type(frame))
-                # self.image_label.setPixmap(QPixmap.fromImage(image))
-                
-                # self.image_view.setImage(frame)
-                
-                self.image_view.setPixmap(QPixmap.fromImage(image))
-                self.image_view.setScaledContents(True)
-                
-                self.boundingBoxFrame = frame
-                self.frame_updated = False
-                # print("update_image_no_deque worked")
-            except Exception as err:
-                print(err)
-                print("error in no deque")
-    
-
+        except Exception as e:
+            print(f"Error in update_image_fps: {e}")
+            
     def startCamera(self):
         self.camera.initialize()
-    
-    def get_frame(self):
-        # self.startCamera()
-        while True:
-            try:
-                frame = self.camera.get_data()
-                # self.deque.append(frame)
-                self.frame = frame
-                self.frame_updated = True
-                # self.deque.append(frame)
-                # frame = self.deque[-1]
-                # self.image_view.setImage(frame.T)
-                # print("get_frame worked")
-            except Exception as err:
-                print(err)
-                print("deque error probably full")
-    
+   
     def get_frame_detector(self):
         pass
 
     def return_frame(self):
-        # return (self.image_view, self.image_pri_border, self.image_old_pri_border)
         return self.image_view
 
     def return_cv2_frame(self):
         return self.frame
-    
-
-
-    # get_frame(self)
-    #   bool, frame = cv2.VideoCapture()
-    #   self.frame = frame
-    #   self.frame_updated = True
-
-    # update_image_no_deque(self)
-    #   frame = self.frame
-    #   self.image_view.setImage(frame)
-    #   self.frame_updated = False
-
-    # frame = detector.predict(frame)
-    # RawImageWidget(frame)
