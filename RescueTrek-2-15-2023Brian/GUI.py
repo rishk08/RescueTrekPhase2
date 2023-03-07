@@ -25,7 +25,7 @@ pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
 
 # Create the image detector object
 itemDetector = imageDetector("my_mobilenet_v14_model", "../pretrained_models", "../coco_v2.names", 0.5)
-
+itemDetector_created_bool = False
 
 class GUI:
     def __init__(self, configFile):
