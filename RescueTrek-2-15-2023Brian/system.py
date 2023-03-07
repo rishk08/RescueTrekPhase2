@@ -109,6 +109,10 @@ class System:
                 if model not in self.listOfActiveModels:
                     self.listOfActiveModels.append(model)
         
+
+    def returnListofActiveModels(self):
+        return self.listOfActiveModels
+
     def StartUp(self):
         for i in self.listOfSites:
             thread = threading.Thread(target=i.Run, args=())

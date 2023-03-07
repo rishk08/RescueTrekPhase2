@@ -24,15 +24,20 @@ pyqtgraph.setConfigOptions(imageAxisOrder = 'row-major')
 
 
 # Create the image detector object
+#itemDetector = None
 itemDetector = imageDetector("my_mobilenet_v14_model", "../pretrained_models", "../coco_v2.names", 0.5)
 itemDetector_created_bool = False
 
 class GUI:
     def __init__(self, configFile):
+#        global itemDetector
         # Start the system and set up the GUI
         self.system = System(configFile)
         self.cameras = self.system.GetCameras()
         self.itemDetectorThreshold = 0.5
+        #models_list = self.system.returnListofActiveModels()
+        #itemDetector = imageDetector(models_list)
+
         self.app = QApplication([])
         self.window = MainWindow(self.cameras)
         self.window.show()

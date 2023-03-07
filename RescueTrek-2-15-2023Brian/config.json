@@ -21,9 +21,9 @@
                 {
                     "Name": "UnnamedImageDetector",
                     "Data": {
-                        "ModelPath": "C:\\Users\\barnw\\Documents\\A&M Classes\\Coding Classes\\CSCE 483\\Updated Project\\mobilenet_v2.09_model",
-                        "ModelFolder": "C:\\Users\\barnw\\Documents\\A&M Classes\\Coding Classes\\CSCE 483\\Updated Project\\pretrained_models",
-                        "LabelPath": "C:\\Users\\barnw\\Documents\\A&M Classes\\Coding Classes\\CSCE 483\\Updated Project\\coco_v2.names",
+                        "ModelPath": "my_mobilenet_v14_model",
+                        "ModelFolder": "../pretrained_models",
+                        "LabelPath": "../coco_v2.names",
                         "Threshold": 0.5
                     }
                 }
