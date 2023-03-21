@@ -110,6 +110,7 @@ if __name__ == "__main__":
 
     # Open the default camera
     cap = cv2.VideoCapture(0)
+    col1, col2 = st.columns(2)
 
     # Keep processing frames until the user exits
     while cap.isOpened():
@@ -125,11 +126,14 @@ if __name__ == "__main__":
 
         # Display the output frame with bounding boxes and labels
         try:
-            framer.empty()
+            framer1.empty()
+            framer2.empty()
         except Exception:
             pass
-
-        framer = st.image(frame)
+        with col1:
+            framer1 = st.image(frame)
+        with col2:
+            framer2 = st.image(frame)
 
         # Exit the loop when 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
