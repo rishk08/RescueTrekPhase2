@@ -1,13 +1,13 @@
 # Import required libraries
-import cv2 
+import os
+import cv2
 import numpy as np
 import mtcnn
 from architecture import *
-from train_v2 import normalize,l2_normalizer
+from train_v2 import normalize, l2_normalizer
 from scipy.spatial.distance import cosine
 from tensorflow.keras.models import load_model
 import pickle
-
 
 # Confidence threshold for MTCNN face detector
 confidence_t = 0.99
@@ -98,32 +98,27 @@ if __name__ == "__main__":
     # Create an instance of MTCNN face detector
     face_detector = mtcnn.MTCNN()
 
-    # Open the default camera
-    cap = cv2.VideoCapture(0)
+    # path to folders with frames
+    image_folder = "input_frames"
+    output_folder = "output_frames"
 
-    # Keep processing frames until the user exits
-    while cap.isOpened():
-        # Read a frame from the camera
-        ret,frame = cap.read()
+    # a loop that iterates through the image files in the folder
+    for image_file in os.listdir(image_folder):
+        # Check if the file is an image (you can modify the list of valid extensions if needed)
+        if image_file.lower().endswith(('.png', '.jpg', '.jpeg')):
+            # Replace this line with code to read an image file using cv2.imread()
+            frame = cv2.imread(os.path.join(image_folder, image_file))
 
-        if not ret:
-            print("CAM NOT OPEND") 
-            break
+            # Detect and recognize faces in the current frame
+            frame = detect(frame, face_detector, face_encoder, encoding_dict)
 
-        # Detect and recognize faces in the current frame
-        frame = detect(frame , face_detector , face_encoder , encoding_dict)
+            # Save the processed frame with bounding boxes and names
+            output_file = os.path.join(output_folder, f"processed_{image_file}")
+            cv2.imwrite(output_file, frame)
 
-        # Display the output frame with bounding boxes and labels
-        cv2.imshow('camera', frame)
+            # Wait for a key press, exit the loop when 'q' is pressed
+            if cv2.waitKey(0) & 0xFF == ord('q'):
+                break
 
-        # Exit the loop when 'q' is pressed
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    # Release the camera and close all windows
-    cap.release()
+    # Close all windows
     cv2.destroyAllWindows()
-
-    
-
-
