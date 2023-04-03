@@ -48,11 +48,11 @@ from utils.general import (LOGGER, Profile, check_file, check_img_size, check_im
                            increment_path, non_max_suppression, print_args, scale_boxes, strip_optimizer, xyxy2xywh)
 from utils.plots import Annotator, colors, save_one_box
 from utils.torch_utils import select_device, smart_inference_mode
-
+import streamlit as st
 
 @smart_inference_mode()
 def run(
-        weights=ROOT / 'yolov5s.pt',  # model path or triton URL
+        weights=ROOT / 'GunDetectionV2.pt',  # model path or triton URL
         source=ROOT / 'data/images',  # file/dir/URL/glob/screen/0(webcam)
         data=ROOT / 'data/coco128.yaml',  # dataset.yaml path
         imgsz=(640, 640),  # inference size (height, width)
@@ -80,7 +80,7 @@ def run(
         dnn=False,  # use OpenCV DNN for ONNX inference
         vid_stride=1,  # video frame-rate stride
 ):
-    source = str(source)
+    source = str(0)
     save_img = not nosave and not source.endswith('.txt')  # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
     is_url = source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://'))
@@ -181,7 +181,12 @@ def run(
                     windows.append(p)
                     cv2.namedWindow(str(p), cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)  # allow window resize (Linux)
                     cv2.resizeWindow(str(p), im0.shape[1], im0.shape[0])
-                cv2.imshow(str(p), im0)
+                #cv2.imshow(str(p), im0)
+                try:
+                    framer.empty()
+                except:
+                    pass
+                framer = st.image(im0)
                 cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
@@ -218,7 +223,7 @@ def run(
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'yolov5s.pt', help='model path or triton URL')
+    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'GunDetectionV2.pt', help='model path or triton URL')
     parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob/screen/0(webcam)')
     parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='(optional) dataset.yaml path')
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640], help='inference size h,w')
