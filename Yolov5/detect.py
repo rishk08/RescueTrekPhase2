@@ -186,7 +186,8 @@ def run(
                     framer.empty()
                 except:
                     pass
-                framer = st.image(im0)
+                im0 = cv2.cvtColor(im0, cv2.COLOR_BGR2RGB)
+                framer = st.image(im0, caption=s[11:-2])
                 cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
