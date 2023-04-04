@@ -8,6 +8,7 @@ from train_v2 import normalize, l2_normalizer
 from scipy.spatial.distance import cosine
 from tensorflow.keras.models import load_model
 import pickle
+import shutil
 
 # Confidence threshold for MTCNN face detector
 confidence_t = 0.99
@@ -15,6 +16,33 @@ confidence_t = 0.99
 recognition_t = 0.5
 # Required size for face recognition model
 required_size = (160,160)
+
+# Shared variable to store the name of the detected face
+detected_name = None
+
+#To access the detected name in other files, simply import 
+#the function get_detected_name and call it. Here's an example:
+
+#from main_script import get_detected_name
+#name = get_detected_name()
+#print(f"The detected face name is: {name}")
+
+def get_detected_name():
+    return detected_name
+
+def wipe_output_folder(folder_path, exclude_file=None):
+    for filename in os.listdir(folder_path):
+        if filename == exclude_file:
+            continue
+
+        file_path = os.path.join(folder_path, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print(f'Failed to delete {file_path}. Reason: {e}')
 
 def get_face(img, box):
     """
@@ -48,6 +76,8 @@ def detect(img ,detector,encoder,encoding_dict):
     Detects faces in the provided image using MTCNN face detector and performs face recognition using the provided
     FaceNet model and encoding dictionary
     """
+    global detected_name
+    detected_name = "unknown"
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = detector.detect_faces(img_rgb)
     for res in results:
@@ -74,12 +104,14 @@ def detect(img ,detector,encoder,encoding_dict):
         # Draw bounding box and label on the image based on the recognized person's name
         if name == 'unknown':
             cv2.rectangle(img, pt_1, pt_2, (0, 0, 255), 2)
-            cv2.putText(img, name, pt_1, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 1)
+            cv2.putText(img, name, pt_1, cv2.FONT_HERSHEY_SIMPLEX, 20, (0, 0, 255), 20) 
         else:
             cv2.rectangle(img, pt_1, pt_2, (0, 255, 0), 2)
-            cv2.putText(img, name + f'__{distance:.2f}', (pt_1[0], pt_1[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 1,
-                        (0, 200, 200), 2)
-    return img 
+            cv2.putText(img, name + f'__{distance:.2f}', (pt_1[0], pt_1[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 2,
+                        (0, 200, 200), 7)  
+
+            detected_name = name
+    return img
 
 
 
@@ -116,8 +148,10 @@ if __name__ == "__main__":
             output_file = os.path.join(output_folder, f"processed_{image_file}")
             cv2.imwrite(output_file, frame)
 
-            # Wait for a key press, exit the loop when 'q' is pressed
-            if cv2.waitKey(0) & 0xFF == ord('q'):
+            if detected_name != "unknown":
+                exclude_file = f"processed_{image_file}"
+                wipe_output_folder(output_folder, exclude_file)
+                print(f"Face detected: {detected_name}")
                 break
 
     # Close all windows
