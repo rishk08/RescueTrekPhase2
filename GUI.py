@@ -12,7 +12,7 @@ def Yolo_site():
     st.title('RescueTrek')
     opts = Yd.parse_opt()
     Yd.main(opts)
-
+    
 if __name__ == "__main__":
     page_names_to_funcs = {
         "Gun Detection": Yolo_site,
