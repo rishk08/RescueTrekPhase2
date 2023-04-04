@@ -35,7 +35,6 @@ import sys
 from pathlib import Path
 
 import torch
-
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
 if str(ROOT) not in sys.path:
@@ -49,6 +48,7 @@ from utils.general import (LOGGER, Profile, check_file, check_img_size, check_im
 from utils.plots import Annotator, colors, save_one_box
 from utils.torch_utils import select_device, smart_inference_mode
 import streamlit as st
+window = st.image([])
 
 @smart_inference_mode()
 def run(
@@ -182,12 +182,9 @@ def run(
                     cv2.namedWindow(str(p), cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)  # allow window resize (Linux)
                     cv2.resizeWindow(str(p), im0.shape[1], im0.shape[0])
                 #cv2.imshow(str(p), im0)
-                try:
-                    framer.empty()
-                except:
-                    pass
+
                 im0 = cv2.cvtColor(im0, cv2.COLOR_BGR2RGB)
-                framer = st.image(im0, caption=s[11:-2])
+                framer = window.image(im0, caption=s[11:-2])
                 cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
