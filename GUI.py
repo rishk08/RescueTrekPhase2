@@ -4,22 +4,6 @@ import streamlit as st
 import signal
 
 
-def Add_cam(num_cams, button):
-    num_cams+=1
-    st.write("Number of cameras: "  + str(num_cams))
-    print("ran")
-    button = False
-    
-
-    return num_cams, button
-
-def check_done(num_cams, done, button):
-    if button:
-        if num_cams == 0:
-            st.write("You have no cams!")
-        else:
-            done = True
-
 def Yolo_site():
     st.title('RescueTrek')
     opts = Yd.parse_opt()
