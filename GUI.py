@@ -3,28 +3,63 @@ import threading
 import streamlit as st
 import signal
 
-intro_ran = 0
-def intro():
-    if intro_ran == 0:
-        st.write("# Welcome to Streamlit! 👋")
-        st.sidebar.success("Select a demo above.")
 
+def Add_cam(num_cams, button):
+    num_cams+=1
+    st.write("Number of cameras: "  + str(num_cams))
+    print("ran")
+    button = False
+    
+
+    return num_cams, button
+
+def check_done(num_cams, done, button):
+    if button:
+        if num_cams == 0:
+            st.write("You have no cams!")
+        else:
+            done = True
 
 def Yolo_site():
     st.title('RescueTrek')
-    for i in Create_cams("Yolov5\cam_locations.txt"):
-        opts = Yd.parse_opt()
-        opts.source = i
+    opts = Yd.parse_opt()
+    opts.source = "cam_locations.streams"
     Yd.main(opts)
 
-def Create_cams(filename):
-    cams = []
-    file = open(filename, "r")
-    for line in file:
-        cams.append(line)
-    return cams
+def write_to_file(filename, stringer):
+    filer = open(filename, "a")
+    filer.write(stringer)
+    filer.close()
 
 
-if __name__ == "__main__":
-    Yolo_site()        
+def main():
+    num_cams = 0
+    with open("cam_locations.streams", "r+") as my_file:
+        my_file.seek(0)
+        my_file.truncate()
+        print("CLEARED")
+    done = False
+    camera_location = st.text_input('Add Camera')
+    emp = st.empty()
+    num_cams = 0
+    done = emp.button("Done adding cameras!")
+
+    if camera_location and not done:
+        write_to_file("cam_locations.streams", camera_location + "\n")
+        num_cams += 1
+        print(num_cams)
+        camera_location = ""
+    
+    if done:
+        emp.empty()
+        Yolo_site()
+
+if __name__ == '__main__':
+    main()
+
+
+
+            
+
+
     
