@@ -133,6 +133,8 @@ def run(
         dataset = LoadStreams(
             source, img_size=imgsz, stride=stride, auto=pt, vid_stride=vid_stride
         )
+        print(source)
+        
         bs = len(dataset)
     elif screenshot:
         dataset = LoadScreenshots(source, img_size=imgsz, stride=stride, auto=pt)
@@ -140,6 +142,8 @@ def run(
         dataset = LoadImages(
             source, img_size=imgsz, stride=stride, auto=pt, vid_stride=vid_stride
         )
+    # for i in dataset:
+    #     print(i)
     vid_path, vid_writer = [None] * bs, [None] * bs
 
     # Run inference
@@ -221,12 +225,20 @@ def run(
                         )
                         annotator.box_label(xyxy, label, color=colors(c, True))
                     if save_crop:
-                        save_one_box(
-                            xyxy,
-                            imc,
-                            file=save_dir / "crops" / names[c] / f"{p.stem}.jpg",
-                            BGR=True,
-                        )
+                        time_saved = 1  # no. of seconds to save from video source
+                        label = names[c]
+                        # print(label + "\n")
+                        if "Gun" in label:
+                            frames_to_save = 60*time_saved
+
+                        if frames_to_save > 0:
+                            save_one_box(
+                                xyxy,
+                                imc,
+                                file=save_dir / "crops" / names[c] / f"{p.stem}.jpg",
+                                BGR=True,
+                            )
+                            frames_to_save -= 1
 
             # Stream results
             im0 = annotator.result()
@@ -241,6 +253,7 @@ def run(
 
                 im0 = cv2.cvtColor(im0, cv2.COLOR_BGR2RGB)
                 framer = window.image(im0, caption=s[11:-2])
+                
                 cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
