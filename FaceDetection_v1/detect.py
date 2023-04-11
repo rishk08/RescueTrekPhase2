@@ -134,7 +134,10 @@ if __name__ == "__main__":
     image_folder = "input_frames"
     output_folder = "output_frames"
 
-    # a loop that iterates through the image files in the folder
+    # Initialize a set to store detected names
+    detected_names_set = set()
+
+    # A loop that iterates through the image files in the folder
     for image_file in os.listdir(image_folder):
         # Check if the file is an image (you can modify the list of valid extensions if needed)
         if image_file.lower().endswith(('.png', '.jpg', '.jpeg')):
@@ -145,14 +148,14 @@ if __name__ == "__main__":
             frame = detect(frame, face_detector, face_encoder, encoding_dict)
 
             # Save the processed frame with bounding boxes and names
-            output_file = os.path.join(output_folder, f"processed_{image_file}")
-            cv2.imwrite(output_file, frame)
-
-            if detected_name != "unknown":
-                exclude_file = f"processed_{image_file}"
-                wipe_output_folder(output_folder, exclude_file)
+            if detected_name != "unknown" and detected_name not in detected_names_set:
+                output_file = os.path.join(output_folder, f"{detected_name}.jpg")
+                cv2.imwrite(output_file, frame)
                 print(f"Face detected: {detected_name}")
-                break
+                detected_names_set.add(detected_name)
+
+
+
 
     # Close all windows
     cv2.destroyAllWindows()
