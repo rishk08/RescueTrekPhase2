@@ -233,10 +233,11 @@ def run(
                             frames_to_save = 60*time_saved
 
                         if frames_to_save > 0:
+                            save_dir_path = Path("../FaceDetection_v1/input_frames") if os.path.basename(__file__) == "detect_test.py" else Path("crops")
                             save_one_box(
                                 xyxy,
                                 imc,
-                                file=save_dir / "crops" / names[c] / f"{p.stem}.jpg",
+                                file= save_dir_path / f"{p.stem}.jpg",
                                 BGR=True,
                             )
                             frames_to_save -= 1
