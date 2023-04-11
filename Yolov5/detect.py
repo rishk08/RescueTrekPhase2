@@ -245,7 +245,7 @@ def run(
                             frames_to_save = 60*time_saved
 
                         if frames_to_save > 0:
-                            save_dir_path = Path("../FaceDetection_v1/input_frames")
+                            save_dir_path = Path("FaceDetection_v1/input_frames")
                             save_one_box(
                                 xyxy,
                                 imc,
