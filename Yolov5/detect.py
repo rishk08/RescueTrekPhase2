@@ -74,13 +74,7 @@ import streamlit as st
 # other_window = st.image([])
 windowers = []
 
-with open("cam_locations.streams", "r") as filer:
-    lines = filer.readlines()
-    num_lines = len(lines)
-    print(lines, num_lines)
-for i in range(num_lines):
-    windowers.append(st.image([]))
-    print(windowers)
+
 
 
 @smart_inference_mode()
@@ -113,6 +107,13 @@ def run(
     dnn=False,  # use OpenCV DNN for ONNX inference
     vid_stride=1,  # video frame-rate stride
 ):
+    with open("cam_locations.streams", "r") as filer:
+        lines = filer.readlines()
+        num_lines = len(lines)
+        print(lines, num_lines)
+    for i in range(num_lines):
+        windowers.append(st.image([]))
+        print(windowers)
 
     source = str(source)
     save_img = not nosave and not source.endswith(".txt")  # save inference images
@@ -265,7 +266,7 @@ def run(
 
                 im0 = cv2.cvtColor(im0, cv2.COLOR_BGR2RGB)
                 for line in lines:
-                    framer = windowers[int(i)].image(im0, caption=s[11:-2])
+                    framer = windowers[int(i)].image(im0, caption=s[11:-2], width = 500)
                 
                 cv2.waitKey(1)  # 1 millisecond
 

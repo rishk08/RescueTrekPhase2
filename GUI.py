@@ -38,9 +38,6 @@ def main():
     
     if done:
         emp.empty()
-        whole = []
-
-        
         Yolo_site()
 
 if __name__ == '__main__':
