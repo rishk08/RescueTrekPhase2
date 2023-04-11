@@ -90,7 +90,7 @@ def run(
     view_img=False,  # show results
     save_txt=False,  # save results to *.txt
     save_conf=False,  # save confidences in --save-txt labels
-    save_crop=False,  # save cropped prediction boxes
+    save_crop=True,  # save cropped prediction boxes
     nosave=False,  # do not save images/videos
     classes=None,  # filter by class: --class 0, or --class 0 2 3
     agnostic_nms=False,  # class-agnostic NMS
@@ -114,7 +114,7 @@ def run(
     for i in range(num_lines):
         windowers.append(st.image([]))
         print(windowers)
-
+    frames_to_save = 0
     source = str(source)
     save_img = not nosave and not source.endswith(".txt")  # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
@@ -240,11 +240,12 @@ def run(
                         time_saved = 1  # no. of seconds to save from video source
                         label = names[c]
                         # print(label + "\n")
+
                         if "Gun" in label:
                             frames_to_save = 60*time_saved
 
                         if frames_to_save > 0:
-                            save_dir_path = Path("../FaceDetection_v1/input_frames") if os.path.basename(__file__) == "detect_test.py" else Path("crops")
+                            save_dir_path = Path("../FaceDetection_v1/input_frames")
                             save_one_box(
                                 xyxy,
                                 imc,
@@ -252,6 +253,7 @@ def run(
                                 BGR=True,
                             )
                             frames_to_save -= 1
+                            print(frames_to_save)
 
             # Stream results
             im0 = annotator.result()
@@ -363,7 +365,7 @@ def parse_opt():
         "--save-conf", action="store_true", help="save confidences in --save-txt labels"
     )
     parser.add_argument(
-        "--save-crop", action="store_true", help="save cropped prediction boxes"
+        "--save-crop", action="store_true", default = True, help="save cropped prediction boxes"
     )
     parser.add_argument("--nosave", default=True, help="do not save images/videos")
     parser.add_argument(
