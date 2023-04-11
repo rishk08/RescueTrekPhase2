@@ -29,7 +29,7 @@ def display_images(folder_path):
     else:
         for image_file in image_files:
             file_name = os.path.basename(image_file)
-            file_name_withoutext,  = os.path.splitext(file_name)
+            file_name_withoutext  = os.path.splitext(file_name)
 
             with open(image_file, "rb") as f:
                 image_data = f.read()
@@ -39,9 +39,9 @@ def display_images(folder_path):
             st.write(
                 f'<div style="text-align: center;">'
                 f'<img src="{image_data_url}" alt="{file_name}" width="300">'
-                f'<p>Name: {file_name_without_ext}</p>'
+                f'<p>Name: {file_name_withoutext}</p>'
                 f"</div>",
-                unsafe_allow_html=True,
+                unsafe_allow_html=True
             )
             
 def facial_detection_page():
