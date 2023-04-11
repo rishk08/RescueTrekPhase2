@@ -133,6 +133,8 @@ def run(
         dataset = LoadStreams(
             source, img_size=imgsz, stride=stride, auto=pt, vid_stride=vid_stride
         )
+        print(source)
+        
         bs = len(dataset)
     elif screenshot:
         dataset = LoadScreenshots(source, img_size=imgsz, stride=stride, auto=pt)
@@ -140,6 +142,8 @@ def run(
         dataset = LoadImages(
             source, img_size=imgsz, stride=stride, auto=pt, vid_stride=vid_stride
         )
+    # for i in dataset:
+    #     print(i)
     vid_path, vid_writer = [None] * bs, [None] * bs
 
     # Run inference

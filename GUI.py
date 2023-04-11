@@ -18,10 +18,10 @@ def write_to_file(filename, stringer):
 
 def main():
     num_cams = 0
-    with open("cam_locations.streams", "r+") as my_file:
-        my_file.seek(0)
-        my_file.truncate()
-        print("CLEARED")
+    # with open("cam_locations.streams", "r+") as my_file:
+    #     my_file.seek(0)
+    #     my_file.truncate()
+    #     print("CLEARED")
     done = False
     camera_location = st.text_input('Add Camera')
     emp = st.empty()
