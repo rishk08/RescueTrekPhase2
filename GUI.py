@@ -1,11 +1,12 @@
 import Yolov5.detect as Yd
-import FaceDetection_v1.detect as FaD
 import threading
 import streamlit as st
 import signal
 
 import os
 import subprocess
+import glob
+import base64
 
 
 def Yolo_site():
@@ -20,7 +21,29 @@ def write_to_file(filename, stringer):
     filer.write(stringer)
     filer.close()
 
+def display_images(folder_path):
+    image_files = glob.glob(f"{folder_path}/*.jpg")
 
+    if len(image_files) == 0:
+        st.write("No images found in the specified folder.")
+    else:
+        for image_file in image_files:
+            file_name = os.path.basename(image_file)
+            file_name_withoutext,  = os.path.splitext(file_name)
+
+            with open(image_file, "rb") as f:
+                image_data = f.read()
+                b64_data = base64.b64encode(image_data).decode("utf-8")
+                image_data_url = f"data:image/jpeg;base64,{b64_data}"
+
+            st.write(
+                f'<div style="text-align: center;">'
+                f'<img src="{image_data_url}" alt="{file_name}" width="300">'
+                f'<p>Name: {file_name_without_ext}</p>'
+                f"</div>",
+                unsafe_allow_html=True,
+            )
+            
 def facial_detection_page():
     st.write("Welcome to the Facial Detection Page!")
 
@@ -59,9 +82,8 @@ def home_page():
 
     if done:
         emp.empty()
-        Yolo_site()
-        if len(os.listdir("crops")) != 0:
-            FaD.main("crops")
+        Yolo_site()        
+
         
 
 
@@ -69,7 +91,11 @@ def main():
     num_cams = 0
 
     st.sidebar.image("rescuetrek.png", use_column_width=True)
-    pages = {"Home": home_page, "Facial Detection": facial_detection_page}
+    pages = {
+        "Home": home_page,
+        "Facial Detection": facial_detection_page,
+        "Display Images": lambda: display_images("./FaceDetection_v1/output_frames")
+    }
     page = st.sidebar.radio("Go to", list(pages.keys()))
 
     # Display the selected page
