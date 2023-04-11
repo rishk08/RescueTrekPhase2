@@ -70,8 +70,18 @@ from utils.plots import Annotator, colors, save_one_box
 from utils.torch_utils import select_device, smart_inference_mode
 import streamlit as st
 
-window = st.image([])
-other_window = st.image([])
+# window = st.image([])
+# other_window = st.image([])
+windowers = []
+
+with open("cam_locations.streams", "r") as filer:
+    lines = filer.readlines()
+    num_lines = len(lines)
+    print(lines, num_lines)
+for i in range(num_lines):
+    windowers.append(st.image([]))
+    print(windowers)
+
 
 @smart_inference_mode()
 def run(
@@ -254,10 +264,8 @@ def run(
                 # cv2.imshow(str(p), im0)
 
                 im0 = cv2.cvtColor(im0, cv2.COLOR_BGR2RGB)
-                if i == 0:
-                    framer = window.image(im0, caption=s[11:-2])
-                if i == 1:
-                    framer = other_window.image(im0, caption=s[11:-2])
+                for line in lines:
+                        framer = windowers[int(i)].image(im0, caption=s[11:-2])
                 
                 cv2.waitKey(1)  # 1 millisecond
 
