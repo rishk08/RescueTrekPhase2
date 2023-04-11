@@ -71,7 +71,7 @@ from utils.torch_utils import select_device, smart_inference_mode
 import streamlit as st
 
 window = st.image([])
-
+other_window = st.image([])
 
 @smart_inference_mode()
 def run(
@@ -103,6 +103,7 @@ def run(
     dnn=False,  # use OpenCV DNN for ONNX inference
     vid_stride=1,  # video frame-rate stride
 ):
+
     source = str(source)
     save_img = not nosave and not source.endswith(".txt")  # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
@@ -252,7 +253,10 @@ def run(
                 # cv2.imshow(str(p), im0)
 
                 im0 = cv2.cvtColor(im0, cv2.COLOR_BGR2RGB)
-                framer = window.image(im0, caption=s[11:-2])
+                if i == 0:
+                    framer = window.image(im0, caption=s[11:-2])
+                if i == 1:
+                    framer = other_window.image(im0, caption=s[11:-2])
                 
                 cv2.waitKey(1)  # 1 millisecond
 
