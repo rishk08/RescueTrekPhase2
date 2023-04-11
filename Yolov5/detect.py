@@ -107,9 +107,12 @@ def run(
     dnn=False,  # use OpenCV DNN for ONNX inference
     vid_stride=1,  # video frame-rate stride
 ):
+    num_lines = 0
     with open("cam_locations.streams", "r") as filer:
         lines = filer.readlines()
-        num_lines = len(lines)
+        for line in lines:
+            if len(line.strip()) != 0 :
+                num_lines+=1
         print(lines, num_lines)
     for i in range(num_lines):
         windowers.append(st.image([]))
