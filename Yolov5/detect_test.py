@@ -223,20 +223,12 @@ def run(
                         )
                         annotator.box_label(xyxy, label, color=colors(c, True))
                     if save_crop:
-                        time_saved = 1  # no. of seconds to save from video source
-                        label = names[c]
-                        # print(label + "\n")
-                        if "Gun" in label:
-                            frames_to_save = 60*time_saved
-
-                        if frames_to_save > 0:
-                            save_one_box(
-                                xyxy,
-                                imc,
-                                file=save_dir / "crops" / names[c] / f"{p.stem}.jpg",
-                                BGR=True,
-                            )
-                            frames_to_save -= 1
+                        save_one_box(
+                            xyxy,
+                            imc,
+                            file=save_dir / "crops" / names[c] / f"{p.stem}.jpg",
+                            BGR=True,
+                        )
 
             # Stream results
             im0 = annotator.result()
