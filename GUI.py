@@ -1,4 +1,5 @@
 import Yolov5.detect as Yd
+import FaceDetection_v1.detect as FaD
 import threading
 import streamlit as st
 import signal
@@ -53,12 +54,15 @@ def home_page():
     done = emp.button("Done adding cameras!")
 
     if camera_location and not done:
-        write_to_file("cam_locations.streams", camera_location + "\n")
+        write_to_file("cam_locations.streams", "\n" + camera_location + "\n")
         camera_location = ""
 
     if done:
         emp.empty()
         Yolo_site()
+        if len(os.listdir("crops")) != 0:
+            FaD.main("crops")
+        
 
 
 def main():
