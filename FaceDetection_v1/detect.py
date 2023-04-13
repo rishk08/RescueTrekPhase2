@@ -3,7 +3,7 @@ import os
 import cv2
 import numpy as np
 import mtcnn
-import FaceDetection_v1.architecture
+import FaceDetection_v1.architecture as arch
 from FaceDetection_v1.train_v2 import normalize, l2_normalizer
 from scipy.spatial.distance import cosine
 from tensorflow.keras.models import load_model
@@ -104,11 +104,11 @@ def detect(img ,detector,encoder,encoding_dict):
         # Draw bounding box and label on the image based on the recognized person's name
         if name == 'unknown':
             cv2.rectangle(img, pt_1, pt_2, (0, 0, 255), 2)
-            cv2.putText(img, name, pt_1, cv2.FONT_HERSHEY_SIMPLEX, 20, (0, 0, 255), 20) 
+            cv2.putText(img, name, pt_1, cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 1) 
         else:
             cv2.rectangle(img, pt_1, pt_2, (0, 255, 0), 2)
             cv2.putText(img, name + f'__{distance:.2f}', (pt_1[0], pt_1[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 2,
-                        (0, 200, 200), 7)  
+                        (0, 200, 200), 1)  
 
             detected_name = name
     return img
@@ -120,7 +120,7 @@ def main(filename):
     # Set the required shape of the input image
     required_shape = (160,160)
     # Load the FaceNet model
-    face_encoder = InceptionResNetV2()
+    face_encoder = arch.InceptionResNetV2()
     path_m = "FaceDetection_v1\\facenet_keras_weights.h5"
     face_encoder.load_weights(path_m)
 
@@ -139,7 +139,8 @@ def main(filename):
     detected_names_set = set()
 
     # A loop that iterates through the image files in the folder
-    for image_file in os.listdir(image_folder):
+    for image_file in os.listdir(image_folder)[-3:]:
+        print(image_file)
         # Check if the file is an image (you can modify the list of valid extensions if needed)
         if image_file.lower().endswith(('.png', '.jpg', '.jpeg')):
             # Replace this line with code to read an image file using cv2.imread()

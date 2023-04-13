@@ -33,6 +33,7 @@ import os
 import platform
 import sys
 from pathlib import Path
+import FaceDetection_v1.detect as FaD
 
 import torch
 
@@ -76,7 +77,6 @@ windowers = []
 
 
 
-
 @smart_inference_mode()
 def run(
     weights=ROOT / "GunDetectionV2.pt",  # model path or triton URL
@@ -107,9 +107,12 @@ def run(
     dnn=False,  # use OpenCV DNN for ONNX inference
     vid_stride=1,  # video frame-rate stride
 ):
+    num_lines = 0
     with open("cam_locations.streams", "r") as filer:
         lines = filer.readlines()
-        num_lines = len(lines)
+        for line in lines:
+            if len(line.strip()) != 0 :
+                num_lines+=1
         print(lines, num_lines)
     for i in range(num_lines):
         windowers.append(st.image([]))
@@ -242,7 +245,7 @@ def run(
                         # print(label + "\n")
 
                         if "Gun" in label:
-                            frames_to_save = 60*time_saved
+                            frames_to_save = 5*time_saved
 
                         if frames_to_save > 0:
                             save_dir_path = Path("FaceDetection_v1/input_frames") # run from the RescueTrekPhase2 directory if input frames aren't saved 
@@ -252,8 +255,12 @@ def run(
                                 file= save_dir_path / f"{p.stem}.jpg",
                                 BGR=True,
                             )
+                            if len(os.listdir(save_dir_path)) > 3:
+                                print(FaD.main(save_dir_path))
+
                             frames_to_save -= 1
                             print(frames_to_save)
+
 
             # Stream results
             im0 = annotator.result()
