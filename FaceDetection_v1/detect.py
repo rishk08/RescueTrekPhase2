@@ -9,6 +9,8 @@ from scipy.spatial.distance import cosine
 from tensorflow.keras.models import load_model
 import pickle
 import shutil
+import time
+from pathlib import Path
 
 # Confidence threshold for MTCNN face detector
 confidence_t = 0.99
@@ -138,24 +140,37 @@ def main(filename):
     # Initialize a set to store detected names
     detected_names_set = set()
 
-    # A loop that iterates through the image files in the folder
-    for image_file in os.listdir(image_folder)[-3:]:
-        print(image_file)
-        # Check if the file is an image (you can modify the list of valid extensions if needed)
-        if image_file.lower().endswith(('.png', '.jpg', '.jpeg')):
-            # Replace this line with code to read an image file using cv2.imread()
-            frame = cv2.imread(os.path.join(image_folder, image_file))
+    filename_arr = []
 
-            # Detect and recognize faces in the current frame
-            frame = detect(frame, face_detector, face_encoder, encoding_dict)
+    dummy_true_var = True
+    #a while loop that checks through the file folder 
+    while dummy_true_var:
+        
+        #if folder is empty, then reset the filename_arr
+        if os.listdir(image_folder) == []:
+            filename_arr = []
+        # A loop that iterates through the image files in the folder
+        for image_file in os.listdir(image_folder)[-3:]:
+            if image_file in filename_arr:
+                next
+            else:
+                print(image_file)
+                filename_arr.append(image_file)
+                # Check if the file is an image (you can modify the list of valid extensions if needed)
+                if image_file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                    # Replace this line with code to read an image file using cv2.imread()
+                    frame = cv2.imread(os.path.join(image_folder, image_file))
 
-            # Save the processed frame with bounding boxes and names
-            if detected_name != "unknown" and detected_name not in detected_names_set:
-                output_file = os.path.join(output_folder, f"{detected_name}.jpg")
-                cv2.imwrite(output_file, frame)
-                print(f"Face detected: {detected_name}")
-                detected_names_set.add(detected_name)
+                    # Detect and recognize faces in the current frame
+                    frame = detect(frame, face_detector, face_encoder, encoding_dict)
 
+                    # Save the processed frame with bounding boxes and names
+                    if detected_name != "unknown" and detected_name not in detected_names_set:
+                        output_file = os.path.join(output_folder, f"{detected_name}.jpg")
+                        cv2.imwrite(output_file, frame)
+                        print(f"Face detected: {detected_name}")
+                        detected_names_set.add(detected_name)
+        time.sleep(5)
     # Close all windows
     cv2.destroyAllWindows()
     return detected_names_set
