@@ -7,7 +7,7 @@ import mtcnn
 import architecture as arch
 from train_v2 import normalize, l2_normalizer
 from scipy.spatial.distance import cosine
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model
 import pickle
 import shutil
 import time
