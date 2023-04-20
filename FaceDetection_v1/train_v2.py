@@ -1,5 +1,6 @@
 # Import required libraries
-import FaceDetection_v1.architecture as arch
+#import FaceDetection_v1.architecture as arch
+import architecture as arch
 import os 
 import cv2
 import mtcnn
@@ -9,12 +10,14 @@ from sklearn.preprocessing import Normalizer
 from tensorflow.keras.models import load_model
 
 # Set path to the face images and define the required image size for the model
-face_data = 'FaceDetection_v1\\facepics'  # Directory path containing face images
+#face_data = 'FaceDetection_v1\\facepics'  # Directory path containing face images
+face_data = 'facepics'  # Directory path containing face images
 required_shape = (160,160)  # Required image size for face recognition model
 
 # Load the InceptionResNetV2 model weights from file
 face_encoder = arch.InceptionResNetV2()  # Initialize FaceNet model
-path = "FaceDetection_v1\\facenet_keras_weights.h5" # Path to FaceNet model weights
+#path = "FaceDetection_v1\\facenet_keras_weights.h5" # Path to FaceNet model weights
+path = "facenet_keras_weights.h5" # Path to FaceNet model weights
 face_encoder.load_weights(path)  # Load FaceNet model weights
 
 # Initialize the MTCNN face detector, encoding list, and dictionary
@@ -69,6 +72,7 @@ for face_names in os.listdir(face_data):
         encodes = []  # Reset encodes list for the next person
 
 # Save the encoding dictionary to file
-path = 'FaceDetection_v1\\encodings\\encodings.pkl'  # Path to save encoding dictionary
+#path = 'FaceDetection_v1\\encodings\\encodings.pkl'  # Path to save encoding dictionary
+path = 'encodings\\encodings.pkl'  # Path to save encoding dictionary
 with open(path, 'wb') as file:
     pickle.dump(encoding_dict, file)  # Save encoding dictionary to file using pickle

@@ -33,7 +33,7 @@ import os
 import platform
 import sys
 from pathlib import Path
-import FaceDetection_v1.detect as FaD
+#import FaceDetection_v1.detect as FaD
 
 import torch
 
@@ -255,8 +255,8 @@ def run(
                                 file= save_dir_path / f"{p.stem}.jpg",
                                 BGR=True,
                             )
-                            if len(os.listdir(save_dir_path)) > 3:
-                                print(FaD.main(save_dir_path))
+                            #if len(os.listdir(save_dir_path)) > 3:
+                            #   print(FaD.main(save_dir_path))
 
                             frames_to_save -= 1
                             print(frames_to_save)

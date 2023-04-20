@@ -3,8 +3,9 @@ import os
 import cv2
 import numpy as np
 import mtcnn
-import FaceDetection_v1.architecture as arch
-from FaceDetection_v1.train_v2 import normalize, l2_normalizer
+#import FaceDetection_v1.architecture as arch
+import architecture as arch
+from train_v2 import normalize, l2_normalizer
 from scipy.spatial.distance import cosine
 from tensorflow.keras.models import load_model
 import pickle
@@ -117,25 +118,31 @@ def detect(img ,detector,encoder,encoding_dict):
 
 
 
-def main(filename):
+def main(filename="input_frames"):
     print("\n\n\n\n\nRAN\n\n\n\n\n")
     # Set the required shape of the input image
     required_shape = (160,160)
     # Load the FaceNet model
     face_encoder = arch.InceptionResNetV2()
-    path_m = "FaceDetection_v1\\facenet_keras_weights.h5"
+    #path_m = "FaceDetection_v1\\facenet_keras_weights.h5"
+    path_m = ".\\facenet_keras_weights.h5"
     face_encoder.load_weights(path_m)
 
     # Load the encoded feature vectors of known faces from the pickle file
-    encodings_path = 'FaceDetection_v1\\encodings\\encodings.pkl'
+    #encodings_path = 'FaceDetection_v1\\encodings\\encodings.pkl'
+    encodings_path = 'encodings\\encodings.pkl'
     encoding_dict = load_pickle(encodings_path)
 
     # Create an instance of MTCNN face detector
     face_detector = mtcnn.MTCNN()
 
     # path to folders with frames
-    image_folder = filename
-    output_folder = "FaceDetection_v1\\output_frames"
+    
+    #image_folder = filename
+    #image_folder = "FaceDetection_v1\\input_frames"
+    #output_folder = "FaceDetection_v1\\output_frames"
+    image_folder = "input_frames"
+    output_folder = "output_frames"
 
     # Initialize a set to store detected names
     detected_names_set = set()
@@ -150,7 +157,8 @@ def main(filename):
         if os.listdir(image_folder) == []:
             filename_arr = []
         # A loop that iterates through the image files in the folder
-        for image_file in os.listdir(image_folder)[-3:]:
+        #for image_file in os.listdir(image_folder)[-3:]:
+        for image_file in os.listdir(image_folder):
             if image_file in filename_arr:
                 next
             else:
