@@ -35,6 +35,7 @@ import sys
 from pathlib import Path
 
 import torch
+import collections
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
@@ -125,7 +126,11 @@ def run(
     # Load model
     device = select_device(device)
     model = DetectMultiBackend(weights, device=device, dnn=dnn, data=data, fp16=half)
-    stride, names, pt = model.stride, model.names, model.pt
+    
+    names = collections.defaultdict(lambda: 'Unknown')
+    names.update(model.names)
+
+    stride, names, pt = model.stride, names, model.pt
     imgsz = check_img_size(imgsz, s=stride)  # check image size
 
     # Dataloader
