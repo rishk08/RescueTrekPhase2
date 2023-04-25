@@ -91,15 +91,16 @@ def main():
     num_cams = 0
 
     st.sidebar.image("rescuetrek.png", use_column_width=True)
-    pages = {
-        "Home": home_page,
-        "Facial Detection": facial_detection_page,
-        "Display Images": lambda: display_images("./FaceDetection_v1/output_frames")
-    }
-    page = st.sidebar.radio("Go to", list(pages.keys()))
+    # pages = {
+    #     "Home": home_page,
+    #     "Facial Detection": facial_detection_page,
+    #     "Display Images": lambda: display_images("./FaceDetection_v1/output_frames")
+    # }
+    # page = st.sidebar.radio("Go to", list(pages.keys()))
 
     # Display the selected page
-    pages[page]()
+    # pages[page]()
+    home_page()
     # st.image("rescuetrek.png")
     # st.markdown("<br>", unsafe_allow_html=True)
     # st.sidebar.markdown("<br>", unsafe_allow_html=True)
