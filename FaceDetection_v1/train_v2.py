@@ -7,7 +7,20 @@ import mtcnn
 import pickle 
 import numpy as np 
 from sklearn.preprocessing import Normalizer
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model
+
+# Initialize the L2 normalizer
+l2_normalizer = Normalizer('l2')  # Initialize L2 normalizer
+
+# Define function to normalize image
+def normalize(img):
+    """
+    Normalizes image by subtracting mean and dividing by standard deviation
+    """
+    mean, std = img.mean(), img.std()
+    return (img - mean) / std
+
+
 
 def full():
     # Set path to the face images and define the required image size for the model
@@ -26,17 +39,7 @@ def full():
     encodes = []  # List to store face encodings
     encoding_dict = dict()  # Dictionary to store face encodings with person name as key
 
-    # Initialize the L2 normalizer
-    l2_normalizer = Normalizer('l2')  # Initialize L2 normalizer
-
-    # Define function to normalize image
-    def normalize(img):
-        """
-        Normalizes image by subtracting mean and dividing by standard deviation
-        """
-        mean, std = img.mean(), img.std()
-        return (img - mean) / std
-
+    
     # Loop over all face images in the dataset
     for face_names in os.listdir(face_data):
         person_dir = os.path.join(face_data,face_names)

@@ -12,6 +12,9 @@ import pickle
 import shutil
 import time
 from pathlib import Path
+from twilio.rest import Client
+import csv
+import pandas as pd
 
 # Confidence threshold for MTCNN face detector
 confidence_t = 0.99
@@ -22,6 +25,13 @@ required_size = (160,160)
 
 # Shared variable to store the name of the detected face
 detected_name = None
+
+send_texts = True
+
+account_sid = 'ACeed438662a937f039272a41792869278'
+auth_token = '6978ad85367c11ba8947946e9d57c017'
+
+client = Client(account_sid, auth_token)
 
 #To access the detected name in other files, simply import 
 #the function get_detected_name and call it. Here's an example:
@@ -178,6 +188,23 @@ def main(filename="input_frames"):
                         cv2.imwrite(output_file, frame)
                         print(f"Face detected: {detected_name}")
                         detected_names_set.add(detected_name)
+                        if send_texts == True: 
+                            with open(output_file, "rb") as pic_file:
+                                pic_data = pic_file.read()
+                            with open('contacts.csv', 'r') as file:
+                                reader = csv.reader(file)
+                                #next(reader) # Skip header row
+                                for name, phone_number in reader:
+                                    # Send a text message to the phone number
+                                    message = client.messages.create(
+                                        body='detected '+ detected_name,
+                                        from_='+18559554043',
+                                        #media_url=[f"data:image/jpeg;base64,{pic_data.decode('ascii')}"],
+                                        to=phone_number
+                                    )
+                                    print(f"Message sent to {name} ({phone_number}): {message.sid}")
+
+
         time.sleep(5)
     # Close all windows
     cv2.destroyAllWindows()
