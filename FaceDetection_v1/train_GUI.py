@@ -59,7 +59,6 @@ def facial_detection_page():
 
 
 def main():
-    num_cams = 0
 
     st.sidebar.image("rescuetrek.png", use_column_width=True)
 

@@ -135,12 +135,12 @@ def main(filename="input_frames"):
     # Load the FaceNet model
     face_encoder = arch.InceptionResNetV2()
     #path_m = "FaceDetection_v1\\facenet_keras_weights.h5"
-    path_m = ".\\facenet_keras_weights.h5"
+    path_m = "FaceDetection_v1\\facenet_keras_weights.h5"
     face_encoder.load_weights(path_m)
 
     # Load the encoded feature vectors of known faces from the pickle file
     #encodings_path = 'FaceDetection_v1\\encodings\\encodings.pkl'
-    encodings_path = 'encodings\\encodings.pkl'
+    encodings_path = 'FaceDetection_v1\\encodings\\encodings.pkl'
     encoding_dict = load_pickle(encodings_path)
 
     # Create an instance of MTCNN face detector
@@ -151,8 +151,8 @@ def main(filename="input_frames"):
     #image_folder = filename
     #image_folder = "FaceDetection_v1\\input_frames"
     #output_folder = "FaceDetection_v1\\output_frames"
-    image_folder = "input_frames"
-    output_folder = "output_frames"
+    image_folder = "FaceDetection_v1\\input_frames"
+    output_folder = "FaceDetection_v1\\output_frames"
 
     # Initialize a set to store detected names
     detected_names_set = set()
