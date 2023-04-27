@@ -48,14 +48,10 @@ def full():
     encodes = []  # List to store face encodings
     encoding_dict = dict()  # Dictionary to store face encodings with person name as key
 
-<<<<<<< HEAD
     # Initialize the L2 normalizer
 
     # Define function to normalize image
 
-=======
-    
->>>>>>> 34520d5a15cf1b31aa8128f3490a2d7c40c0bd59
     # Loop over all face images in the dataset
     for face_names in os.listdir(face_data):
         person_dir = os.path.join(face_data,face_names)

@@ -191,7 +191,7 @@ def main(filename="input_frames"):
                         if send_texts == True: 
                             with open(output_file, "rb") as pic_file:
                                 pic_data = pic_file.read()
-                            with open('contacts.csv', 'r') as file:
+                            with open("FaceDetection_v1\\contacts.csv", 'r') as file:
                                 reader = csv.reader(file)
                                 #next(reader) # Skip header row
                                 for name, phone_number in reader:
