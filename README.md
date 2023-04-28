@@ -1,54 +1,55 @@
-# RescueTrek
+# RescueTrek Phase 2 Gun Detection Model
 
-### Prerequisites
+This repository contains the machine learning gun detection model for RescueTrek Phase 2. The model is designed to detect guns in images and video footage.
 
-- Python 3.7–3.9 installed on your system (dependency issues with later versions)
-- pip package manager installed on your system
+## Installation
 
-### Steps
+To set up the environment and install the necessary dependencies, follow these steps:
 
-**Note**: If you already have a Python virtual environment set up, you can skip the first few steps and start from step 5.
-
-1. Open your terminal or command prompt.
-2. Install the virtualenv package by running the following command:
+1. Install CUDA 11.7.
+2. Create a virtual environment for Python 3.9.
+3. Activate the virtual environment by running the following command:
 
     ```
-    pip3 install virtualenv
+    source <path_to_virtual_environment>/bin/activate
     ```
 
-3. Create a virtual environment folder named `venv` with Python 3.x by running the following command:
+4. Install all the requirements listed in the `requirements.txt` file by running the following command:
 
     ```
-    virtualenv venv -p python3
+    pip3 install -r requirements.txt
     ```
 
-4. Activate the virtual environment by running the following command:
+5. Install PyTorch and related libraries by running the following command:
 
     ```
-    source venv/scripts/activate (Windows - Git bash terminal)
+    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
     ```
 
-    or
+## Usage
+
+Once the environment is set up, you can use the model with the following steps:
+
+1. Run the UI by executing the following command in a separate terminal within the virtual environment:
 
     ```
-    source venv/bin/activate (Linux/MacOS)
+    streamlit run GUI.py
     ```
 
-5. Install the required packages from the `requirements.txt` file by running the following command:
+2. Run the face detection module by executing the following command in a separate terminal:
 
     ```
-    pip install -r requirements.txt
+    python FaceDetection_v1/detect.py
     ```
 
-6. Run the gun detection model:
+3. Train the facial detection model by running the following command in the virtual environment within a separate terminal:
 
     ```
-    python main.py
+    streamlit run FaceDetection_v1/train_GUI.py
     ```
 
+Please note that running the UI and face detection modules require separate terminals, while training the facial detection model can be done within the same terminal.
 
-7. (Optional) To list all the installed packages in the virtual environment into `requirements.txt`, run the following command:
+## License
 
-    ```
-    pip3 freeze > requirements.txt
-    ```
+This project is licensed under the [MIT License](LICENSE).
