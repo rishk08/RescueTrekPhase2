@@ -6,24 +6,41 @@ This repository contains the machine learning gun detection model for RescueTrek
 
 To set up the environment and install the necessary dependencies, follow these steps:
 
-1. Install CUDA 11.7.
-2. Create a virtual environment for Python 3.9.
-3. Activate the virtual environment by running the following command:
+1. Install CUDA 11.7. https://developer.nvidia.com/cuda-11-7-0-download-archive
+2. Install Python 3.9 https://www.python.org/downloads/release/python-398/
+3. Create a virtual environment for Python 3.9 by running the following command in Command Prompt:
 
     ```
-    source <path_to_virtual_environment>/bin/activate
+    python -m venv myenv
     ```
 
-4. Install all the requirements listed in the `requirements.txt` file by running the following command:
+4. 
+### Windows
+
+    Activate the virtual environment by running the following command:
 
     ```
-    pip3 install -r requirements.txt
+    myenv\Scripts\activate
     ```
 
-5. Install PyTorch and related libraries by running the following command:
+### Linux/MacOS
+
+    Activate the virtual environment by running the following command:
 
     ```
-    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+    source myenv/bin/activate
+    ```
+
+5. Install all the requirements listed in the `requirements.txt` file by running the following command:
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+6. Install PyTorch and related libraries by running the following command:
+
+    ```
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
     ```
 
 ## Usage
