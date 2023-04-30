@@ -56,7 +56,7 @@ Once the environment is set up, you can use the model with the following steps:
     streamlit run GUI.py
     ```
 
-2. Run the face detection module by executing the following command in a separate terminal within the virtual environment:
+2. Run the facial detection model by executing the following command in a separate terminal within the virtual environment:
 
     ```
     python FaceDetection_v1/detect.py
@@ -68,7 +68,7 @@ Once the environment is set up, you can use the model with the following steps:
     streamlit run FaceDetection_v1/train_GUI.py
     ```
 
-Please note that running the UI and face detection modules require separate terminals to run simultaneously.
+Please note that running the UI and face detection models require separate terminals to run simultaneously.
 
 ## License
 
