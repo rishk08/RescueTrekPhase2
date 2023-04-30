@@ -36,11 +36,11 @@ To set up the environment and install the necessary dependencies, follow these s
     pip install -r requirements.txt
     ```
 
-### Running Object Detection on GPU
+### Running Object Detection on GPU (Optional)
 
-5. (Optional) Install CUDA 11.7. https://developer.nvidia.com/cuda-11-7-0-download-archive
+5. Install CUDA 11.7. https://developer.nvidia.com/cuda-11-7-0-download-archive
 
-6. (Optional) Install PyTorch and related libraries by running the following command:
+6. Install PyTorch and related libraries by running the following command:
 
     ```
     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
