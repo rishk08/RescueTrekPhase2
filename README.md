@@ -68,7 +68,7 @@ Once the environment is set up, you can use the model with the following steps:
     streamlit run FaceDetection_v1/train_GUI.py
     ```
 
-Please note that running the UI and face detection modules require separate terminals, while training the facial detection model can be done within the same terminal.
+Please note that running the UI and face detection modules require separate terminals to run simultaneously.
 
 ## License
 
