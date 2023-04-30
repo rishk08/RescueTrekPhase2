@@ -16,7 +16,7 @@ To set up the environment and install the necessary dependencies, follow these s
 3. Activate the virtual environment by running the following command:
 ### Windows
 
-    source myenv\Scripts\activate
+    source myenv/Scripts/activate
 
 ### Linux/MacOS
 
