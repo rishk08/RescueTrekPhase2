@@ -13,22 +13,14 @@ To set up the environment and install the necessary dependencies, follow these s
     python -m venv myenv
     ```
 
-3. 
+3. Activate the virtual environment by running the following command:
 ### Windows
 
-    Activate the virtual environment by running the following command:
-
-    ```
     myenv\Scripts\activate
-    ```
 
 ### Linux/MacOS
 
-    Activate the virtual environment by running the following command:
-
-    ```
     source myenv/bin/activate
-    ```
 
 4. Install all the requirements listed in the `requirements.txt` file by running the following command:
 
