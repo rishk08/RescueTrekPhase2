@@ -1,6 +1,6 @@
 # RescueTrek Phase 2 Gun Detection Model
 
-This repository contains the machine learning gun detection model for RescueTrek Phase 2. The model is designed to detect guns in images and video footage.
+This repository contains the machine learning gun detection model for RescueTrek Phase 2. The model is designed to detect guns in images and video footage and identify potential shooters using facial detection.
 
 ## Installation
 
