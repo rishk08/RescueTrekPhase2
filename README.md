@@ -1,6 +1,6 @@
 # RescueTrek Phase 2 Gun Detection Model
 
-This repository contains the machine learning gun detection model for RescueTrek Phase 2. The model is designed to detect guns in images and video footage and identify potential shooters using facial detection.
+This repository includes the RescueTrek Phase 2 machine learning model for gun detection. The model leverages Yolov5 with PyTorch as the underlying framework for gun detection in both images and video footage. It effectively identifies guns and humans in the provided data, enabling the identification of potential shooters. Additionally, facial detection is employed using FaceNet, which operates on the TensorFlow framework. This combination of Yolov5 with PyTorch for gun detection and FaceNet with TensorFlow for facial detection ensures accurate and efficient analysis of the input imagery and video.
 
 ## Installation
 
