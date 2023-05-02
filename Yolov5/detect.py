@@ -239,6 +239,7 @@ def run(
                             else (names[c] if hide_conf else f"{names[c]} {conf:.2f}")
                         )
                         annotator.box_label(xyxy, label, color=colors(c, True))
+                    # Modified RescueTrek save_crop script to save frames containing guns
                     if save_crop:
                         time_saved = 1  # no. of seconds to save from video source
                         label = names[c]
