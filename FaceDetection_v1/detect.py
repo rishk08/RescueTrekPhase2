@@ -26,6 +26,7 @@ required_size = (160,160)
 # Shared variable to store the name of the detected face
 detected_name = None
 
+# Credentials used to send data to Twilio
 send_texts = True
 
 account_sid = 'ACeed438662a937f039272a41792869278'
@@ -188,6 +189,7 @@ def main(filename="input_frames"):
                         cv2.imwrite(output_file, frame)
                         print(f"Face detected: {detected_name}")
                         detected_names_set.add(detected_name)
+                        # Sends message through Twilio
                         if send_texts == True: 
                             with open(output_file, "rb") as pic_file:
                                 pic_data = pic_file.read()
